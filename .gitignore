@@ -1,0 +1,8 @@
+Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_AT_Slave/STM32CubeIDE/cmwx1zzabz_0xx/Debug/Application/App/subdir.mk
+*.o
+*.swp
+*.bak
+*.su
+*.cfg
+*.mk
+*.d
