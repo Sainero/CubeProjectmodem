@@ -43,6 +43,8 @@
 //#include "persapp.h"
 #include "bmp280.h"//
 #include "hts221.h"
+#include "rtc.h"
+#include "rtc_if.h"
 //#include "SVN посмотри"
 //#include "SVN посмотри ЕЩЁ"
 //#include "BMP280/bmp280.c" dfhkdlzfhdo;fjh;jadpjhzrbyadrnysr
@@ -237,16 +239,17 @@ static UTIL_TIMER_Object_t JoinLedTimer;
 //BMP280_HandleTypedef bmp280;
 BMP280_HandleTypedef bmp280;
 //UART_HandleTypeDef huart2;
-//RTC_HandleTypeDef hrtc;
+RTC_HandleTypeDef hrtc;
 //UART_HandleTypeDef husart2;
 UART_HandleTypeDef husart1;
-//I2C_HandleTypeDef hi2c1;
-//SPI_HandleTypeDef hspi1;
+I2C_HandleTypeDef hi2c1;
+SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2; ///// Для HTS если вдруг понадобится
-//LPTIM_HandleTypeDef hlptim1;
+LPTIM_HandleTypeDef hlptim1;
 union hts221_reg_t;
 HTS221_Object_t hts221;
 HTS221_Capabilities_t Capabilities;
+ADC_HandleTypeDef hadc1;
 /* USER CODE END PV */
 
 /* Exported functions ---------------------------------------------------------*/
@@ -272,23 +275,31 @@ void LoRaWAN_Init(void)
   LED_Init(LED_RED2);
 
   /* Get LoRa APP version*/
-  APP_LOG(TS_OFF, VLEVEL_M, "APP_VERSION:        V%X.%X.%X\r\n",
+//  APP_LOG(TS_OFF, VLEVEL_M, "APP_VERSION:        V%X.%X.%X\r\n",
+//          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
+//          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
+//          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB2_SHIFT));
+  APP_LOG(TS_OFF, VLEVEL_M, " Версия протокола:        V%X.%X.%X\r\n",
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
-          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB2_SHIFT));
-
+          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB2_SHIFT)); // версия приложения (App)
   /* Get MW LoraWAN info */
-  APP_LOG(TS_OFF, VLEVEL_M, "MW_LORAWAN_VERSION: V%X.%X.%X\r\n",
-          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_MAIN_SHIFT),
-          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_SUB1_SHIFT),
-          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_SUB2_SHIFT));
-
+//  APP_LOG(TS_OFF, VLEVEL_M, "MW_LORAWAN_VERSION: V%X.%X.%X\r\n",
+//          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_MAIN_SHIFT),
+//          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_SUB1_SHIFT),
+//          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_SUB2_SHIFT));
+//  APP_LOG(TS_OFF, VLEVEL_M, "MW_LORAWAN_VERSION: V%X.%X.%X\r\n",
+//          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_MAIN_SHIFT),
+//          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_SUB1_SHIFT),
+//          (uint8_t)(__LORAWAN_VERSION >> __APP_VERSION_SUB2_SHIFT)); // версию промежуточного программного обеспечения (Middleware)
   /* Get MW SubGhz_Phy info */
-  APP_LOG(TS_OFF, VLEVEL_M, "MW_RADIO_VERSION:   V%X.%X.%X\r\n",
-          (uint8_t)(__SUBGHZ_PHY_VERSION >> __APP_VERSION_MAIN_SHIFT),
-          (uint8_t)(__SUBGHZ_PHY_VERSION >> __APP_VERSION_SUB1_SHIFT),
-          (uint8_t)(__SUBGHZ_PHY_VERSION >> __APP_VERSION_SUB2_SHIFT));
-
+//  APP_LOG(TS_OFF, VLEVEL_M, "MW_RADIO_VERSION:   V%X.%X.%X\r\n",
+//          (uint8_t)(__SUBGHZ_PHY_VERSION >> __APP_VERSION_MAIN_SHIFT),
+//          (uint8_t)(__SUBGHZ_PHY_VERSION >> __APP_VERSION_SUB1_SHIFT),
+//          (uint8_t)(__SUBGHZ_PHY_VERSION >> __APP_VERSION_SUB2_SHIFT)); // версия радио Middleware
+  // APP_LOG(TS_OFF, VLEVEL_M, "MW_:   V%X.%X.%X\r\n",
+//  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== EEEPROM EST====\r\n");
+  //	 (uint8_t) buffer[20]);
   UTIL_TIMER_Create(&TxLedTimer, 0xFFFFFFFFU, UTIL_TIMER_ONESHOT, OnTxTimerLedEvent, NULL);
   // HAL_LPTIM_Counter_Start_IT(&hlptim,1000);
  // HAL_LPTIM_TimeOut_Start(&TxLedTimer, uint32_t Period, uint32_t Timeout);
@@ -476,7 +487,7 @@ static void SendTxData(void)
 	 uint16_t pressure = 0;
 	 int16_t temperature = 0;
 	 // uint16_t humidity = 0;
-  	float pressure1, temperature1, humidity1, numberdev, per; // номер устройста и период добавил
+  	float pressure1, temperature1, humidity1, numberdev, per, time; // номер устройста и период добавил
   	//uint16_t pressure = 0;
   	//int16_t temperature = 0;
   	uint16_t Defbuff;  // для счётчика с охранной кнопки
@@ -485,6 +496,10 @@ static void SendTxData(void)
   uint8_t Data[256];
   UTIL_TIMER_Time_t nextTxIn = 0;
   bmp280_params_t params;
+	RTC_TimeTypeDef sTime1;
+  	RTC_DateTypeDef sDate1;
+  	uint8_t buffer[20];
+  	volatile uint16_t adc = 0;
 #ifdef CAYENNE_LPP
   uint8_t channel = 0;
 #else
@@ -554,9 +569,40 @@ static void SendTxData(void)
   // MX_I2C1_Init();
   // BSP_SPI1_Init();
   BSP_I2C1_Init();
+  MX_ADC_Init();
+  MX_LPTIM1_Init();
+
+  HAL_LPTIM_Encoder_Start_IT(&hlptim1, 1000);
   // MX_USART1_Init();
   //MX_LPTIM1_Init();
-
+  // calendarValue;
+  // HAL_RTC_GetDate(&hrtc, RTC_DateStruct, RTC_FORMAT_BIN);
+  //    HAL_RTC_GetTime();
+  /*   MX_RTC_Init();
+      UTIL_TIMER_GetCurrentTime();
+        AppData.Buffer[i++] = UTIL_TIMER_GetCurrentTime; // дата и время
+      HAL_RTC_GetTime(&hrtc, &sTime1, RTC_FORMAT_BCD); //
+      HAL_RTC_GetDate(&hrtc, &sDate1, RTC_FORMAT_BCD); //
+       buffer[0] = (sDate1.Date / 16) + 48; //
+      		buffer[1] = (sDate1.Date % 16) + 48; //
+    		buffer[2] = '.';
+    		buffer[3] = (sDate1.Month / 16) + 48;
+    		buffer[4] = (sDate1.Month % 16) + 48;
+    		buffer[5] = '.';
+    		buffer[6] = '2';
+    		buffer[7] = '0';
+    		buffer[8] = (sDate1.Year / 16) + 48;
+    		buffer[9] = (sDate1.Year % 16) + 48;
+    		buffer[10] ='@';
+    		buffer[11] = (sTime1.Hours / 16) + 48;
+    		buffer[12] = (sTime1.Hours % 16) + 48;
+    		buffer[13] = ':';
+    		buffer[14] = (sTime1.Minutes / 16) + 48;
+    		buffer[15] = (sTime1.Minutes % 16) + 48;
+    		buffer[16] = ':';
+    		buffer[17] = (sTime1.Seconds / 16) + 48;
+    		buffer[18] = (sTime1.Seconds % 16) + 48;
+    		 */
   // MX_I2C1_Init();
  // HAL_I2C_GetState;// cntGetValue(&Defbuff);  // здесь будет сбор значения вскрытий// HTS221_Init(pObj);//HTS221_GetCapabilities(pObj, Capabilities);  //  HAL_LPTIM_Counter_Start_IT(&hlptim1,1000);
   // HAL_LPTIM_Counter_Start_IT(&hlptim1,1000);
@@ -569,9 +615,10 @@ static void SendTxData(void)
     	 // HAL_UART_Transmit(&husart2, Data, size, 1000);
     	 //HAL_Delay(200);
     	//		bool bme280p = bmp280.id == BME280_CHIP_ID;
-    	   	 //	size = sprintf((char *)Data, "BMP280: found %s\n", bme280p ? "BME280" : "BMP280");
+//    	   	 	size = sprintf((char *)Data, "BMP280: found %s\n", bme280p ? "BME280" : "BMP280");
     	// 	HAL_UART_Transmit(&husart2, Data, size, 1000);
-
+    	// APP_LOG(TS_OFF, VLEVEL_M, "MW_:   V%X.%X.%X\r\n",
+    	//		 (uint8_t) buffer[20]);
     	/*	while (!bmp280_init(&bmp280, &bmp280.params)) {
     			size = sprintf((char *)Data, "BMP280 initialization failed\n");
     			 HAL_UART_Transmit(&huart2, Data, size, 1000);
@@ -585,12 +632,36 @@ static void SendTxData(void)
   //  bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1); старое
     	// HAL_Delay(100);
     	 bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1);
-    	 numberdev = 0x01;  // new
+
+    	 if(bmp280.dig_T1>=0)
+    	//*/
+    	{
+    	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Temp, hum sensor Init ====\r\n");
+    	} //*/
+    	 else
+    	 {
+
+    		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Sensor initialization failed ====\r\n");
+    	 }
+
+    	 if(temperature1>=0 && temperature1<=30 && pressure1>=0)
+    	     	//*/
+    	  {
+    	     	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== All parameters normal ====\r\n");
+    	  } //*/
+    	     	 else
+    	   {
+    	     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Accident ====\r\n");
+    	   }
+    	 numberdev = 0x01;  // new 0b00010001
     	 per = 0xA; // new
+
+
   // bool bme280p = bmp280.id == BME280_CHIP_ID;
  // size = (temperature1, pressure1, humidity1);
     size = (temperature1, pressure1, humidity1);
-    size = sprintf((char *)Data, "BMP280 initialization failed\n");
+    size = sprintf((char *)Data, "Sensor initialization failed\n");
+
     //    size = (Capabilities);
     // size = sprintf((char *)Data,
     //	  					"%d:%d:%d\n", (int)temperature,(int)pressure,(int)humidity);
@@ -598,7 +669,9 @@ static void SendTxData(void)
     //snprintf("IDDDDDDDDDDD 2\n\r");
     // vprintf(size);
     // putchar("IDDDDDDDDDDD 2\n\r");
-
+    // HAL_ADC_Start(&hadc1); // запускаем преобразование сигнала АЦП
+    // adc = HAL_ADC_GetValue(&hadc1); // читаем полученное значение в переменную adc
+    //	HAL_ADC_Stop(&hadc1); // останавливаем АЦП (не обязательно)
     //   HAL_UART_Transmit(&husart1, Data, size, 1000);
     // HAL_UART_Transmit(&husart1, Data, size, 1000);'
     // HAL_UART_Transmit_DMA(&husart1, Daata, size, 1000);
@@ -629,17 +702,18 @@ static void SendTxData(void)
 
 
     //AppData.Buffer[i++] = 0x00;
-    AppData.Buffer[i++] = numberdev; // new номер устройства
-  AppData.Buffer[i++] = temperature1;
-  AppData.Buffer[i++] = humidity1;
-  AppData.Buffer[i++] = per; // new период включения прибора
-  // AppData.Buffer[i++] = BAT_CR2032; // new заряд батареи, CR2032 старая батарейка, новая LS14500
+     AppData.Buffer[i++] = numberdev; // new номер устройства
+     AppData.Buffer[i++] = temperature1;
+     AppData.Buffer[i++] = humidity1;
+     AppData.Buffer[i++] = per; // new период включения прибора
+     // AppData.Buffer[i++] = BAT_CR2032; // new заряд батареи, CR2032 старая батарейка, новая LS14500
   // SYS_GetBatteryLevel(); // new заряд батареи
-  // GetBatteryLevel(); // new заряд батареи
+  GetBatteryLevel(); // new заряд батареи
   // AppData.Buffer[i++] = batteryLevel; // new заряд батареи
-  AppData.Buffer[i++] = GetBatteryLevel();
+     AppData.Buffer[i++] = GetBatteryLevel();
   // AppData.Buffer[i++] = Capabilities;
-
+  //AppData.Buffer[i++] = SYS_GetTemperatureLevel();
+  // AppData.Buffer[i++] = HAL_ADC_GetState; //  09 что значит
   // AppData.Buffer[i++] = size;
   // AppData.Buffer[i] = Snr;
   // AppData.Buffer[i++] = 0x02;
@@ -685,7 +759,7 @@ static void SendTxData(void)
   AppData.BufferSize = i;
   /*  #endif /* CAYENNE_LPP */
 
-  /* if (LORAMAC_HANDLER_SUCCESS == LmHandlerSend(&AppData, LORAWAN_DEFAULT_CONFIRMED_MSG_STATE, &nextTxIn, false))
+   if (LORAMAC_HANDLER_SUCCESS == LmHandlerSend(&AppData, LORAWAN_DEFAULT_CONFIRMED_MSG_STATE, &nextTxIn, false))
   {
     APP_LOG(TS_ON, VLEVEL_L, "SEND REQUEST\r\n");
   }
@@ -760,12 +834,15 @@ static void OnTxData(LmHandlerTxParams_t *params)
 
     UTIL_TIMER_Start(&TxLedTimer);
     //HAL_LPTIM_Counter_Start_IT(&TxTimer,1000);
-    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== MCPS-Confirmation =============\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "###### U/L Передача информации :%d", params->AppData.Buffer);
+//    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== MCPS-Confirmation =============\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "\r\n######  MCPS Подтверждение \r\n");
     APP_LOG(TS_OFF, VLEVEL_H, "###### U/L FRAME:%04d | PORT:%d | DR:%d | PWR:%d | Channel:%d", params->UplinkCounter,
             params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
-
+    APP_LOG(TS_OFF, VLEVEL_M, "###### U/L КАДР:%04d | ПОРТ:%d | Канал скорости передачи данных:%d | Мощность:%d | Канал:%d", params->UplinkCounter,
+                params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
     APP_LOG(TS_OFF, VLEVEL_H, " | MSG TYPE:");
-    APP_LOG(TS_OFF, VLEVEL_M, " | c:");
+//    APP_LOG(TS_OFF, VLEVEL_M, " | c:");
     if (params->MsgType == LORAMAC_HANDLER_CONFIRMED_MSG)
     {
       APP_LOG(TS_OFF, VLEVEL_H, "CONFIRMED [%s]\r\n", (params->AckReceived != 0) ? "ACK" : "NACK");
@@ -794,15 +871,18 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
 
       LED_Off(LED_RED1) ;
 
-      APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### = JOINED = ");
+//      APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### = JOINED = ");
+      APP_LOG(TS_OFF, VLEVEL_M, "\r\n      Подключение удалось  ");
       //if (joinParams->Mode == ACTIVATION_TYPE_ABP) //
       if (joinParams->Mode == ACTIVATION_TYPE_OTAA)
       {
-        APP_LOG(TS_OFF, VLEVEL_M, "ABP ======================\r\n");
+//        APP_LOG(TS_OFF, VLEVEL_M, "ABP ======================\r\n");
+        APP_LOG(TS_OFF, VLEVEL_M, "   Активация по персонализации  \r\n");
       }
       else
       {
         APP_LOG(TS_OFF, VLEVEL_M, "OTAA =====================\r\n");
+        APP_LOG(TS_OFF, VLEVEL_M, "   Активация по воздуху  \r\n");
       }
     }
     else
@@ -867,7 +947,9 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
     }
   }
   */
-/*static void MX_LPTIM1_Init(void) // new
+/*
+
+ */static void MX_LPTIM1_Init(void) // new
 {
 
   /* USER CODE BEGIN LPTIM1_Init 0 */
@@ -877,17 +959,15 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
   /* USER CODE BEGIN LPTIM1_Init 1 */
 
   /* USER CODE END LPTIM1_Init 1 */
-/* hlptim1.Instance = LPTIM1;
-  hlptim1.Init.Clock.Source = LPTIM_CLOCKSOURCE_APBCLOCK_LPOSC;
-  hlptim1.Init.Clock.Prescaler = LPTIM_PRESCALER_DIV1;
-  hlptim1.Init.UltraLowPowerClock.Polarity = LPTIM_CLOCKPOLARITY_RISING;
-  hlptim1.Init.UltraLowPowerClock.SampleTime = LPTIM_CLOCKSAMPLETIME_DIRECTTRANSITION;
-  hlptim1.Init.Trigger.Source = LPTIM_TRIGSOURCE_0;
-  hlptim1.Init.Trigger.ActiveEdge = LPTIM_ACTIVEEDGE_RISING;
-  hlptim1.Init.Trigger.SampleTime = LPTIM_TRIGSAMPLETIME_DIRECTTRANSITION;
-  hlptim1.Init.OutputPolarity = LPTIM_OUTPUTPOLARITY_HIGH;
-  hlptim1.Init.UpdateMode = LPTIM_UPDATE_IMMEDIATE;
-  hlptim1.Init.CounterSource = LPTIM_COUNTERSOURCE_EXTERNAL;
+	  hlptim1.Instance = LPTIM1;
+	  hlptim1.Init.Clock.Source = LPTIM_CLOCKSOURCE_APBCLOCK_LPOSC;
+	  hlptim1.Init.Clock.Prescaler = LPTIM_PRESCALER_DIV1;
+	  hlptim1.Init.UltraLowPowerClock.Polarity = LPTIM_CLOCKPOLARITY_RISING;
+	  hlptim1.Init.UltraLowPowerClock.SampleTime = LPTIM_CLOCKSAMPLETIME_DIRECTTRANSITION;
+	  hlptim1.Init.Trigger.Source = LPTIM_TRIGSOURCE_SOFTWARE;
+	  hlptim1.Init.OutputPolarity = LPTIM_OUTPUTPOLARITY_HIGH;
+	  hlptim1.Init.UpdateMode = LPTIM_UPDATE_IMMEDIATE;
+	  hlptim1.Init.CounterSource = LPTIM_COUNTERSOURCE_EXTERNAL;
   if (HAL_LPTIM_Init(&hlptim1) != HAL_OK)
   {
     Error_Handler();
@@ -897,7 +977,70 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
 
   /* USER CODE END LPTIM1_Init 2 */
 
-// }
+}
+  void HAL_LPTIM_MspInit(LPTIM_HandleTypeDef* hlptim)
+  {
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    if(hlptim->Instance==LPTIM1)
+    {
+    /* USER CODE BEGIN LPTIM1_MspInit 0 */
+
+    /* USER CODE END LPTIM1_MspInit 0 */
+      /* Peripheral clock enable */
+      __HAL_RCC_LPTIM1_CLK_ENABLE();
+
+      __HAL_RCC_GPIOB_CLK_ENABLE();
+      /**LPTIM1 GPIO Configuration
+      PB5     ------> LPTIM1_IN1
+      PB7     ------> LPTIM1_IN2
+      */
+      GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_7;
+      GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+      GPIO_InitStruct.Pull = GPIO_NOPULL;
+      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+      GPIO_InitStruct.Alternate = GPIO_AF2_LPTIM1;
+      HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+      /* LPTIM1 interrupt Init */
+      HAL_NVIC_SetPriority(LPTIM1_IRQn, 0, 0);
+      HAL_NVIC_EnableIRQ(LPTIM1_IRQn);
+    /* USER CODE BEGIN LPTIM1_MspInit 1 */
+
+    /* USER CODE END LPTIM1_MspInit 1 */
+    }
+
+  }
+
+  /**
+  * @brief LPTIM MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param hlptim: LPTIM handle pointer
+  * @retval None
+  */
+  void HAL_LPTIM_MspDeInit(LPTIM_HandleTypeDef* hlptim)
+  {
+    if(hlptim->Instance==LPTIM1)
+    {
+    /* USER CODE BEGIN LPTIM1_MspDeInit 0 */
+
+    /* USER CODE END LPTIM1_MspDeInit 0 */
+      /* Peripheral clock disable */
+      __HAL_RCC_LPTIM1_CLK_DISABLE();
+
+      /**LPTIM1 GPIO Configuration
+      PB5     ------> LPTIM1_IN1
+      PB7     ------> LPTIM1_IN2
+      */
+      HAL_GPIO_DeInit(GPIOB, GPIO_PIN_5|GPIO_PIN_7);
+
+      /* LPTIM1 interrupt DeInit */
+      HAL_NVIC_DisableIRQ(LPTIM1_IRQn);
+    /* USER CODE BEGIN LPTIM1_MspDeInit 1 */
+
+    /* USER CODE END LPTIM1_MspDeInit 1 */
+    }
+
+  }
 
 static void OnMacProcessNotify(void)
 {

@@ -19,7 +19,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "adc.h"
-
+#include "main.h"
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
@@ -67,13 +67,18 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *adcHandle)
   if (adcHandle->Instance == ADC1)
   {
     /* USER CODE BEGIN ADC_MspInit 0 */
+	  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     /* USER CODE END ADC_MspInit 0 */
     /* ADC clock enable */
     __HAL_RCC_ADC1_CLK_ENABLE();
     /* USER CODE BEGIN ADC_MspInit 1 */
-
-    /* USER CODE END ADC_MspInit 1 */
+    GPIO_InitStruct.Pin = GPIO_PIN_4; //N
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG; //N
+    GPIO_InitStruct.Pull = GPIO_NOPULL; //N
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct); //N
+    /* USER CODE END ADC_MspInit 1
+     * */
   }
 }
 
@@ -91,7 +96,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef *adcHandle)
     /* Peripheral clock disable */
     __HAL_RCC_ADC1_CLK_DISABLE();
     /* USER CODE BEGIN ADC_MspDeInit 1 */
-
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_4);//N
     /* USER CODE END ADC_MspDeInit 1 */
   }
 }

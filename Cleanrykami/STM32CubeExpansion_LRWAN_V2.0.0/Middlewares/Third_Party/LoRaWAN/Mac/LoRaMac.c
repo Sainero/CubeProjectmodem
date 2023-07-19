@@ -2829,7 +2829,7 @@ static LoRaMacStatus_t SendFrameOnChannel( uint8_t channel )
 {
     LoRaMacStatus_t status = LORAMAC_STATUS_PARAMETER_INVALID;
     TxConfigParams_t txConfig;
-    int8_t txPower = 0;
+    int8_t txPower = 10;
 
     txConfig.Channel = channel;
     txConfig.Datarate = MacCtx.NvmCtx->MacParams.ChannelsDatarate;

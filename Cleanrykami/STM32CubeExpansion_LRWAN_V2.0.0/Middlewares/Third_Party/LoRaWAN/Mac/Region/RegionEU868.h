@@ -304,7 +304,7 @@ extern "C"
 /*!
  * Data rates table definition
  */
-static const uint8_t DataratesEU868[]  = { 12, 11, 10,  9,  8,  7,  7, 50 };/// ЗДЕСЬ ЭТОТ ПХИДР
+static const uint8_t DataratesEU868[]  = { 12, 11, 10, 9,  8,  7,  7, 50};/// ЗДЕСЬ ЭТОТ ПХИДР
 
 /*!
  * Bandwidths table definition in Hz

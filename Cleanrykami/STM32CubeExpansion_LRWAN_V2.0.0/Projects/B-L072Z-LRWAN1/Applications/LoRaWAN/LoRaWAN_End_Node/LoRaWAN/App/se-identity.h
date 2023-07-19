@@ -43,7 +43,7 @@ extern "C" {
 
 /* Exported Includes --------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+//uint8_t joinEui[] = {0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01};
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

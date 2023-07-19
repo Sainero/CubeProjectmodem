@@ -681,7 +681,7 @@ void SX1276SetTxConfig( RadioModems_t modem, int8_t power, uint32_t fdev,
     SX1276SetModem( modem );
 
     SX1276SetRfTxPower( power );
-    //power = 5;// 5 , 14 , 17
+    power = 7;  // Изменение параметра мощности передачи
     switch( modem )
     {
     case MODEM_FSK:
@@ -718,6 +718,7 @@ void SX1276SetTxConfig( RadioModems_t modem, int8_t power, uint32_t fdev,
         break;
     case MODEM_LORA:
         {
+        	//RadioLoRaSettings_t.Power = 5;
             SX1276.Settings.LoRa.Power = power;
             //  SX1276SetSleep( ); // new
             if( bandwidth > 2 )
