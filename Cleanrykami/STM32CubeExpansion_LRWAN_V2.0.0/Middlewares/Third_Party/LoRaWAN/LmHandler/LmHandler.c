@@ -247,7 +247,7 @@ static LmHandlerTxParams_t TxParams =
     .BufferSize = 0,
     .Buffer = NULL
   },
-  .TxPower = TX_POWER_0,
+  .TxPower = TX_POWER_0,// здесь может меняется мощность, но она сбрасывается в 0 при выборе другого дефайна
   .Channel = 0
 };
 
@@ -378,10 +378,10 @@ LmHandlerErrorStatus_t LmHandlerConfigure(LmHandlerParams_t *handlerParams)
     LoRaMacMibGetRequestConfirm(&mibReq);
     memcpy1(CommissioningParams.JoinEui, mibReq.Param.JoinEui, 8);
   }
-  MW_LOG(TS_OFF, VLEVEL_M, "###### DevEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
-         HEX8(CommissioningParams.DevEui));
-  MW_LOG(TS_OFF, VLEVEL_M, "###### AppEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
-         HEX8(CommissioningParams.JoinEui));
+//  MW_LOG(TS_OFF, VLEVEL_M, "###### DevEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
+//         HEX8(CommissioningParams.DevEui));
+//  MW_LOG(TS_OFF, VLEVEL_M, "###### AppEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
+//         HEX8(CommissioningParams.JoinEui));
     //size =  sprintf ((char *)Daata,"###### AppEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
   //   HEX8(CommissioningParams.JoinEui));
   // HAL_UART_Transmit(&husart1, Daata, size, 1000);qww
@@ -1388,7 +1388,7 @@ static LmHandlerErrorStatus_t LmHandlerPingSlotReq(uint8_t periodicity)
 
 static void McpsConfirm(McpsConfirm_t *mcpsConfirm)
 {
-  TxParams.IsMcpsConfirm = 1;
+  TxParams.IsMcpsConfirm = 1; // Здесь выставляется будет ли подтверждение или нет
   TxParams.Status = mcpsConfirm->Status;
   TxParams.Datarate = mcpsConfirm->Datarate;
   TxParams.UplinkCounter = mcpsConfirm->UpLinkCounter;

@@ -416,7 +416,8 @@ static void OnRxData(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
     LED_On(LED_BLUE);
     static const char *slotStrings[] = { "1", "2", "C", "C Multicast", "B Ping-Slot", "B Multicast Ping-Slot" };
 
-    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== MCPS-Indication ==========\r\n");
+//    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== MCPS-Indication ==========\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== Индикация приёма данных ==========\r\n");
     APP_LOG(TS_OFF, VLEVEL_H, "###### D/L FRAME:%04d | SLOT:%s | PORT:%d | DR:%d | RSSI:%d | SNR:%d\r\n",
             params->DownlinkCounter, slotStrings[params->RxSlot], appData->Port, params->Datarate, params->Rssi, params->Snr);
     switch (appData->Port)
@@ -636,22 +637,26 @@ static void SendTxData(void)
     	 if(bmp280.dig_T1>=0)
     	//*/
     	{
-    	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Temp, hum sensor Init ====\r\n");
+//    	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Temp, hum sensor Init ====\r\n");
+    	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n ==== Датчик измерения активен ====\r\n");
     	} //*/
     	 else
     	 {
 
-    		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Sensor initialization failed ====\r\n");
+//    		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Sensor initialization failed ====\r\n");
+    		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n ==== Ошибка инициализации датчика  ====\r\n");
     	 }
 
     	 if(temperature1>=0 && temperature1<=30 && pressure1>=0)
     	     	//*/
     	  {
-    	     	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== All parameters normal ====\r\n");
+//    	     	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== All parameters normal ====\r\n");
+    	     	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n ==== Параметры окружающей среды в норме ====\r\n");
     	  } //*/
     	     	 else
     	   {
-    	     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Accident ====\r\n");
+//    	     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Accident ====\r\n");
+    	       		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n ==== Отклонение от нормы ====\r\n");
     	   }
     	 numberdev = 0x01;  // new 0b00010001
     	 per = 0xA; // new
@@ -659,8 +664,8 @@ static void SendTxData(void)
 
   // bool bme280p = bmp280.id == BME280_CHIP_ID;
  // size = (temperature1, pressure1, humidity1);
-    size = (temperature1, pressure1, humidity1);
-    size = sprintf((char *)Data, "Sensor initialization failed\n");
+//    size = (temperature1, pressure1, humidity1);
+//    size = sprintf((char *)Data, "Sensor initialization failed\n");
 
     //    size = (Capabilities);
     // size = sprintf((char *)Data,
@@ -761,12 +766,14 @@ static void SendTxData(void)
 
    if (LORAMAC_HANDLER_SUCCESS == LmHandlerSend(&AppData, LORAWAN_DEFAULT_CONFIRMED_MSG_STATE, &nextTxIn, false))
   {
-    APP_LOG(TS_ON, VLEVEL_L, "SEND REQUEST\r\n");
+	  APP_LOG(TS_ON, VLEVEL_L, "Запрос на подключение отправлен\r\n");
+//    APP_LOG(TS_ON, VLEVEL_L, "SEND REQUEST\r\n");
   }
 
   else if (nextTxIn > 0)
   {
-    APP_LOG(TS_ON, VLEVEL_L, "Next Tx in  : ~%d second(s)\r\n", (nextTxIn / 1000));
+//    APP_LOG(TS_ON, VLEVEL_L, "Next Tx in  : ~%d second(s)\r\n", (nextTxIn / 1000));
+    APP_LOG(TS_ON, VLEVEL_L, "Следующий запрос на отправку через : ~%d секунды\r\n", (nextTxIn / 1000));
   }
   /* USER CODE BEGIN SendTxData_2 */
   // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
@@ -834,22 +841,22 @@ static void OnTxData(LmHandlerTxParams_t *params)
 
     UTIL_TIMER_Start(&TxLedTimer);
     //HAL_LPTIM_Counter_Start_IT(&TxTimer,1000);
-    APP_LOG(TS_OFF, VLEVEL_M, "###### U/L Передача информации :%d", params->AppData.Buffer);
 //    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== MCPS-Confirmation =============\r\n");
-    APP_LOG(TS_OFF, VLEVEL_M, "\r\n######  MCPS Подтверждение \r\n");
-    APP_LOG(TS_OFF, VLEVEL_H, "###### U/L FRAME:%04d | PORT:%d | DR:%d | PWR:%d | Channel:%d", params->UplinkCounter,
-            params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
-    APP_LOG(TS_OFF, VLEVEL_M, "###### U/L КАДР:%04d | ПОРТ:%d | Канал скорости передачи данных:%d | Мощность:%d | Канал:%d", params->UplinkCounter,
-                params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
+    APP_LOG(TS_OFF, VLEVEL_M, "\r\n MCPS Подтверждение \r\n");
+//    APP_LOG(TS_OFF, VLEVEL_M, " Передача информации :%d", params->AppData.Buffer);
+//    APP_LOG(TS_OFF, VLEVEL_H, "###### U/L FRAME:%04d | PORT:%d | DR:%d | PWR:%d | Channel:%d", params->UplinkCounter,
+//            params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
+    APP_LOG(TS_OFF, VLEVEL_M, " Номер посылки:%01d | Порт:%d | Канал скорости передачи данных:%d | Мощность:%d | Канал:%d | Передача информации :%x", params->UplinkCounter,
+                params->AppData.Port, params->Datarate, params->TxPower,params->Channel, params->AppData.Buffer);
     APP_LOG(TS_OFF, VLEVEL_H, " | MSG TYPE:");
 //    APP_LOG(TS_OFF, VLEVEL_M, " | c:");
     if (params->MsgType == LORAMAC_HANDLER_CONFIRMED_MSG)
     {
-      APP_LOG(TS_OFF, VLEVEL_H, "CONFIRMED [%s]\r\n", (params->AckReceived != 0) ? "ACK" : "NACK");
+      APP_LOG(TS_OFF, VLEVEL_H, "\r\n CONFIRMED [%s]\r\n", (params->AckReceived != 0) ? "ACK" : "NACK");
     }
     else
     {
-      APP_LOG(TS_OFF, VLEVEL_H, "UNCONFIRMED\r\n");
+      APP_LOG(TS_OFF, VLEVEL_H, "\r\n UNCONFIRMED\r\n");
     }
   }
 
@@ -872,22 +879,23 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
       LED_Off(LED_RED1) ;
 
 //      APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### = JOINED = ");
-      APP_LOG(TS_OFF, VLEVEL_M, "\r\n      Подключение удалось  ");
+      APP_LOG(TS_OFF, VLEVEL_M, "\r\n      Устройство подключено \r\n  ");
       //if (joinParams->Mode == ACTIVATION_TYPE_ABP) //
       if (joinParams->Mode == ACTIVATION_TYPE_OTAA)
       {
 //        APP_LOG(TS_OFF, VLEVEL_M, "ABP ======================\r\n");
-        APP_LOG(TS_OFF, VLEVEL_M, "   Активация по персонализации  \r\n");
+        APP_LOG(TS_OFF, VLEVEL_M, "  \r\n Активация по персонализации  \r\n");
       }
       else
       {
-        APP_LOG(TS_OFF, VLEVEL_M, "OTAA =====================\r\n");
+//        APP_LOG(TS_OFF, VLEVEL_M, "OTAA =====================\r\n");
         APP_LOG(TS_OFF, VLEVEL_M, "   Активация по воздуху  \r\n");
       }
     }
     else
     {
-      APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### = JOIN FAILED\r\n");
+//      APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### = JOIN FAILED\r\n");
+      APP_LOG(TS_OFF, VLEVEL_M, "\r\n  Подключение к базовой станции не удалось \r\n");
     }
   }
 
