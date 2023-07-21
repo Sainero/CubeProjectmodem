@@ -766,14 +766,14 @@ static void SendTxData(void)
 
    if (LORAMAC_HANDLER_SUCCESS == LmHandlerSend(&AppData, LORAWAN_DEFAULT_CONFIRMED_MSG_STATE, &nextTxIn, false))
   {
-	  APP_LOG(TS_ON, VLEVEL_L, "Запрос на подключение отправлен\r\n");
+	  APP_LOG(TS_OFF, VLEVEL_L, "Запрос на подключение отправлен\r\n");
 //    APP_LOG(TS_ON, VLEVEL_L, "SEND REQUEST\r\n");
   }
 
   else if (nextTxIn > 0)
   {
 //    APP_LOG(TS_ON, VLEVEL_L, "Next Tx in  : ~%d second(s)\r\n", (nextTxIn / 1000));
-    APP_LOG(TS_ON, VLEVEL_L, "Следующий запрос на отправку через : ~%d секунды\r\n", (nextTxIn / 1000));
+    APP_LOG(TS_OFF, VLEVEL_L, "Следующий запрос на отправку через : ~%d секунд\r\n", (nextTxIn / 1000));
   }
   /* USER CODE BEGIN SendTxData_2 */
   // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
@@ -957,7 +957,7 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
   */
 /*
 
- */static void MX_LPTIM1_Init(void) // new
+ */ static void MX_LPTIM1_Init(void) // new
 {
 
   /* USER CODE BEGIN LPTIM1_Init 0 */

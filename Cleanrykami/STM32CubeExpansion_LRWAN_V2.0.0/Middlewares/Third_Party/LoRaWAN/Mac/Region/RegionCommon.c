@@ -560,15 +560,16 @@ void RegionCommonRxConfigPrint(LoRaMacRxSlot_t rxSlot, uint32_t frequency, int8_
 
     if ( rxSlot < RX_SLOT_NONE )
     {
-        MW_LOG(TS_ON, VLEVEL_M,  "RX_%s on freq %d Hz at DR %d\r\n", slotStrings[rxSlot], frequency, dr );
+//        MW_LOG(TS_ON, VLEVEL_M,  "RX_%s on freq %d Hz at DR %d\r\n", slotStrings[rxSlot], frequency, dr );
     }
     else
     {
-        MW_LOG(TS_ON, VLEVEL_M,  "RX on freq %d Hz at DR %d\r\n", frequency, dr );
+//        MW_LOG(TS_ON, VLEVEL_M,  "RX on freq %d Hz at DR %d\r\n", frequency, dr );
     }
 }
 
 void RegionCommonTxConfigPrint(uint32_t frequency, int8_t dr)
 {
-    MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %d Hz at DR %d\r\n", frequency, dr );
+//    MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %d Hz at DR %d\r\n", frequency, dr );
+    MW_LOG(TS_OFF, VLEVEL_M,  "Отправка на частоте %d Гц по каналу скорости передачи DR %d\r\n", frequency, dr );
 }
