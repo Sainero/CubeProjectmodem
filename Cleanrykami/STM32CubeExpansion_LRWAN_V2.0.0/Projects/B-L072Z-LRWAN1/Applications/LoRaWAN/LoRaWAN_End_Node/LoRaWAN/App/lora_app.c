@@ -279,7 +279,7 @@ void LoRaWAN_Init(void)
 //          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
 //          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
 //          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB2_SHIFT));
-  APP_LOG(TS_OFF, VLEVEL_M, " Версия протокола:        V%X.%X.%X\r\n",
+  APP_LOG(TS_OFF, VLEVEL_M, " ##### Версия протокола:        V%X.%X.%X\r\n",
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB2_SHIFT)); // версия приложения (App)
@@ -489,6 +489,7 @@ static void SendTxData(void)
 	 int16_t temperature = 0;
 	 // uint16_t humidity = 0;
   	float pressure1, temperature1, humidity1, numberdev, per, time; // номер устройста и период добавил
+  	int16_t chargebattery = 0;
   	//uint16_t pressure = 0;
   	//int16_t temperature = 0;
   	uint16_t Defbuff;  // для счётчика с охранной кнопки
@@ -658,7 +659,7 @@ static void SendTxData(void)
 //    	     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Accident ====\r\n");
     	       		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n ==== Отклонение от нормы ====\r\n");
     	   }
-    	 numberdev = 0x01;  // new 0b00010001
+//    	 numberdev = 0x01;  // new 0b00010001
     	 per = 0xA; // new
 
 
@@ -713,9 +714,9 @@ static void SendTxData(void)
      AppData.Buffer[i++] = per; // new период включения прибора
      // AppData.Buffer[i++] = BAT_CR2032; // new заряд батареи, CR2032 старая батарейка, новая LS14500
   // SYS_GetBatteryLevel(); // new заряд батареи
-  GetBatteryLevel(); // new заряд батареи
+     chargebattery = GetBatteryLevel(); // new заряд батареи
   // AppData.Buffer[i++] = batteryLevel; // new заряд батареи
-     AppData.Buffer[i++] = GetBatteryLevel();
+     AppData.Buffer[i++] = chargebattery;
   // AppData.Buffer[i++] = Capabilities;
   //AppData.Buffer[i++] = SYS_GetTemperatureLevel();
   // AppData.Buffer[i++] = HAL_ADC_GetState; //  09 что значит
@@ -846,8 +847,10 @@ static void OnTxData(LmHandlerTxParams_t *params)
 //    APP_LOG(TS_OFF, VLEVEL_M, " Передача информации :%d", params->AppData.Buffer);
 //    APP_LOG(TS_OFF, VLEVEL_H, "###### U/L FRAME:%04d | PORT:%d | DR:%d | PWR:%d | Channel:%d", params->UplinkCounter,
 //            params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
-    APP_LOG(TS_OFF, VLEVEL_M, " Номер посылки:%01d | Порт:%d | Канал скорости передачи данных:%d | Мощность:%d | Канал:%d | Передача информации :%x", params->UplinkCounter,
-                params->AppData.Port, params->Datarate, params->TxPower,params->Channel, params->AppData.Buffer);
+    APP_LOG(TS_OFF, VLEVEL_M, " Номер посылки:%01d | Порт:%d | Канал скорости передачи данных:%d | Мощность:%d | Канал связи:%d ",
+    		params->UplinkCounter, params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
+    APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%01d | Температура:%d | Влажность:%d | Период передачи:%d | Заряд батареи:%d ",
+    		numberdev, temperature1, humidity1, per, chargebattery);
     APP_LOG(TS_OFF, VLEVEL_H, " | MSG TYPE:");
 //    APP_LOG(TS_OFF, VLEVEL_M, " | c:");
     if (params->MsgType == LORAMAC_HANDLER_CONFIRMED_MSG)
