@@ -84,7 +84,7 @@ typedef enum TxEventType_e
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+//float pressure1, temperature1, humidity1, numberdev, per, time; // номер устройста и период добавил
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -250,6 +250,10 @@ union hts221_reg_t;
 HTS221_Object_t hts221;
 HTS221_Capabilities_t Capabilities;
 ADC_HandleTypeDef hadc1;
+float pressure1, temperature1, humidity1;
+int16_t pressureint, temperatureint, numberdev, per; // номер устройста и период добавил
+int32_t humidityint;
+int16_t chargebattery = 0;
 /* USER CODE END PV */
 
 /* Exported functions ---------------------------------------------------------*/
@@ -488,8 +492,8 @@ static void SendTxData(void)
 	 uint16_t pressure = 0;
 	 int16_t temperature = 0;
 	 // uint16_t humidity = 0;
-  	float pressure1, temperature1, humidity1, numberdev, per, time; // номер устройста и период добавил
-  	int16_t chargebattery = 0;
+//	 float pressure1, temperature1, humidity1, numberdev, per, time; // номер устройста и период добавил
+
   	//uint16_t pressure = 0;
   	//int16_t temperature = 0;
   	uint16_t Defbuff;  // для счётчика с охранной кнопки
@@ -630,7 +634,6 @@ static void SendTxData(void)
     	// HTS221_Init(&hts221);
     	 // HTS221_GetCapabilities(&hts221, temperature);
   // bmp280.i2c = &hi2c1;
-   // bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1);
   //  bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1); старое
     	// HAL_Delay(100);
     	 bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1);
@@ -648,7 +651,7 @@ static void SendTxData(void)
     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n ==== Ошибка инициализации датчика  ====\r\n");
     	 }
 
-    	 if(temperature1>=0 && temperature1<=30 && pressure1>=0)
+    	 if(temperature1>=1 && temperature1<=30 && pressure1>=1)
     	     	//*/
     	  {
 //    	     	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== All parameters normal ====\r\n");
@@ -659,7 +662,7 @@ static void SendTxData(void)
 //    	     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Accident ====\r\n");
     	       		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n ==== Отклонение от нормы ====\r\n");
     	   }
-//    	 numberdev = 0x01;  // new 0b00010001
+    	 numberdev = 0x01;  // new 0b00010001
     	 per = 0xA; // new
 
 
@@ -712,13 +715,22 @@ static void SendTxData(void)
      AppData.Buffer[i++] = temperature1;
      AppData.Buffer[i++] = humidity1;
      AppData.Buffer[i++] = per; // new период включения прибора
-     // AppData.Buffer[i++] = BAT_CR2032; // new заряд батареи, CR2032 старая батарейка, новая LS14500
+     temperatureint = temperature1;
+     humidityint = humidity1;
+      // AppData.Buffer[i++] = BAT_CR2032; // new заряд батареи, CR2032 старая батарейка, новая LS14500
   // SYS_GetBatteryLevel(); // new заряд батареи
      chargebattery = GetBatteryLevel(); // new заряд батареи
   // AppData.Buffer[i++] = batteryLevel; // new заряд батареи
      AppData.Buffer[i++] = chargebattery;
+//     HAL_Delay(1000);
+     APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%d | Температура:%d | Влажность:%d | Период передачи:%d сек | Заряд батареи:%d\r\n",
+       		numberdev, temperatureint, humidityint, per, chargebattery);
+//     APP_LOG(TS_OFF, VLEVEL_M, "Заряд батареи:%d\r\n", chargebattery);
+//     APP_LOG(TS_OFF, VLEVEL_M, "%d | %d | %d\r\n",
+//            		 sizeof(temperature1), sizeof(AppLedStateOn), sizeof(chargebattery));
+//     OnTxData(numberdev, temperature1, humidity1, per, chargebattery);
   // AppData.Buffer[i++] = Capabilities;
-  //AppData.Buffer[i++] = SYS_GetTemperatureLevel();
+  //AppData.Buffer[i++] = SYS_GetTemperatureLevel(); °C
   // AppData.Buffer[i++] = HAL_ADC_GetState; //  09 что значит
   // AppData.Buffer[i++] = size;
   // AppData.Buffer[i] = Snr;
@@ -847,10 +859,8 @@ static void OnTxData(LmHandlerTxParams_t *params)
 //    APP_LOG(TS_OFF, VLEVEL_M, " Передача информации :%d", params->AppData.Buffer);
 //    APP_LOG(TS_OFF, VLEVEL_H, "###### U/L FRAME:%04d | PORT:%d | DR:%d | PWR:%d | Channel:%d", params->UplinkCounter,
 //            params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
-    APP_LOG(TS_OFF, VLEVEL_M, " Номер посылки:%01d | Порт:%d | Канал скорости передачи данных:%d | Мощность:%d | Канал связи:%d ",
-    		params->UplinkCounter, params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
-    APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%01d | Температура:%d | Влажность:%d | Период передачи:%d | Заряд батареи:%d ",
-    		numberdev, temperature1, humidity1, per, chargebattery);
+    APP_LOG(TS_OFF, VLEVEL_M, " Номер посылки:%01d | Порт:%d | Мощность:%d | Канал связи:%d\r\n",
+    		params->UplinkCounter, params->AppData.Port, params->TxPower, params->Channel);
     APP_LOG(TS_OFF, VLEVEL_H, " | MSG TYPE:");
 //    APP_LOG(TS_OFF, VLEVEL_M, " | c:");
     if (params->MsgType == LORAMAC_HANDLER_CONFIRMED_MSG)
