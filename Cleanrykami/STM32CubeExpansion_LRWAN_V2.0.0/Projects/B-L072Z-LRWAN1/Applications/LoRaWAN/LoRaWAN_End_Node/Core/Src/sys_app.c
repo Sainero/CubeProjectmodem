@@ -170,7 +170,8 @@ uint8_t GetBatteryLevel(void)
   /* Convert batterey level from mV to linea scale: 1 (very low) to 254 (fully charged) */
   if (batteryLevelmV > VDD_BAT)
   {
-    batteryLevel = LORAWAN_MAX_BAT;
+//    batteryLevel = LORAWAN_MAX_BAT;
+	  batteryLevel = 100;
   }
   else if (batteryLevelmV < VDD_MIN)
   {
@@ -178,7 +179,10 @@ uint8_t GetBatteryLevel(void)
   }
   else
   {
-    batteryLevel = (((uint32_t)(batteryLevelmV - VDD_MIN) * LORAWAN_MAX_BAT) / (VDD_BAT - VDD_MIN));
+//    batteryLevel = (((uint32_t)(batteryLevelmV - VDD_MIN) * LORAWAN_MAX_BAT) / (VDD_BAT - VDD_MIN));
+    uint32_t batteryRange = VDD_BAT - VDD_MIN;
+    uint32_t batteryRemaining = batteryLevelmV - VDD_MIN;
+    batteryLevel = (batteryRemaining * 100) / batteryRange;
   }
 
 //  APP_LOG(TS_ON, VLEVEL_M, "VDDA= %d\r\n", batteryLevel);

@@ -251,8 +251,8 @@ HTS221_Object_t hts221;
 HTS221_Capabilities_t Capabilities;
 ADC_HandleTypeDef hadc1;
 float pressure1, temperature1, humidity1;
-int16_t pressureint, temperatureint, numberdev, per; // номер устройста и период добавил
-int32_t humidityint;
+int16_t pressureint, temperatureint, numberdev, per;// номер устройста и период добавил
+int32_t humidityint, temperaturei, humidityi, pressurei;
 int16_t chargebattery = 0;
 /* USER CODE END PV */
 
@@ -613,7 +613,7 @@ static void SendTxData(void)
  // HAL_I2C_GetState;// cntGetValue(&Defbuff);  // здесь будет сбор значения вскрытий// HTS221_Init(pObj);//HTS221_GetCapabilities(pObj, Capabilities);  //  HAL_LPTIM_Counter_Start_IT(&hlptim1,1000);
   // HAL_LPTIM_Counter_Start_IT(&hlptim1,1000);
     //	  HAL_Delay(200);  //	UTIL_TIMER_Create(&ReadLedTimer, 0xFFFFFFFFU, UTIL_TIMER_PERIODIC, OnJoinTimerLedEvent, NULL);  // UTIL_TIMER_SetPeriod(&ReadLedTimer, 5000);  	//UTIL_TIMER_Create(&RxLedTimer, 0xFFFFFFFFU, UTIL_TIMER_ONESHOT, OnRxTimerLedEvent, NULL);
-  bmp280_init_default_params(&bmp280.params);
+  	  bmp280_init_default_params(&bmp280.params);
     	bmp280.addr = BMP280_I2C_ADDRESS_0;
     	bmp280.i2c = &hi2c1;
     	bmp280_init(&bmp280, &bmp280.params);
@@ -637,8 +637,10 @@ static void SendTxData(void)
   //  bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1); старое
     	// HAL_Delay(100);
     	 bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1);
-
-    	 if(bmp280.dig_T1>=0)
+    	 bmp280_read_fixed(&bmp280, &temperaturei, &pressurei, &humidityi);
+    	 APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%d | Температура:%d | Влажность:%d | Период передачи:%d сек | Заряд батареи:%d\r\n",
+    		       		numberdev, temperaturei, humidityi, per, chargebattery);
+    	 if(bmp280.dig_T1!=0)
     	//*/
     	{
 //    	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Temp, hum sensor Init ====\r\n");
@@ -723,9 +725,12 @@ static void SendTxData(void)
   // AppData.Buffer[i++] = batteryLevel; // new заряд батареи
      AppData.Buffer[i++] = chargebattery;
 //     HAL_Delay(1000);
-     APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%d | Температура:%d | Влажность:%d | Период передачи:%d сек | Заряд батареи:%d\r\n",
+     APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%d | Температура:%d | Влажность:%d | Период передачи:%d сек | Заряд батареи:%d%\r\n",
        		numberdev, temperatureint, humidityint, per, chargebattery);
 //     APP_LOG(TS_OFF, VLEVEL_M, "Заряд батареи:%d\r\n", chargebattery);
+     HAL_Delay(200);
+//	 APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%d | Температура:%d | Влажность:%d | Период передачи:%d сек | Заряд батареи:%d\r\n",
+//	       		numberdev, temperaturei, humidityi, per, chargebattery);
 //     APP_LOG(TS_OFF, VLEVEL_M, "%d | %d | %d\r\n",
 //            		 sizeof(temperature1), sizeof(AppLedStateOn), sizeof(chargebattery));
 //     OnTxData(numberdev, temperature1, humidity1, per, chargebattery);
