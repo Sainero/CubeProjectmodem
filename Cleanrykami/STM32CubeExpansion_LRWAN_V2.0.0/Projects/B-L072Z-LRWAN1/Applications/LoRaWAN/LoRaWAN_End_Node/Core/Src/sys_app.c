@@ -30,7 +30,7 @@
 #include "sys_debug.h"
 #include "rtc_if.h"
 #include "sys_sensors.h"
-
+#include "epromm.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */

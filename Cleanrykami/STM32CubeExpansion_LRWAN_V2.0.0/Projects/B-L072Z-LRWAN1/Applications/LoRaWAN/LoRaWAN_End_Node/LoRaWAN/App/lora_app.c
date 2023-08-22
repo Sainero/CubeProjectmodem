@@ -45,6 +45,7 @@
 #include "hts221.h"
 #include "rtc.h"
 #include "rtc_if.h"
+#include "epromm.h"
 //#include "SVN посмотри"
 //#include "SVN посмотри ЕЩЁ"
 //#include "BMP280/bmp280.c" dfhkdlzfhdo;fjh;jadpjhzrbyadrnysr
@@ -424,6 +425,12 @@ static void OnRxData(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
     APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== Индикация приёма данных ==========\r\n");
     APP_LOG(TS_OFF, VLEVEL_H, "###### D/L FRAME:%04d | SLOT:%s | PORT:%d | DR:%d | RSSI:%d | SNR:%d\r\n",
             params->DownlinkCounter, slotStrings[params->RxSlot], appData->Port, params->Datarate, params->Rssi, params->Snr);
+//      uint16_t eepromBaseAddress = 0x08080000; // Пример адреса EEPROM
+	  #define eepromBaseAddress 0x08080000UL
+      uint8_t dataToWrite[] = {0x01, 0x02, 0x03}; // Пример данных для записи
+      uint8_t dataSize = sizeof(dataToWrite); // Размер данных
+//      FLASHEx_EEPROM_WRITE(eepromBaseAddress, dataToWrite, dataSize);
+//    FLASHEx_EEPROM_WRITE(0, params->DownlinkCounter, sizeof(params->DownlinkCounter));
     switch (appData->Port)
     {
       case LORAWAN_SWITCH_CLASS_PORT:
@@ -499,7 +506,7 @@ static void SendTxData(void)
   	uint16_t Defbuff;  // для счётчика с охранной кнопки
   sensor_t sensor_data;
   uint16_t size;
-  uint8_t Data[256];
+  uint8_t Datasens[256];
   UTIL_TIMER_Time_t nextTxIn = 0;
   bmp280_params_t params;
 	RTC_TimeTypeDef sTime1;
@@ -638,6 +645,14 @@ static void SendTxData(void)
     	// HAL_Delay(100);
     	 bmp280_read_float(&bmp280, &temperature1, &pressure1, &humidity1);
     	 bmp280_read_fixed(&bmp280, &temperaturei, &pressurei, &humidityi);
+    	  size = sprintf((char *)Datasens,
+    				  					"%d:%d:%d\n", (int)temperature1,(int)pressure1,(int)humidity1);
+
+//    				  HAL_UART_Transmit(&husart2, Data, size, 1000);
+    				  HAL_UART_Transmit(&husart1, Datasens, size, 1000);
+    				  			HAL_Delay(200);
+    				  			APP_LOG(TS_OFF, VLEVEL_M, " Температура:%d | Влажность:%d\r\n",
+    				  					Datasens, Datasens);
     	 APP_LOG(TS_OFF, VLEVEL_M, " Номер модема:%d | Температура:%d | Влажность:%d | Период передачи:%d сек | Заряд батареи:%d\r\n",
     		       		numberdev, temperaturei, humidityi, per, chargebattery);
     	 if(bmp280.dig_T1!=0)

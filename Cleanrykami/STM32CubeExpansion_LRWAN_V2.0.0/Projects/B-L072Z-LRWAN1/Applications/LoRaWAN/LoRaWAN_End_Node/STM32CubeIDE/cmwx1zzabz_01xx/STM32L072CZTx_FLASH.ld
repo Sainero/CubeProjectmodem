@@ -63,6 +63,7 @@ MEMORY
 {
 FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 192K
 RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 20K
+EEPROM (rwx)    : ORIGIN = 0x08080000, LENGTH = 10K
 }
 
 /* Define output sections */
@@ -173,7 +174,16 @@ SECTIONS
     . = ALIGN(8);
   } >RAM
 
-  
+	.data_eeprom :
+{
+  *(.eeprom_data)
+} > FLASH
+
+	.bss_eeprom :
+{
+  *(.eeprom_bss)
+} > FLASH
+
 
   /* Remove information from the standard libraries */
   /DISCARD/ :
@@ -186,4 +196,4 @@ SECTIONS
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }
 
-
+ 

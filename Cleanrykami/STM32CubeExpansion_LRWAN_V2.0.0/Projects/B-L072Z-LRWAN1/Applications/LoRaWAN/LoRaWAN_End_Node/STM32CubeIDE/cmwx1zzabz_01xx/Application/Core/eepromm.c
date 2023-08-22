@@ -11,13 +11,14 @@
 #include "lorawan_version.h"
 #include "Commissioning.h"
 #include "lora_info.h"
+#include "epromm.h"
 //#include "sx1276.h"// RSSI|SNR
-#define EEPROM_BASE_ADDR 0x08080000UL
-#define DATA_EEPROM_BANK1_END  (0x08080BFFUL) /*!< Program end DATA EEPROM BANK1 address */
-#define DATA_EEPROM_BANK2_BASE (0x08080C00UL) /*!< DATA EEPROM BANK2 base address in the alias region */
-#define DATA_EEPROM_BANK2_END  (0x080817FFUL) /*!< Program end DATA EEPROM BANK2 address */
-//#define EEPROM_PAGE0_ID
-#define EEPROM_BYTE_SIZE	0x03FF
+//#define EEPROM_BASE_ADDR 0x08080000UL
+//#define DATA_EEPROM_BANK1_END  (0x08080BFFUL) /*!< Program end DATA EEPROM BANK1 address */
+//#define DATA_EEPROM_BANK2_BASE (0x08080C00UL) /*!< DATA EEPROM BANK2 base address in the alias region */
+//#define DATA_EEPROM_BANK2_END  (0x080817FFUL) /*!< Program end DATA EEPROM BANK2 address */
+////#define EEPROM_PAGE0_ID
+//#define EEPROM_BYTE_SIZE	0x03FF
 CommissioningParams_t CommissioningParams; // Определения ключей соединения
 LmHandlerAppData_t AppData; // Полезная нагрузка
 LmHandlerCallbacks_t LmHandlerCallbacks; // Измерение заряда батареи
@@ -43,18 +44,23 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
 //	uint16_t BaseAddresseprom;
 //	uint8_t *Dataeprom;
 //	uint8_t leneerom;
-	HAL_StatusTypeDef status = HAL_OK;
+	HAL_StatusTypeDef statusOK = HAL_OK;
 //	LORAWAN_DEVICE_EUI, LORAWAN_JOIN_EUI, LORAWAN_APP_KEY;LORAWAN_NWK_KEY, LORAWAN_NWK_S_KEY, LORAWAN_APP_S_KEY
 
 	HAL_FLASHEx_DATAEEPROM_Unlock();
 	for(i=0;i<leneerom;i++)
 	{
-		status +=HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, DATA_EEPROM_BANK2_BASE+Dataeprom+i, *Dataeprom);
+		statusOK +=HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, DATA_EEPROM_BANK2_BASE+Dataeprom+i, *Dataeprom);
 		Dataeprom++;
 
 	}
 	HAL_FLASHEx_DATAEEPROM_Lock();
 }
+ uint32_t EEPROM_ReadData(void) {
+   uint32_t readData;
+   readData = *(__IO uint32_t*)(EEPROM_BASE_ADDR); // Чтение данных из EEPROM
+   return readData;
+ }
 // */
 /*
 void FLASHEx_EEPROM_WRITE(uint16_t BiasAddress, uint8_t *Data)
