@@ -380,7 +380,8 @@ uint8_t RegionCommonLinkAdrReqVerifyParams( RegionCommonLinkAdrReqVerifyParams_t
         // Verify tx power
         if( RegionCommonValueInRange( txPower, verifyParams->MaxTxPower, verifyParams->MinTxPower ) == 0 )
         {
-            // Verify if the maximum TX power is exceeded
+//        	verifyParams->MaxTxPower = 20;
+            // Verify if the maximum TX power is exceeded Проверьте, не превышена ли максимальная мощность TX
             if( verifyParams->MaxTxPower > txPower )
             { // Apply maximum TX power. Accept TX power.
                 txPower = verifyParams->MaxTxPower;
@@ -430,7 +431,7 @@ void RegionCommonComputeRxWindowParameters( uint32_t tSymbol, uint8_t minRxSymbo
 
 int8_t RegionCommonComputeTxPower( int8_t txPowerIndex, float maxEirp, float antennaGain )
 {
-    int8_t phyTxPower = 0;
+    int8_t phyTxPower = 14;
 
     phyTxPower = ( int8_t )floor( ( maxEirp - ( txPowerIndex * 2U ) ) - antennaGain );
 

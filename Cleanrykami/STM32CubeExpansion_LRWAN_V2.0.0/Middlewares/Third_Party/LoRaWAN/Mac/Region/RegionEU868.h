@@ -102,7 +102,7 @@ extern "C"
 /*!
  * Minimal Tx output power that can be used by the node
  */
-#define EU868_MIN_TX_POWER                          TX_POWER_7
+#define EU868_MIN_TX_POWER                          TX_POWER_0  // было 7
 
 /*!
  * Maximal Tx output power that can be used by the node

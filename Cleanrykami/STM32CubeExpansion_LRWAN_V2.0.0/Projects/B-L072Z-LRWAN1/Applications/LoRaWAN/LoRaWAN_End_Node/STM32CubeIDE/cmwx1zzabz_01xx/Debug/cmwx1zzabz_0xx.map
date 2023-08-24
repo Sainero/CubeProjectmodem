@@ -13865,7 +13865,7 @@ Memory Configuration
 Name             Origin             Length             Attributes
 FLASH            0x0000000008000000 0x0000000000030000 xr
 RAM              0x0000000020000000 0x0000000000005000 xrw
-EEPROM           0x0000000008080000 0x0000000000002800 xrw
+EEPROM           0x0000000008080000 0x0000000000000400 xrw
 *default*        0x0000000000000000 0xffffffffffffffff
 
 Linker script and memory map
@@ -14001,7 +14001,7 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008000000                g_pfnVectors
                 0x00000000080000c0                . = ALIGN (0x4)
 
-.text           0x00000000080000c0    0x1e988
+.text           0x00000000080000c0    0x1e98c
                 0x00000000080000c0                . = ALIGN (0x4)
  *(.text)
  .text          0x00000000080000c0       0x48 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
@@ -15549,566 +15549,565 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x00000000080178cc       0xaa ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
                 0x00000000080178cc                RegionCommonParseLinkAdrReq
  .text.RegionCommonLinkAdrReqVerifyParams
-                0x0000000008017976      0x13c ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017976      0x142 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
                 0x0000000008017976                RegionCommonLinkAdrReqVerifyParams
- *fill*         0x0000000008017ab2        0x2 
  .text.RegionCommonComputeSymbolTimeLoRa
-                0x0000000008017ab4       0x30 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017ab4                RegionCommonComputeSymbolTimeLoRa
+                0x0000000008017ab8       0x30 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017ab8                RegionCommonComputeSymbolTimeLoRa
  .text.RegionCommonComputeSymbolTimeFsk
-                0x0000000008017ae4       0x1c ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017ae4                RegionCommonComputeSymbolTimeFsk
+                0x0000000008017ae8       0x1c ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017ae8                RegionCommonComputeSymbolTimeFsk
  .text.RegionCommonComputeRxWindowParameters
-                0x0000000008017b00       0x9c ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017b00                RegionCommonComputeRxWindowParameters
+                0x0000000008017b04       0x9c ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017b04                RegionCommonComputeRxWindowParameters
  .text.RegionCommonComputeTxPower
-                0x0000000008017b9c       0x72 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017b9c                RegionCommonComputeTxPower
+                0x0000000008017ba0       0x72 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017ba0                RegionCommonComputeTxPower
  .text.RegionCommonCountNbOfEnabledChannels
-                0x0000000008017c0e      0x1de ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017c0e                RegionCommonCountNbOfEnabledChannels
+                0x0000000008017c12      0x1de ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017c12                RegionCommonCountNbOfEnabledChannels
  .text.RegionCommonIdentifyChannels
-                0x0000000008017dec       0xce ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017dec                RegionCommonIdentifyChannels
- *fill*         0x0000000008017eba        0x2 
+                0x0000000008017df0       0xce ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017df0                RegionCommonIdentifyChannels
+ *fill*         0x0000000008017ebe        0x2 
  .text.RegionCommonRxConfigPrint
-                0x0000000008017ebc       0x30 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017ebc                RegionCommonRxConfigPrint
+                0x0000000008017ec0       0x30 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017ec0                RegionCommonRxConfigPrint
  .text.RegionCommonTxConfigPrint
-                0x0000000008017eec       0x68 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
-                0x0000000008017eec                RegionCommonTxConfigPrint
+                0x0000000008017ef0       0x68 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+                0x0000000008017ef0                RegionCommonTxConfigPrint
  .text.GetNextLowerTxDr
-                0x0000000008017f54       0x50 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008017f58       0x50 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
  .text.GetBandwidth
-                0x0000000008017fa4       0x3c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008017fa8       0x3c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
  .text.LimitTxPower
-                0x0000000008017fe0       0x50 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008017fe4       0x50 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
  .text.VerifyRfFreq
-                0x0000000008018030       0xf0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018034       0xf0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
  .text.GetTimeOnAir
-                0x0000000008018120       0xbc ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018124       0xbc ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
  .text.RegionEU868GetPhyParam
-                0x00000000080181dc      0x240 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x00000000080181dc                RegionEU868GetPhyParam
+                0x00000000080181e0      0x240 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x00000000080181e0                RegionEU868GetPhyParam
  .text.RegionEU868SetBandTxDone
-                0x000000000801841c       0x58 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x000000000801841c                RegionEU868SetBandTxDone
+                0x0000000008018420       0x58 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018420                RegionEU868SetBandTxDone
  .text.RegionEU868InitDefaults
-                0x0000000008018474      0x128 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008018474                RegionEU868InitDefaults
+                0x0000000008018478      0x128 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018478                RegionEU868InitDefaults
  .text.RegionEU868GetNvmCtx
-                0x000000000801859c       0x20 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x000000000801859c                RegionEU868GetNvmCtx
+                0x00000000080185a0       0x20 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x00000000080185a0                RegionEU868GetNvmCtx
  .text.RegionEU868Verify
-                0x00000000080185bc       0xb4 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x00000000080185bc                RegionEU868Verify
+                0x00000000080185c0       0xb4 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x00000000080185c0                RegionEU868Verify
  .text.RegionEU868ApplyCFList
-                0x0000000008018670      0x120 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008018670                RegionEU868ApplyCFList
+                0x0000000008018674      0x120 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018674                RegionEU868ApplyCFList
  .text.RegionEU868ChanMaskSet
-                0x0000000008018790       0x4c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008018790                RegionEU868ChanMaskSet
+                0x0000000008018794       0x4c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018794                RegionEU868ChanMaskSet
  .text.RegionEU868ComputeRxWindowParameters
-                0x00000000080187dc       0xc4 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x00000000080187dc                RegionEU868ComputeRxWindowParameters
+                0x00000000080187e0       0xc4 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x00000000080187e0                RegionEU868ComputeRxWindowParameters
  .text.RegionEU868RxConfig
-                0x00000000080188a0      0x1e8 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x00000000080188a0                RegionEU868RxConfig
+                0x00000000080188a4      0x1e8 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x00000000080188a4                RegionEU868RxConfig
  .text.RegionEU868TxConfig
-                0x0000000008018a88      0x1d8 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008018a88                RegionEU868TxConfig
+                0x0000000008018a8c      0x1d8 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018a8c                RegionEU868TxConfig
  .text.RegionEU868LinkAdrReq
-                0x0000000008018c60      0x2b0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008018c60                RegionEU868LinkAdrReq
+                0x0000000008018c64      0x2b0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018c64                RegionEU868LinkAdrReq
  .text.RegionEU868RxParamSetupReq
-                0x0000000008018f10       0x92 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008018f10                RegionEU868RxParamSetupReq
+                0x0000000008018f14       0x92 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018f14                RegionEU868RxParamSetupReq
  .text.RegionEU868NewChannelReq
-                0x0000000008018fa2       0xd0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008018fa2                RegionEU868NewChannelReq
+                0x0000000008018fa6       0xd0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008018fa6                RegionEU868NewChannelReq
  .text.RegionEU868TxParamSetupReq
-                0x0000000008019072       0x14 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008019072                RegionEU868TxParamSetupReq
- *fill*         0x0000000008019086        0x2 
+                0x0000000008019076       0x14 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008019076                RegionEU868TxParamSetupReq
+ *fill*         0x000000000801908a        0x2 
  .text.RegionEU868DlChannelReq
-                0x0000000008019088       0x9c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008019088                RegionEU868DlChannelReq
+                0x000000000801908c       0x9c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x000000000801908c                RegionEU868DlChannelReq
  .text.RegionEU868AlternateDr
-                0x0000000008019124       0x20 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008019124                RegionEU868AlternateDr
+                0x0000000008019128       0x20 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008019128                RegionEU868AlternateDr
  .text.RegionEU868NextChannel
-                0x0000000008019144      0x170 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008019144                RegionEU868NextChannel
+                0x0000000008019148      0x170 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008019148                RegionEU868NextChannel
  .text.RegionEU868ChannelAdd
-                0x00000000080192b4      0x188 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x00000000080192b4                RegionEU868ChannelAdd
+                0x00000000080192b8      0x188 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x00000000080192b8                RegionEU868ChannelAdd
  .text.RegionEU868ChannelsRemove
-                0x000000000801943c       0x5c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x000000000801943c                RegionEU868ChannelsRemove
+                0x0000000008019440       0x5c ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x0000000008019440                RegionEU868ChannelsRemove
  .text.RegionEU868SetContinuousWave
-                0x0000000008019498       0xb0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008019498                RegionEU868SetContinuousWave
+                0x000000000801949c       0xb0 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x000000000801949c                RegionEU868SetContinuousWave
  .text.RegionEU868ApplyDrOffset
-                0x0000000008019548       0x4e ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
-                0x0000000008019548                RegionEU868ApplyDrOffset
- *fill*         0x0000000008019596        0x2 
- .text.rand1    0x0000000008019598       0x38 ./Middlewares/LoRaWAN/Utilities/utilities.o
- .text.srand1   0x00000000080195d0       0x1c ./Middlewares/LoRaWAN/Utilities/utilities.o
-                0x00000000080195d0                srand1
- .text.randr    0x00000000080195ec       0x2c ./Middlewares/LoRaWAN/Utilities/utilities.o
-                0x00000000080195ec                randr
- .text.memcpy1  0x0000000008019618       0x38 ./Middlewares/LoRaWAN/Utilities/utilities.o
-                0x0000000008019618                memcpy1
- .text.memcpyr  0x0000000008019650       0x44 ./Middlewares/LoRaWAN/Utilities/utilities.o
-                0x0000000008019650                memcpyr
- .text.memset1  0x0000000008019694       0x3e ./Middlewares/LoRaWAN/Utilities/utilities.o
-                0x0000000008019694                memset1
- *fill*         0x00000000080196d2        0x2 
+                0x000000000801954c       0x4e ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+                0x000000000801954c                RegionEU868ApplyDrOffset
+ *fill*         0x000000000801959a        0x2 
+ .text.rand1    0x000000000801959c       0x38 ./Middlewares/LoRaWAN/Utilities/utilities.o
+ .text.srand1   0x00000000080195d4       0x1c ./Middlewares/LoRaWAN/Utilities/utilities.o
+                0x00000000080195d4                srand1
+ .text.randr    0x00000000080195f0       0x2c ./Middlewares/LoRaWAN/Utilities/utilities.o
+                0x00000000080195f0                randr
+ .text.memcpy1  0x000000000801961c       0x38 ./Middlewares/LoRaWAN/Utilities/utilities.o
+                0x000000000801961c                memcpy1
+ .text.memcpyr  0x0000000008019654       0x44 ./Middlewares/LoRaWAN/Utilities/utilities.o
+                0x0000000008019654                memcpyr
+ .text.memset1  0x0000000008019698       0x3e ./Middlewares/LoRaWAN/Utilities/utilities.o
+                0x0000000008019698                memset1
+ *fill*         0x00000000080196d6        0x2 
  .text.SX1276Init
-                0x00000000080196d4       0xfc ./Middlewares/SubGHz_Phy/sx1276.o
-                0x00000000080196d4                SX1276Init
+                0x00000000080196d8       0xfc ./Middlewares/SubGHz_Phy/sx1276.o
+                0x00000000080196d8                SX1276Init
  .text.SX1276GetStatus
-                0x00000000080197d0       0x14 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x00000000080197d0                SX1276GetStatus
+                0x00000000080197d4       0x14 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x00000000080197d4                SX1276GetStatus
  .text.SX1276SetChannel
-                0x00000000080197e4       0x8c ./Middlewares/SubGHz_Phy/sx1276.o
-                0x00000000080197e4                SX1276SetChannel
+                0x00000000080197e8       0x8c ./Middlewares/SubGHz_Phy/sx1276.o
+                0x00000000080197e8                SX1276SetChannel
  .text.SX1276IsChannelFree
-                0x0000000008019870       0xba ./Middlewares/SubGHz_Phy/sx1276.o
-                0x0000000008019870                SX1276IsChannelFree
+                0x0000000008019874       0xba ./Middlewares/SubGHz_Phy/sx1276.o
+                0x0000000008019874                SX1276IsChannelFree
  .text.SX1276Random
-                0x000000000801992a       0x68 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801992a                SX1276Random
- *fill*         0x0000000008019992        0x2 
+                0x000000000801992e       0x68 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801992e                SX1276Random
+ *fill*         0x0000000008019996        0x2 
  .text.RxChainCalibration
-                0x0000000008019994       0xf8 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x0000000008019998       0xf8 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276SetRxConfig
-                0x0000000008019a8c      0x52c ./Middlewares/SubGHz_Phy/sx1276.o
-                0x0000000008019a8c                SX1276SetRxConfig
+                0x0000000008019a90      0x52c ./Middlewares/SubGHz_Phy/sx1276.o
+                0x0000000008019a90                SX1276SetRxConfig
  .text.SX1276SetTxConfig
-                0x0000000008019fb8      0x488 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x0000000008019fb8                SX1276SetTxConfig
+                0x0000000008019fbc      0x488 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x0000000008019fbc                SX1276SetTxConfig
  .text.SX1276GetTimeOnAir
-                0x000000000801a440       0xcc ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801a440                SX1276GetTimeOnAir
+                0x000000000801a444       0xcc ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801a444                SX1276GetTimeOnAir
  .text.SX1276Send
-                0x000000000801a50c      0x180 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801a50c                SX1276Send
+                0x000000000801a510      0x180 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801a510                SX1276Send
  .text.SX1276SetRfTxPower
-                0x000000000801a68c      0x224 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801a690      0x224 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276SetSleep
-                0x000000000801a8b0       0x44 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801a8b0                SX1276SetSleep
+                0x000000000801a8b4       0x44 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801a8b4                SX1276SetSleep
  .text.SX1276SetStby
-                0x000000000801a8f4       0x40 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801a8f4                SX1276SetStby
+                0x000000000801a8f8       0x40 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801a8f8                SX1276SetStby
  .text.SX1276SetRx
-                0x000000000801a934      0x32c ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801a934                SX1276SetRx
+                0x000000000801a938      0x32c ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801a938                SX1276SetRx
  .text.SX1276SetTx
-                0x000000000801ac60       0xf8 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801ac64       0xf8 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276StartCad
-                0x000000000801ad58       0x50 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801ad58                SX1276StartCad
+                0x000000000801ad5c       0x50 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801ad5c                SX1276StartCad
  .text.SX1276SetTxContinuousWave
-                0x000000000801ada8       0xc4 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801ada8                SX1276SetTxContinuousWave
+                0x000000000801adac       0xc4 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801adac                SX1276SetTxContinuousWave
  .text.SX1276ReadRssi
-                0x000000000801ae6c       0x98 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801ae6c                SX1276ReadRssi
+                0x000000000801ae70       0x98 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801ae70                SX1276ReadRssi
  .text.SX1276Reset
-                0x000000000801af04        0xe ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801af08        0xe ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276SetOpMode
-                0x000000000801af12       0xd8 ./Middlewares/SubGHz_Phy/sx1276.o
- *fill*         0x000000000801afea        0x2 
+                0x000000000801af16       0xd8 ./Middlewares/SubGHz_Phy/sx1276.o
+ *fill*         0x000000000801afee        0x2 
  .text.SX1276SetModem
-                0x000000000801afec       0xb4 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801afec                SX1276SetModem
+                0x000000000801aff0       0xb4 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801aff0                SX1276SetModem
  .text.SX1276Write
-                0x000000000801b0a0       0x22 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801b0a0                SX1276Write
+                0x000000000801b0a4       0x22 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b0a4                SX1276Write
  .text.SX1276Read
-                0x000000000801b0c2       0x22 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801b0c2                SX1276Read
+                0x000000000801b0c6       0x22 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b0c6                SX1276Read
  .text.SX1276WriteBuffer
-                0x000000000801b0e4       0x68 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801b0e4                SX1276WriteBuffer
+                0x000000000801b0e8       0x68 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b0e8                SX1276WriteBuffer
  .text.SX1276ReadBuffer
-                0x000000000801b14c       0x6c ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801b14c                SX1276ReadBuffer
+                0x000000000801b150       0x6c ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b150                SX1276ReadBuffer
  .text.SX1276WriteFifo
-                0x000000000801b1b8       0x24 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b1bc       0x24 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276ReadFifo
-                0x000000000801b1dc       0x24 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b1e0       0x24 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276SetMaxPayloadLength
-                0x000000000801b200       0x64 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801b200                SX1276SetMaxPayloadLength
+                0x000000000801b204       0x64 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b204                SX1276SetMaxPayloadLength
  .text.SX1276SetPublicNetwork
-                0x000000000801b264       0x44 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801b264                SX1276SetPublicNetwork
+                0x000000000801b268       0x44 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b268                SX1276SetPublicNetwork
  .text.SX1276GetWakeupTime
-                0x000000000801b2a8       0x12 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801b2a8                SX1276GetWakeupTime
- *fill*         0x000000000801b2ba        0x2 
+                0x000000000801b2ac       0x12 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b2ac                SX1276GetWakeupTime
+ *fill*         0x000000000801b2be        0x2 
  .text.GetFskBandwidthRegValue
-                0x000000000801b2bc       0x6c ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b2c0       0x6c ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276GetLoRaBandwidthInHz
-                0x000000000801b328       0x64 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b32c       0x64 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276GetGfskTimeOnAirNumerator
-                0x000000000801b38c       0x74 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b390       0x74 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276GetLoRaTimeOnAirNumerator
-                0x000000000801b400      0x118 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b404      0x118 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276OnTimeoutIrq
-                0x000000000801b518      0x158 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b51c      0x158 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276OnDio0Irq
-                0x000000000801b670      0x438 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801b674      0x438 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276OnDio1Irq
-                0x000000000801baa8      0x1d0 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801baac      0x1d0 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276OnDio2Irq
-                0x000000000801bc78      0x18c ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801bc7c      0x18c ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276OnDio3Irq
-                0x000000000801be04       0x84 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801be08       0x84 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.SX1276OnDio4Irq
-                0x000000000801be88       0x38 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801be8c       0x38 ./Middlewares/SubGHz_Phy/sx1276.o
  .text.UTIL_ADV_TRACE_Init
-                0x000000000801bec0       0x40 ./Utilities/stm32_adv_trace.o
-                0x000000000801bec0                UTIL_ADV_TRACE_Init
+                0x000000000801bec4       0x40 ./Utilities/stm32_adv_trace.o
+                0x000000000801bec4                UTIL_ADV_TRACE_Init
  .text.UTIL_ADV_TRACE_COND_FSend
-                0x000000000801bf00      0x130 ./Utilities/stm32_adv_trace.o
-                0x000000000801bf00                UTIL_ADV_TRACE_COND_FSend
+                0x000000000801bf04      0x130 ./Utilities/stm32_adv_trace.o
+                0x000000000801bf04                UTIL_ADV_TRACE_COND_FSend
  .text.UTIL_ADV_TRACE_RegisterTimeStampFunction
-                0x000000000801c030       0x1c ./Utilities/stm32_adv_trace.o
-                0x000000000801c030                UTIL_ADV_TRACE_RegisterTimeStampFunction
+                0x000000000801c034       0x1c ./Utilities/stm32_adv_trace.o
+                0x000000000801c034                UTIL_ADV_TRACE_RegisterTimeStampFunction
  .text.UTIL_ADV_TRACE_SetVerboseLevel
-                0x000000000801c04c       0x20 ./Utilities/stm32_adv_trace.o
-                0x000000000801c04c                UTIL_ADV_TRACE_SetVerboseLevel
+                0x000000000801c050       0x20 ./Utilities/stm32_adv_trace.o
+                0x000000000801c050                UTIL_ADV_TRACE_SetVerboseLevel
  .text.TRACE_Send
-                0x000000000801c06c      0x114 ./Utilities/stm32_adv_trace.o
+                0x000000000801c070      0x114 ./Utilities/stm32_adv_trace.o
  .text.TRACE_TxCpltCallback
-                0x000000000801c180      0x114 ./Utilities/stm32_adv_trace.o
+                0x000000000801c184      0x114 ./Utilities/stm32_adv_trace.o
  .text.TRACE_AllocateBufer
-                0x000000000801c294      0x134 ./Utilities/stm32_adv_trace.o
+                0x000000000801c298      0x134 ./Utilities/stm32_adv_trace.o
  .text.TRACE_Lock
-                0x000000000801c3c8       0x38 ./Utilities/stm32_adv_trace.o
+                0x000000000801c3cc       0x38 ./Utilities/stm32_adv_trace.o
  .text.TRACE_UnLock
-                0x000000000801c400       0x38 ./Utilities/stm32_adv_trace.o
+                0x000000000801c404       0x38 ./Utilities/stm32_adv_trace.o
  .text.TRACE_IsLocked
-                0x000000000801c438       0x18 ./Utilities/stm32_adv_trace.o
+                0x000000000801c43c       0x18 ./Utilities/stm32_adv_trace.o
  .text.UTIL_LPM_Init
-                0x000000000801c450       0x20 ./Utilities/stm32_lpm.o
-                0x000000000801c450                UTIL_LPM_Init
+                0x000000000801c454       0x20 ./Utilities/stm32_lpm.o
+                0x000000000801c454                UTIL_LPM_Init
  .text.UTIL_LPM_SetStopMode
-                0x000000000801c470       0x60 ./Utilities/stm32_lpm.o
-                0x000000000801c470                UTIL_LPM_SetStopMode
+                0x000000000801c474       0x60 ./Utilities/stm32_lpm.o
+                0x000000000801c474                UTIL_LPM_SetStopMode
  .text.UTIL_LPM_SetOffMode
-                0x000000000801c4d0       0x60 ./Utilities/stm32_lpm.o
-                0x000000000801c4d0                UTIL_LPM_SetOffMode
+                0x000000000801c4d4       0x60 ./Utilities/stm32_lpm.o
+                0x000000000801c4d4                UTIL_LPM_SetOffMode
  .text.UTIL_LPM_GetMode
-                0x000000000801c530       0x64 ./Utilities/stm32_lpm.o
-                0x000000000801c530                UTIL_LPM_GetMode
+                0x000000000801c534       0x64 ./Utilities/stm32_lpm.o
+                0x000000000801c534                UTIL_LPM_GetMode
  .text.UTIL_LPM_EnterLowPower
-                0x000000000801c594       0x6c ./Utilities/stm32_lpm.o
-                0x000000000801c594                UTIL_LPM_EnterLowPower
+                0x000000000801c598       0x6c ./Utilities/stm32_lpm.o
+                0x000000000801c598                UTIL_LPM_EnterLowPower
  .text.UTIL_MEM_cpy_8
-                0x000000000801c600       0x40 ./Utilities/stm32_mem.o
-                0x000000000801c600                UTIL_MEM_cpy_8
+                0x000000000801c604       0x40 ./Utilities/stm32_mem.o
+                0x000000000801c604                UTIL_MEM_cpy_8
  .text.UTIL_MEM_set_8
-                0x000000000801c640       0x42 ./Utilities/stm32_mem.o
-                0x000000000801c640                UTIL_MEM_set_8
- *fill*         0x000000000801c682        0x2 
+                0x000000000801c644       0x42 ./Utilities/stm32_mem.o
+                0x000000000801c644                UTIL_MEM_set_8
+ *fill*         0x000000000801c686        0x2 
  .text.UTIL_SEQ_Run
-                0x000000000801c684      0x1c4 ./Utilities/stm32_seq.o
-                0x000000000801c684                UTIL_SEQ_Run
+                0x000000000801c688      0x1c4 ./Utilities/stm32_seq.o
+                0x000000000801c688                UTIL_SEQ_Run
  .text.UTIL_SEQ_RegTask
-                0x000000000801c848       0x48 ./Utilities/stm32_seq.o
-                0x000000000801c848                UTIL_SEQ_RegTask
+                0x000000000801c84c       0x48 ./Utilities/stm32_seq.o
+                0x000000000801c84c                UTIL_SEQ_RegTask
  .text.UTIL_SEQ_SetTask
-                0x000000000801c890       0x58 ./Utilities/stm32_seq.o
-                0x000000000801c890                UTIL_SEQ_SetTask
+                0x000000000801c894       0x58 ./Utilities/stm32_seq.o
+                0x000000000801c894                UTIL_SEQ_SetTask
  .text.UTIL_SEQ_PreIdle
-                0x000000000801c8e8        0xa ./Utilities/stm32_seq.o
-                0x000000000801c8e8                UTIL_SEQ_PreIdle
+                0x000000000801c8ec        0xa ./Utilities/stm32_seq.o
+                0x000000000801c8ec                UTIL_SEQ_PreIdle
  .text.UTIL_SEQ_PostIdle
-                0x000000000801c8f2        0xa ./Utilities/stm32_seq.o
-                0x000000000801c8f2                UTIL_SEQ_PostIdle
+                0x000000000801c8f6        0xa ./Utilities/stm32_seq.o
+                0x000000000801c8f6                UTIL_SEQ_PostIdle
  .text.SEQ_BitPosition
-                0x000000000801c8fc       0x84 ./Utilities/stm32_seq.o
-                0x000000000801c8fc                SEQ_BitPosition
+                0x000000000801c900       0x84 ./Utilities/stm32_seq.o
+                0x000000000801c900                SEQ_BitPosition
  .text.SysTimeAdd
-                0x000000000801c980       0xac ./Utilities/stm32_systime.o
-                0x000000000801c980                SysTimeAdd
+                0x000000000801c984       0xac ./Utilities/stm32_systime.o
+                0x000000000801c984                SysTimeAdd
  .text.SysTimeSub
-                0x000000000801ca2c       0xa6 ./Utilities/stm32_systime.o
-                0x000000000801ca2c                SysTimeSub
- *fill*         0x000000000801cad2        0x2 
+                0x000000000801ca30       0xa6 ./Utilities/stm32_systime.o
+                0x000000000801ca30                SysTimeSub
+ *fill*         0x000000000801cad6        0x2 
  .text.SysTimeSet
-                0x000000000801cad4       0x70 ./Utilities/stm32_systime.o
-                0x000000000801cad4                SysTimeSet
+                0x000000000801cad8       0x70 ./Utilities/stm32_systime.o
+                0x000000000801cad8                SysTimeSet
  .text.SysTimeGet
-                0x000000000801cb44       0x84 ./Utilities/stm32_systime.o
-                0x000000000801cb44                SysTimeGet
+                0x000000000801cb48       0x84 ./Utilities/stm32_systime.o
+                0x000000000801cb48                SysTimeGet
  .text.SysTimeGetMcuTime
-                0x000000000801cbc8       0x40 ./Utilities/stm32_systime.o
-                0x000000000801cbc8                SysTimeGetMcuTime
+                0x000000000801cbcc       0x40 ./Utilities/stm32_systime.o
+                0x000000000801cbcc                SysTimeGetMcuTime
  .text.UTIL_TIMER_Init
-                0x000000000801cc08       0x20 ./Utilities/stm32_timer.o
-                0x000000000801cc08                UTIL_TIMER_Init
+                0x000000000801cc0c       0x20 ./Utilities/stm32_timer.o
+                0x000000000801cc0c                UTIL_TIMER_Init
  .text.UTIL_TIMER_Create
-                0x000000000801cc28       0x70 ./Utilities/stm32_timer.o
-                0x000000000801cc28                UTIL_TIMER_Create
+                0x000000000801cc2c       0x70 ./Utilities/stm32_timer.o
+                0x000000000801cc2c                UTIL_TIMER_Create
  .text.UTIL_TIMER_Start
-                0x000000000801cc98       0xf0 ./Utilities/stm32_timer.o
-                0x000000000801cc98                UTIL_TIMER_Start
+                0x000000000801cc9c       0xf0 ./Utilities/stm32_timer.o
+                0x000000000801cc9c                UTIL_TIMER_Start
  .text.UTIL_TIMER_Stop
-                0x000000000801cd88       0xf0 ./Utilities/stm32_timer.o
-                0x000000000801cd88                UTIL_TIMER_Stop
+                0x000000000801cd8c       0xf0 ./Utilities/stm32_timer.o
+                0x000000000801cd8c                UTIL_TIMER_Stop
  .text.UTIL_TIMER_SetPeriod
-                0x000000000801ce78       0x68 ./Utilities/stm32_timer.o
-                0x000000000801ce78                UTIL_TIMER_SetPeriod
+                0x000000000801ce7c       0x68 ./Utilities/stm32_timer.o
+                0x000000000801ce7c                UTIL_TIMER_SetPeriod
  .text.UTIL_TIMER_IRQ_Handler
-                0x000000000801cee0      0x108 ./Utilities/stm32_timer.o
-                0x000000000801cee0                UTIL_TIMER_IRQ_Handler
+                0x000000000801cee4      0x108 ./Utilities/stm32_timer.o
+                0x000000000801cee4                UTIL_TIMER_IRQ_Handler
  .text.UTIL_TIMER_GetCurrentTime
-                0x000000000801cfe8       0x28 ./Utilities/stm32_timer.o
-                0x000000000801cfe8                UTIL_TIMER_GetCurrentTime
+                0x000000000801cfec       0x28 ./Utilities/stm32_timer.o
+                0x000000000801cfec                UTIL_TIMER_GetCurrentTime
  .text.UTIL_TIMER_GetElapsedTime
-                0x000000000801d010       0x3c ./Utilities/stm32_timer.o
-                0x000000000801d010                UTIL_TIMER_GetElapsedTime
+                0x000000000801d014       0x3c ./Utilities/stm32_timer.o
+                0x000000000801d014                UTIL_TIMER_GetElapsedTime
  .text.TimerExists
-                0x000000000801d04c       0x38 ./Utilities/stm32_timer.o
-                0x000000000801d04c                TimerExists
+                0x000000000801d050       0x38 ./Utilities/stm32_timer.o
+                0x000000000801d050                TimerExists
  .text.TimerSetTimeout
-                0x000000000801d084       0x54 ./Utilities/stm32_timer.o
-                0x000000000801d084                TimerSetTimeout
+                0x000000000801d088       0x54 ./Utilities/stm32_timer.o
+                0x000000000801d088                TimerSetTimeout
  .text.TimerInsertTimer
-                0x000000000801d0d8       0x5c ./Utilities/stm32_timer.o
-                0x000000000801d0d8                TimerInsertTimer
+                0x000000000801d0dc       0x5c ./Utilities/stm32_timer.o
+                0x000000000801d0dc                TimerInsertTimer
  .text.TimerInsertNewHeadTimer
-                0x000000000801d134       0x3c ./Utilities/stm32_timer.o
-                0x000000000801d134                TimerInsertNewHeadTimer
+                0x000000000801d138       0x3c ./Utilities/stm32_timer.o
+                0x000000000801d138                TimerInsertNewHeadTimer
  .text.ee_skip_atoi
-                0x000000000801d170       0x4a ./Utilities/stm32_tiny_vsnprintf.o
- *fill*         0x000000000801d1ba        0x2 
+                0x000000000801d174       0x4a ./Utilities/stm32_tiny_vsnprintf.o
+ *fill*         0x000000000801d1be        0x2 
  .text.ee_number
-                0x000000000801d1bc      0x1e0 ./Utilities/stm32_tiny_vsnprintf.o
+                0x000000000801d1c0      0x1e0 ./Utilities/stm32_tiny_vsnprintf.o
  .text.tiny_vsnprintf_like
-                0x000000000801d39c      0x234 ./Utilities/stm32_tiny_vsnprintf.o
-                0x000000000801d39c                tiny_vsnprintf_like
+                0x000000000801d3a0      0x234 ./Utilities/stm32_tiny_vsnprintf.o
+                0x000000000801d3a0                tiny_vsnprintf_like
  .text.bmp280_init_default_params
-                0x000000000801d5d0       0x34 ./myapp/BMP280/bmp280.o
-                0x000000000801d5d0                bmp280_init_default_params
+                0x000000000801d5d4       0x34 ./myapp/BMP280/bmp280.o
+                0x000000000801d5d4                bmp280_init_default_params
  .text.read_register16
-                0x000000000801d604       0x70 ./myapp/BMP280/bmp280.o
+                0x000000000801d608       0x70 ./myapp/BMP280/bmp280.o
  .text.read_data
-                0x000000000801d674       0x68 ./myapp/BMP280/bmp280.o
+                0x000000000801d678       0x68 ./myapp/BMP280/bmp280.o
  .text.read_calibration_data
-                0x000000000801d6dc      0x100 ./myapp/BMP280/bmp280.o
+                0x000000000801d6e0      0x100 ./myapp/BMP280/bmp280.o
  .text.read_hum_calibration_data
-                0x000000000801d7dc       0xbe ./myapp/BMP280/bmp280.o
- *fill*         0x000000000801d89a        0x2 
+                0x000000000801d7e0       0xbe ./myapp/BMP280/bmp280.o
+ *fill*         0x000000000801d89e        0x2 
  .text.write_register8
-                0x000000000801d89c       0x5c ./myapp/BMP280/bmp280.o
+                0x000000000801d8a0       0x5c ./myapp/BMP280/bmp280.o
  .text.bmp280_init
-                0x000000000801d8f8      0x16e ./myapp/BMP280/bmp280.o
-                0x000000000801d8f8                bmp280_init
+                0x000000000801d8fc      0x16e ./myapp/BMP280/bmp280.o
+                0x000000000801d8fc                bmp280_init
  .text.compensate_temperature
-                0x000000000801da66       0x68 ./myapp/BMP280/bmp280.o
- *fill*         0x000000000801dace        0x2 
+                0x000000000801da6a       0x68 ./myapp/BMP280/bmp280.o
+ *fill*         0x000000000801dad2        0x2 
  .text.compensate_pressure
-                0x000000000801dad0      0x364 ./myapp/BMP280/bmp280.o
+                0x000000000801dad4      0x364 ./myapp/BMP280/bmp280.o
  .text.compensate_humidity
-                0x000000000801de34       0xc4 ./myapp/BMP280/bmp280.o
+                0x000000000801de38       0xc4 ./myapp/BMP280/bmp280.o
  .text.bmp280_read_fixed
-                0x000000000801def8       0xda ./myapp/BMP280/bmp280.o
-                0x000000000801def8                bmp280_read_fixed
- *fill*         0x000000000801dfd2        0x2 
+                0x000000000801defc       0xda ./myapp/BMP280/bmp280.o
+                0x000000000801defc                bmp280_read_fixed
+ *fill*         0x000000000801dfd6        0x2 
  .text.bmp280_read_float
-                0x000000000801dfd4       0x98 ./myapp/BMP280/bmp280.o
-                0x000000000801dfd4                bmp280_read_float
- .text.__errno  0x000000000801e06c        0xc c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-errno.o)
-                0x000000000801e06c                __errno
+                0x000000000801dfd8       0x98 ./myapp/BMP280/bmp280.o
+                0x000000000801dfd8                bmp280_read_float
+ .text.__errno  0x000000000801e070        0xc c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-errno.o)
+                0x000000000801e070                __errno
  .text.__libc_init_array
-                0x000000000801e078       0x48 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-init.o)
-                0x000000000801e078                __libc_init_array
- .text.memcpy   0x000000000801e0c0       0x12 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
-                0x000000000801e0c0                memcpy
- .text.memset   0x000000000801e0d2       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memset.o)
-                0x000000000801e0d2                memset
- *fill*         0x000000000801e0e2        0x2 
- .text.sprintf  0x000000000801e0e4       0x40 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-sprintf.o)
-                0x000000000801e0e4                siprintf
-                0x000000000801e0e4                sprintf
+                0x000000000801e07c       0x48 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-init.o)
+                0x000000000801e07c                __libc_init_array
+ .text.memcpy   0x000000000801e0c4       0x12 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
+                0x000000000801e0c4                memcpy
+ .text.memset   0x000000000801e0d6       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memset.o)
+                0x000000000801e0d6                memset
+ *fill*         0x000000000801e0e6        0x2 
+ .text.sprintf  0x000000000801e0e8       0x40 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-sprintf.o)
+                0x000000000801e0e8                siprintf
+                0x000000000801e0e8                sprintf
  .text.__retarget_lock_acquire_recursive
-                0x000000000801e124        0x2 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-lock.o)
-                0x000000000801e124                __retarget_lock_acquire_recursive
+                0x000000000801e128        0x2 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-lock.o)
+                0x000000000801e128                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x000000000801e126        0x2 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-lock.o)
-                0x000000000801e126                __retarget_lock_release_recursive
- .text._free_r  0x000000000801e128       0x94 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-freer.o)
-                0x000000000801e128                _free_r
+                0x000000000801e12a        0x2 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-lock.o)
+                0x000000000801e12a                __retarget_lock_release_recursive
+ .text._free_r  0x000000000801e12c       0x94 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-freer.o)
+                0x000000000801e12c                _free_r
  .text._malloc_r
-                0x000000000801e1bc       0xbc c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-mallocr.o)
-                0x000000000801e1bc                _malloc_r
+                0x000000000801e1c0       0xbc c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-mallocr.o)
+                0x000000000801e1c0                _malloc_r
  .text.__ssputs_r
-                0x000000000801e278       0xc4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-svfprintf.o)
-                0x000000000801e278                __ssputs_r
+                0x000000000801e27c       0xc4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-svfprintf.o)
+                0x000000000801e27c                __ssputs_r
  .text._svfprintf_r
-                0x000000000801e33c      0x200 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-svfprintf.o)
-                0x000000000801e33c                _svfiprintf_r
-                0x000000000801e33c                _svfprintf_r
+                0x000000000801e340      0x200 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-svfprintf.o)
+                0x000000000801e340                _svfiprintf_r
+                0x000000000801e340                _svfprintf_r
  .text._printf_common
-                0x000000000801e53c       0xde c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x000000000801e53c                _printf_common
- *fill*         0x000000000801e61a        0x2 
+                0x000000000801e540       0xde c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000000000801e540                _printf_common
+ *fill*         0x000000000801e61e        0x2 
  .text._printf_i
-                0x000000000801e61c      0x224 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x000000000801e61c                _printf_i
- .text._sbrk_r  0x000000000801e840       0x24 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-sbrkr.o)
-                0x000000000801e840                _sbrk_r
- .text.memchr   0x000000000801e864       0x16 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memchr-stub.o)
-                0x000000000801e864                memchr
- .text.memmove  0x000000000801e87a       0x26 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memmove.o)
-                0x000000000801e87a                memmove
+                0x000000000801e620      0x224 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000000000801e620                _printf_i
+ .text._sbrk_r  0x000000000801e844       0x24 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-sbrkr.o)
+                0x000000000801e844                _sbrk_r
+ .text.memchr   0x000000000801e868       0x16 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memchr-stub.o)
+                0x000000000801e868                memchr
+ .text.memmove  0x000000000801e87e       0x26 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-memmove.o)
+                0x000000000801e87e                memmove
  .text.__malloc_lock
-                0x000000000801e8a0       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-mlock.o)
-                0x000000000801e8a0                __malloc_lock
+                0x000000000801e8a4       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-mlock.o)
+                0x000000000801e8a4                __malloc_lock
  .text.__malloc_unlock
-                0x000000000801e8b0       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-mlock.o)
-                0x000000000801e8b0                __malloc_unlock
+                0x000000000801e8b4       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-mlock.o)
+                0x000000000801e8b4                __malloc_unlock
  .text._realloc_r
-                0x000000000801e8c0       0x4c c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-reallocr.o)
-                0x000000000801e8c0                _realloc_r
+                0x000000000801e8c4       0x4c c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-reallocr.o)
+                0x000000000801e8c4                _realloc_r
  .text._malloc_usable_size_r
-                0x000000000801e90c       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-msizer.o)
-                0x000000000801e90c                _malloc_usable_size_r
- .text.floor    0x000000000801e91c      0x114 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libm.a(lib_a-s_floor.o)
-                0x000000000801e91c                floor
+                0x000000000801e910       0x10 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-msizer.o)
+                0x000000000801e910                _malloc_usable_size_r
+ .text.floor    0x000000000801e920      0x114 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libm.a(lib_a-s_floor.o)
+                0x000000000801e920                floor
  *(.glue_7)
- .glue_7        0x000000000801ea30        0x0 linker stubs
+ .glue_7        0x000000000801ea34        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x000000000801ea30        0x0 linker stubs
+ .glue_7t       0x000000000801ea34        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x000000000801ea30        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+ .eh_frame      0x000000000801ea34        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
  *(.init)
- .init          0x000000000801ea30        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
-                0x000000000801ea30                _init
- .init          0x000000000801ea34        0x8 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
+ .init          0x000000000801ea34        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
+                0x000000000801ea34                _init
+ .init          0x000000000801ea38        0x8 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
  *(.fini)
- .fini          0x000000000801ea3c        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
-                0x000000000801ea3c                _fini
- .fini          0x000000000801ea40        0x8 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
-                0x000000000801ea48                . = ALIGN (0x4)
-                0x000000000801ea48                _etext = .
+ .fini          0x000000000801ea40        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
+                0x000000000801ea40                _fini
+ .fini          0x000000000801ea44        0x8 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
+                0x000000000801ea4c                . = ALIGN (0x4)
+                0x000000000801ea4c                _etext = .
 
-.vfp11_veneer   0x000000000801ea48        0x0
- .vfp11_veneer  0x000000000801ea48        0x0 linker stubs
+.vfp11_veneer   0x000000000801ea4c        0x0
+ .vfp11_veneer  0x000000000801ea4c        0x0 linker stubs
 
-.v4_bx          0x000000000801ea48        0x0
- .v4_bx         0x000000000801ea48        0x0 linker stubs
+.v4_bx          0x000000000801ea4c        0x0
+ .v4_bx         0x000000000801ea4c        0x0 linker stubs
 
-.iplt           0x000000000801ea48        0x0
- .iplt          0x000000000801ea48        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+.iplt           0x000000000801ea4c        0x0
+ .iplt          0x000000000801ea4c        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.rodata         0x000000000801ea48     0x1724
-                0x000000000801ea48                . = ALIGN (0x4)
+.rodata         0x000000000801ea4c     0x1724
+                0x000000000801ea4c                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x000000000801ea48      0x626 ./Application/App/lora_app.o
- *fill*         0x000000000801f06e        0x2 
- .rodata        0x000000000801f070       0x5f ./Application/App/lora_info.o
- *fill*         0x000000000801f0cf        0x1 
- .rodata        0x000000000801f0d0       0x58 ./Application/Core/rtc_if.o
-                0x000000000801f0e8                UTIL_TimerDriver
-                0x000000000801f114                UTIL_SYSTIMDriver
- .rodata        0x000000000801f128       0x18 ./Application/Core/stm32_lpm_if.o
-                0x000000000801f128                UTIL_PowerDriver
- .rodata        0x000000000801f140        0x9 ./Application/Core/sys_app.o
- *fill*         0x000000000801f149        0x3 
- .rodata        0x000000000801f14c       0x10 ./Application/Core/usart_if.o
-                0x000000000801f14c                UTIL_TraceDriver
- .rodata        0x000000000801f15c       0x20 ./Application/Target/b_l072z_lrwan1_bus.o
- .rodata        0x000000000801f17c        0xd ./Drivers/BSP/B-L072Z-LRWAN1/b-l072z-lrwan1.o
-                0x000000000801f17c                LED_PIN
-                0x000000000801f184                BUTTON_PIN
-                0x000000000801f188                BUTTON_IRQn
- *fill*         0x000000000801f189        0x3 
- .rodata        0x000000000801f18c       0x50 ./Drivers/BSP/CMWX1ZZABZ_0xx/cmwx1zzabz_0xx.o
- .rodata        0x000000000801f1dc       0x21 ./Drivers/CMSIS/system_stm32l0xx.o
-                0x000000000801f1dc                AHBPrescTable
-                0x000000000801f1ec                APBPrescTable
-                0x000000000801f1f4                PLLMulTable
- *fill*         0x000000000801f1fd        0x3 
- .rodata        0x000000000801f200       0x48 ./Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart.o
- .rodata        0x000000000801f248      0x300 ./Middlewares/LoRaWAN/Crypto/lorawan_aes.o
- .rodata        0x000000000801f548      0x26a ./Middlewares/LoRaWAN/Crypto/soft-se.o
- *fill*         0x000000000801f7b2        0x2 
- .rodata        0x000000000801f7b4       0xe0 ./Middlewares/LoRaWAN/LmHandler/LmHandler.o
- .rodata        0x000000000801f894       0x3c ./Middlewares/LoRaWAN/LmHandler/LmhpCompliance.o
- .rodata        0x000000000801f8d0      0x1e0 ./Middlewares/LoRaWAN/Mac/LoRaMac.o
- .rodata        0x000000000801fab0       0x60 ./Middlewares/LoRaWAN/Mac/LoRaMacCommands.o
- .rodata        0x000000000801fb10       0xd5 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
- *fill*         0x000000000801fbe5        0x3 
- .rodata        0x000000000801fbe8      0x194 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
- .rodata        0x000000000801fd7c      0x170 ./Middlewares/SubGHz_Phy/sx1276.o
-                0x000000000801fd7c                Radio
-                0x000000000801fde8                RadioRegsInit
-                0x000000000801fe18                FskBandwidths
- .rodata        0x000000000801feec       0x10 ./Utilities/stm32_seq.o
- .rodata        0x000000000801fefc       0xdc ./Utilities/stm32_tiny_vsnprintf.o
- .rodata        0x000000000801ffd8       0x80 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(divsf3.o)
- .rodata        0x0000000008020058       0x40 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(divdf3.o)
- .rodata        0x0000000008020098       0x40 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(muldf3.o)
+ .rodata        0x000000000801ea4c      0x626 ./Application/App/lora_app.o
+ *fill*         0x000000000801f072        0x2 
+ .rodata        0x000000000801f074       0x5f ./Application/App/lora_info.o
+ *fill*         0x000000000801f0d3        0x1 
+ .rodata        0x000000000801f0d4       0x58 ./Application/Core/rtc_if.o
+                0x000000000801f0ec                UTIL_TimerDriver
+                0x000000000801f118                UTIL_SYSTIMDriver
+ .rodata        0x000000000801f12c       0x18 ./Application/Core/stm32_lpm_if.o
+                0x000000000801f12c                UTIL_PowerDriver
+ .rodata        0x000000000801f144        0x9 ./Application/Core/sys_app.o
+ *fill*         0x000000000801f14d        0x3 
+ .rodata        0x000000000801f150       0x10 ./Application/Core/usart_if.o
+                0x000000000801f150                UTIL_TraceDriver
+ .rodata        0x000000000801f160       0x20 ./Application/Target/b_l072z_lrwan1_bus.o
+ .rodata        0x000000000801f180        0xd ./Drivers/BSP/B-L072Z-LRWAN1/b-l072z-lrwan1.o
+                0x000000000801f180                LED_PIN
+                0x000000000801f188                BUTTON_PIN
+                0x000000000801f18c                BUTTON_IRQn
+ *fill*         0x000000000801f18d        0x3 
+ .rodata        0x000000000801f190       0x50 ./Drivers/BSP/CMWX1ZZABZ_0xx/cmwx1zzabz_0xx.o
+ .rodata        0x000000000801f1e0       0x21 ./Drivers/CMSIS/system_stm32l0xx.o
+                0x000000000801f1e0                AHBPrescTable
+                0x000000000801f1f0                APBPrescTable
+                0x000000000801f1f8                PLLMulTable
+ *fill*         0x000000000801f201        0x3 
+ .rodata        0x000000000801f204       0x48 ./Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart.o
+ .rodata        0x000000000801f24c      0x300 ./Middlewares/LoRaWAN/Crypto/lorawan_aes.o
+ .rodata        0x000000000801f54c      0x26a ./Middlewares/LoRaWAN/Crypto/soft-se.o
+ *fill*         0x000000000801f7b6        0x2 
+ .rodata        0x000000000801f7b8       0xe0 ./Middlewares/LoRaWAN/LmHandler/LmHandler.o
+ .rodata        0x000000000801f898       0x3c ./Middlewares/LoRaWAN/LmHandler/LmhpCompliance.o
+ .rodata        0x000000000801f8d4      0x1e0 ./Middlewares/LoRaWAN/Mac/LoRaMac.o
+ .rodata        0x000000000801fab4       0x60 ./Middlewares/LoRaWAN/Mac/LoRaMacCommands.o
+ .rodata        0x000000000801fb14       0xd5 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+ *fill*         0x000000000801fbe9        0x3 
+ .rodata        0x000000000801fbec      0x194 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+ .rodata        0x000000000801fd80      0x170 ./Middlewares/SubGHz_Phy/sx1276.o
+                0x000000000801fd80                Radio
+                0x000000000801fdec                RadioRegsInit
+                0x000000000801fe1c                FskBandwidths
+ .rodata        0x000000000801fef0       0x10 ./Utilities/stm32_seq.o
+ .rodata        0x000000000801ff00       0xdc ./Utilities/stm32_tiny_vsnprintf.o
+ .rodata        0x000000000801ffdc       0x80 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(divsf3.o)
+ .rodata        0x000000000802005c       0x40 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(divdf3.o)
+ .rodata        0x000000000802009c       0x40 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(muldf3.o)
  *(.rodata*)
  .rodata.__sf_fake_stderr
-                0x00000000080200d8       0x20 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-findfp.o)
-                0x00000000080200d8                __sf_fake_stderr
+                0x00000000080200dc       0x20 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-findfp.o)
+                0x00000000080200dc                __sf_fake_stderr
  .rodata.__sf_fake_stdin
-                0x00000000080200f8       0x20 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-findfp.o)
-                0x00000000080200f8                __sf_fake_stdin
+                0x00000000080200fc       0x20 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-findfp.o)
+                0x00000000080200fc                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x0000000008020118       0x20 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-findfp.o)
-                0x0000000008020118                __sf_fake_stdout
+                0x000000000802011c       0x20 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-findfp.o)
+                0x000000000802011c                __sf_fake_stdout
  .rodata._svfprintf_r.str1.1
-                0x0000000008020138       0x11 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-svfprintf.o)
+                0x000000000802013c       0x11 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
-                0x0000000008020149       0x22 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x000000000802016c                . = ALIGN (0x4)
- *fill*         0x000000000802016b        0x1 
+                0x000000000802014d       0x22 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000008020170                . = ALIGN (0x4)
+ *fill*         0x000000000802016f        0x1 
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x000000000802016c        0x8
-                0x000000000802016c                __exidx_start = .
+.ARM            0x0000000008020170        0x8
+                0x0000000008020170                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x000000000802016c        0x8 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(_udivmoddi4.o)
- .ARM.exidx     0x0000000008020174        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0000000008020170        0x8 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x0000000008020178        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(_divdi3.o)
                                           0x8 (size before relaxing)
-                0x0000000008020174                __exidx_end = .
+                0x0000000008020178                __exidx_end = .
 
-.rel.dyn        0x0000000008020174        0x0
- .rel.iplt      0x0000000008020174        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+.rel.dyn        0x0000000008020178        0x0
+ .rel.iplt      0x0000000008020178        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.preinit_array  0x0000000008020174        0x0
-                0x0000000008020174                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0000000008020178        0x0
+                0x0000000008020178                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0000000008020174                PROVIDE (__preinit_array_end = .)
+                0x0000000008020178                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0000000008020174        0x4
-                0x0000000008020174                PROVIDE (__init_array_start = .)
+.init_array     0x0000000008020178        0x4
+                0x0000000008020178                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008020174        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
-                0x0000000008020178                PROVIDE (__init_array_end = .)
+ .init_array    0x0000000008020178        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+                0x000000000802017c                PROVIDE (__init_array_end = .)
 
-.fini_array     0x0000000008020178        0x4
+.fini_array     0x000000000802017c        0x4
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008020178        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+ .fini_array    0x000000000802017c        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x000000000802017c                _sidata = LOADADDR (.data)
+                0x0000000008020180                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x23c load address 0x000000000802017c
+.data           0x0000000020000000      0x23c load address 0x0000000008020180
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -16142,11 +16141,11 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002000023c                . = ALIGN (0x4)
                 0x000000002000023c                _edata = .
 
-.igot.plt       0x000000002000023c        0x0 load address 0x00000000080203b8
+.igot.plt       0x000000002000023c        0x0 load address 0x00000000080203bc
  .igot.plt      0x000000002000023c        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
                 0x000000002000023c                . = ALIGN (0x4)
 
-.bss            0x000000002000023c     0x15a4 load address 0x00000000080203b8
+.bss            0x000000002000023c     0x15a4 load address 0x00000000080203bc
                 0x000000002000023c                _sbss = .
                 0x000000002000023c                __bss_start__ = _sbss
  *(.bss)
@@ -16241,7 +16240,7 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x00000000200017e0                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x00000000200017e0      0x800 load address 0x00000000080203b8
+                0x00000000200017e0      0x800 load address 0x00000000080203bc
                 0x00000000200017e0                . = ALIGN (0x8)
                 0x00000000200017e0                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
@@ -17084,7 +17083,7 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000002230d      0x143 ./Utilities/stm32_tiny_vsnprintf.o
  .debug_macro   0x0000000000022450      0x2aa ./myapp/BMP280/bmp280.o
 
-.debug_line     0x0000000000000000    0x3cf5f
+.debug_line     0x0000000000000000    0x3cf62
  .debug_line    0x0000000000000000      0x74f ./Application/App/app_lorawan.o
  .debug_line    0x000000000000074f     0x1505 ./Application/App/lora_app.o
  .debug_line    0x0000000000001c54      0x95a ./Application/App/lora_info.o
@@ -17142,18 +17141,18 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x00000000000313f9      0x920 ./Middlewares/LoRaWAN/Mac/LoRaMacParser.o
  .debug_line    0x0000000000031d19      0xa2d ./Middlewares/LoRaWAN/Mac/LoRaMacSerializer.o
  .debug_line    0x0000000000032746      0xbef ./Middlewares/LoRaWAN/Mac/Region/Region.o
- .debug_line    0x0000000000033335      0xfc4 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
- .debug_line    0x00000000000342f9     0x1252 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
- .debug_line    0x000000000003554b      0x746 ./Middlewares/LoRaWAN/Utilities/utilities.o
- .debug_line    0x0000000000035c91     0x1f1e ./Middlewares/SubGHz_Phy/sx1276.o
- .debug_line    0x0000000000037baf      0xe7a ./Utilities/stm32_adv_trace.o
- .debug_line    0x0000000000038a29      0x7e3 ./Utilities/stm32_lpm.o
- .debug_line    0x000000000003920c      0x6b9 ./Utilities/stm32_mem.o
- .debug_line    0x00000000000398c5      0xb84 ./Utilities/stm32_seq.o
- .debug_line    0x000000000003a449      0x997 ./Utilities/stm32_systime.o
- .debug_line    0x000000000003ade0      0xb31 ./Utilities/stm32_timer.o
- .debug_line    0x000000000003b911      0x8ac ./Utilities/stm32_tiny_vsnprintf.o
- .debug_line    0x000000000003c1bd      0xda2 ./myapp/BMP280/bmp280.o
+ .debug_line    0x0000000000033335      0xfc7 ./Middlewares/LoRaWAN/Mac/Region/RegionCommon.o
+ .debug_line    0x00000000000342fc     0x1252 ./Middlewares/LoRaWAN/Mac/Region/RegionEU868.o
+ .debug_line    0x000000000003554e      0x746 ./Middlewares/LoRaWAN/Utilities/utilities.o
+ .debug_line    0x0000000000035c94     0x1f1e ./Middlewares/SubGHz_Phy/sx1276.o
+ .debug_line    0x0000000000037bb2      0xe7a ./Utilities/stm32_adv_trace.o
+ .debug_line    0x0000000000038a2c      0x7e3 ./Utilities/stm32_lpm.o
+ .debug_line    0x000000000003920f      0x6b9 ./Utilities/stm32_mem.o
+ .debug_line    0x00000000000398c8      0xb84 ./Utilities/stm32_seq.o
+ .debug_line    0x000000000003a44c      0x997 ./Utilities/stm32_systime.o
+ .debug_line    0x000000000003ade3      0xb31 ./Utilities/stm32_timer.o
+ .debug_line    0x000000000003b914      0x8ac ./Utilities/stm32_tiny_vsnprintf.o
+ .debug_line    0x000000000003c1c0      0xda2 ./myapp/BMP280/bmp280.o
 
 .debug_str      0x0000000000000000    0xb3c76
  .debug_str     0x0000000000000000     0x8182 ./Application/App/app_lorawan.o

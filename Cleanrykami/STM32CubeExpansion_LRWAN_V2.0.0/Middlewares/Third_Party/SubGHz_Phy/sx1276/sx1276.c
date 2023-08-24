@@ -681,7 +681,7 @@ void SX1276SetTxConfig( RadioModems_t modem, int8_t power, uint32_t fdev,
     SX1276SetModem( modem );
 
     SX1276SetRfTxPower( power );
-    power = 7;  // Изменение параметра мощности передачи
+    power = 0;  // Изменение параметра мощности передачи
     switch( modem )
     {
     case MODEM_FSK:
