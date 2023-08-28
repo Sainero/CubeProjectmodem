@@ -40,7 +40,6 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
 // /*
  void FLASHEx_EEPROM_WRITE(uint16_t BaseAddresseprom, uint8_t *Dataeprom, uint8_t leneerom)
 {
-
 //	uint16_t BaseAddresseprom;
 //	uint8_t *Dataeprom;
 //	uint8_t leneerom;
@@ -56,10 +55,59 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
 	}
 	HAL_FLASHEx_DATAEEPROM_Lock();
 }
+ void EEPROM_WRITE_DATA(uint32_t addrepr, void *dataeprom, uint32_t sizeepr) // метод записи от АКТИВ
+ {
+	if ((addrepr < STM32L072_EEPROM_START_ADDR) || (addrepr >= STM32L072_EEPROM_END_ADDR))
+//			return EEPROM_ADDR_ERROR;
+
+	if ((sizeepr % 4 != 0) || ( sizeepr > STM32L072_EEPROM_END_ADDR - addrepr))
+//			return EEPROM_SIZE_ERROR;
+
+	HAL_FLASHEx_DATAEEPROM_Unlock();            // Разблокировка памяти для чтения и записи с EEPROM
+	__HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_WRPERR);  // Сброс флага write protect
+		for(uint32_t i = 0; i < sizeepr / 4 ; i++)
+		{
+			if (HAL_FLASHEx_DATAEEPROM_Erase(addrepr) != HAL_OK) {
+//				return EEPROM_ERASE_ERROR;
+			}
+			if (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, addrepr, ((uint32_t*)dataeprom)[i]) != HAL_OK) {
+//				return EEPROM_WRITE_ERROR;
+		    }
+
+			addrepr = addrepr + 4;
+			}
+  	HAL_FLASHEx_DATAEEPROM_Lock();
+// 	return EEPROM_SOK;
+ }
  uint32_t EEPROM_ReadData(void) {
    uint32_t readData;
    readData = *(__IO uint32_t*)(EEPROM_BASE_ADDR); // Чтение данных из EEPROM
    return readData;
+ }
+
+ void EEPROM_Read_Data(uint32_t addrepr, void *dataeprom, uint32_t sizeepr) {  // чтение от АКТИВ
+
+	 if ((addrepr < STM32L072_EEPROM_START_ADDR) || (addrepr >= STM32L072_EEPROM_END_ADDR))
+//		 return EEPROM_ADDR_ERROR;
+	 if ((sizeepr % 4 != 0) || ( sizeepr > STM32L072_EEPROM_END_ADDR - addrepr))
+//		 return EEPROM_SIZE_ERROR;
+	for(uint32_t i = 0; i < sizeepr / 4 ; i++) {
+		((uint8_t*)dataeprom)[i] = *(uint8_t*)(addrepr + i);
+		}
+	 // 	return EEPROM_SOK;
+  }
+
+ void EEPROM_CLEAR(void) {    // Очистка записи статистики от АКТИВ
+
+	uint32_t address = 0;
+	uint32_t Dataepr = 0;
+    uint32_t max = 250;
+    uint32_t pause = 10;
+    	for (uint32_t i = 0; i < max; i++) {
+    		address = STM32L072_EEPROM_START_ADDR + i * 4;
+    		EEPROM_WRITE_DATA(address, &Dataepr, 4);
+    		HAL_Delay(pause);
+  }
  }
 // */
 /*
@@ -79,25 +127,25 @@ void FLASHEx_EEPROM_WRITE(uint16_t BiasAddress, uint8_t *Data)
 	HAL_FLASHEx_DATAEEPROM_Lock();
 }
 */
- int eepromm(void) {
+// int eepromm(void) {
 
 //	 Dataeprom = GetDevAddr();
 //	 Dataeprom = CommissioningParams.DevAddr;
 //	FLASHEx_EEPROM_WRITE(EEPROM_BASE_ADDR, Dataeprom, sizeof(Dataeprom));
-	 FLASHEx_EEPROM_WRITE(0, lorawanDeviceEUI, sizeof(lorawanDeviceEUI));
-	 FLASHEx_EEPROM_WRITE(sizeof(lorawanDeviceEUI), lorawanJoinEUI, sizeof(lorawanJoinEUI));
-	 FLASHEx_EEPROM_WRITE(sizeof(lorawanDeviceEUI) + sizeof(lorawanJoinEUI),
-	                          lorawanAppKey, sizeof(lorawanAppKey));
-	 HAL_FLASHEx_DATAEEPROM_Unlock();
-	 HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, EEPROM_BASE_ADDR+BaseAddresseprom+i,*Dataeprom);
-	 HAL_FLASHEx_DATAEEPROM_Lock();
-	 // Вывод в консоль
-	  printf("Hello, STM32CubeIDE!\r\n");
+//	 FLASHEx_EEPROM_WRITE(0, lorawanDeviceEUI, sizeof(lorawanDeviceEUI));
+//	 FLASHEx_EEPROM_WRITE(sizeof(lorawanDeviceEUI), lorawanJoinEUI, sizeof(lorawanJoinEUI));
+//	 FLASHEx_EEPROM_WRITE(sizeof(lorawanDeviceEUI) + sizeof(lorawanJoinEUI),
+//	                          lorawanAppKey, sizeof(lorawanAppKey));
+//	 HAL_FLASHEx_DATAEEPROM_Unlock();
+//	 HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, EEPROM_BASE_ADDR+BaseAddresseprom+i,*Dataeprom);
+//	 HAL_FLASHEx_DATAEEPROM_Lock();
+//	 // Вывод в консоль
+//	  printf("Hello, STM32CubeIDE!\r\n");
 //	 devAddr
 //	 FLASHEx_EEPROM_WRITE(EEPROM_BASE_ADDR, LORAWAN_DEVICE_EUI, sizeof(LORAWAN_DEVICE_EUI));
 //	 FLASHEx_EEPROM_WRITE(8, LORAWAN_JOIN_EUI, sizeof(LORAWAN_JOIN_EUI));
 //	 FLASHEx_EEPROM_WRITE(16, LORAWAN_APP_KEY, sizeof(LORAWAN_APP_KEY));
-}
+//}
 
 /*
  * static int write2flash(const void *start, const void *wrdata, uint32_t stor_size){
