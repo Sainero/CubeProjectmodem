@@ -430,8 +430,8 @@ static void OnRxData(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
       uint8_t dataToWrite[] = {0x01, 0x02, 0x03}; // Пример данных для записи
       uint8_t dataSize = sizeof(dataToWrite); // Размер данных
 
-      FLASHEx_EEPROM_WRITE(STM32L072_EEPROM_START_ADDR, dataeprom, sizeepr);
-      HAL_Delay(1000);
+//      FLASHEx_EEPROM_WRITE(STM32L072_EEPROM_START_ADDR, dataeprom, sizeepr);
+//      HAL_Delay(1000);
 //    FLASHEx_EEPROM_WRITE(0, params->DownlinkCounter, sizeof(params->DownlinkCounter));
 //      dataeprom = dataToWrite;
 //      EEPROM_CLEAR();
