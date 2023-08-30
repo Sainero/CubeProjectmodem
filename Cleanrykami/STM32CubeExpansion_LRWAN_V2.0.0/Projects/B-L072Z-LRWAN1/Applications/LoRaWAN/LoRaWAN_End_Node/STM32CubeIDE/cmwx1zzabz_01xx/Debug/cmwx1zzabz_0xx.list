@@ -17,29 +17,29 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   6 .data         0000023c  20000000  0802011c  00040000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .bss          000015b0  2000023c  08020358  0004023c  2**2
+  7 .bss          000015a4  2000023c  08020358  0004023c  2**2
                   ALLOC
-  8 ._user_heap_stack 00000804  200017ec  08020358  000417ec  2**0
+  8 ._user_heap_stack 00000800  200017e0  08020358  000417e0  2**0
                   ALLOC
   9 .ARM.attributes 00000028  00000000  00000000  0004023c  2**0
                   CONTENTS, READONLY
- 10 .debug_info   000563bb  00000000  00000000  00040264  2**0
+ 10 .debug_info   00056373  00000000  00000000  00040264  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 11 .debug_abbrev 0000a8cc  00000000  00000000  0009661f  2**0
+ 11 .debug_abbrev 0000a8b9  00000000  00000000  000965d7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 12 .debug_aranges 00002b18  00000000  00000000  000a0ef0  2**3
+ 12 .debug_aranges 00002b18  00000000  00000000  000a0e90  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_ranges 00002730  00000000  00000000  000a3a08  2**3
+ 13 .debug_ranges 00002730  00000000  00000000  000a39a8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_macro  0002270c  00000000  00000000  000a6138  2**0
+ 14 .debug_macro  00022712  00000000  00000000  000a60d8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_line   0003cf5f  00000000  00000000  000c8844  2**0
+ 15 .debug_line   0003cf5f  00000000  00000000  000c87ea  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_str    000b3cf9  00000000  00000000  001057a3  2**0
+ 16 .debug_str    000b3cef  00000000  00000000  00105749  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .comment      00000053  00000000  00000000  001b949c  2**0
+ 17 .comment      00000053  00000000  00000000  001b9438  2**0
                   CONTENTS, READONLY
- 18 .debug_frame  00009e90  00000000  00000000  001b94f0  2**2
+ 18 .debug_frame  00009e90  00000000  00000000  001b948c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -6299,7 +6299,7 @@ static void OnRxData(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
  8003126:	18fb      	adds	r3, r7, r3
  8003128:	2203      	movs	r2, #3
  800312a:	701a      	strb	r2, [r3, #0]
-//      HAL_Delay(1000);
+//      FLASHEx_EEPROM_WRITE(eepromBaseAddress, dataToWrite, dataSize);
 //    FLASHEx_EEPROM_WRITE(0, params->DownlinkCounter, sizeof(params->DownlinkCounter));
 //      dataeprom = dataToWrite;
 //      EEPROM_CLEAR();
@@ -6950,21 +6950,21 @@ static void SendTxData(void)
  8003516:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8003518:	fffffe96 	.word	0xfffffe96
  800351c:	20000000 	.word	0x20000000
- 8003520:	20001474 	.word	0x20001474
- 8003524:	20001594 	.word	0x20001594
- 8003528:	20001568 	.word	0x20001568
- 800352c:	200013b8 	.word	0x200013b8
- 8003530:	20001404 	.word	0x20001404
- 8003534:	20001470 	.word	0x20001470
- 8003538:	200013b4 	.word	0x200013b4
- 800353c:	2000150c 	.word	0x2000150c
- 8003540:	20001464 	.word	0x20001464
- 8003544:	200014cc 	.word	0x200014cc
+ 8003520:	20001468 	.word	0x20001468
+ 8003524:	20001588 	.word	0x20001588
+ 8003528:	2000155c 	.word	0x2000155c
+ 800352c:	200013b0 	.word	0x200013b0
+ 8003530:	200013fc 	.word	0x200013fc
+ 8003534:	20001464 	.word	0x20001464
+ 8003538:	200013ac 	.word	0x200013ac
+ 800353c:	20001500 	.word	0x20001500
+ 8003540:	2000145c 	.word	0x2000145c
+ 8003544:	200014c0 	.word	0x200014c0
  8003548:	0801eb48 	.word	0x0801eb48
- 800354c:	200015a0 	.word	0x200015a0
+ 800354c:	20001594 	.word	0x20001594
  8003550:	0801eb54 	.word	0x0801eb54
- 8003554:	2000159c 	.word	0x2000159c
- 8003558:	20001358 	.word	0x20001358
+ 8003554:	20001590 	.word	0x20001590
+ 8003558:	20001352 	.word	0x20001352
  800355c:	200003ac 	.word	0x200003ac
  8003560:	0801eb8c 	.word	0x0801eb8c
  8003564:	0801ec28 	.word	0x0801ec28
@@ -6972,8 +6972,8 @@ static void SendTxData(void)
  800356c:	41f00000 	.word	0x41f00000
  8003570:	0801ecb0 	.word	0x0801ecb0
  8003574:	0801ed00 	.word	0x0801ed00
- 8003578:	200014c8 	.word	0x200014c8
- 800357c:	2000146c 	.word	0x2000146c
+ 8003578:	200014bc 	.word	0x200014bc
+ 800357c:	20001460 	.word	0x20001460
  8003580:	0801ed34 	.word	0x0801ed34
  8003584:	0801edd0 	.word	0x0801edd0
  8003588:	0801ee10 	.word	0x0801ee10
@@ -7357,7 +7357,7 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
  800378a:	46bd      	mov	sp, r7
  800378c:	bd80      	pop	{r7, pc}
  800378e:	46c0      	nop			; (mov r8, r8)
- 8003790:	20001474 	.word	0x20001474
+ 8003790:	20001468 	.word	0x20001468
  8003794:	40007c00 	.word	0x40007c00
  8003798:	0000ffff 	.word	0x0000ffff
 
@@ -7692,7 +7692,7 @@ void MX_ADC_Init(void)
  800393a:	46bd      	mov	sp, r7
  800393c:	bd80      	pop	{r7, pc}
  800393e:	46c0      	nop			; (mov r8, r8)
- 8003940:	20001408 	.word	0x20001408
+ 8003940:	20001400 	.word	0x20001400
  8003944:	40012400 	.word	0x40012400
 
 08003948 <HAL_ADC_MspInit>:
@@ -7846,7 +7846,7 @@ void SYS_InitMeasurement(void)
  8003a0a:	46c0      	nop			; (mov r8, r8)
  8003a0c:	46bd      	mov	sp, r7
  8003a0e:	bd80      	pop	{r7, pc}
- 8003a10:	20001408 	.word	0x20001408
+ 8003a10:	20001400 	.word	0x20001400
  8003a14:	40012400 	.word	0x40012400
 
 08003a18 <SYS_GetTemperatureLevel>:
@@ -8161,7 +8161,7 @@ static uint32_t ADC_ReadChannels(uint32_t channel)
  8003bd6:	bd90      	pop	{r4, r7, pc}
  8003bd8:	40007000 	.word	0x40007000
  8003bdc:	40021000 	.word	0x40021000
- 8003be0:	20001408 	.word	0x20001408
+ 8003be0:	20001400 	.word	0x20001400
  8003be4:	0007ffff 	.word	0x0007ffff
  8003be8:	00001001 	.word	0x00001001
  8003bec:	fffffdff 	.word	0xfffffdff
@@ -8678,7 +8678,7 @@ void MX_RTC_Init(void)
  8003ea6:	b010      	add	sp, #64	; 0x40
  8003ea8:	bd80      	pop	{r7, pc}
  8003eaa:	46c0      	nop			; (mov r8, r8)
- 8003eac:	200014a4 	.word	0x200014a4
+ 8003eac:	20001498 	.word	0x20001498
  8003eb0:	40002800 	.word	0x40002800
  8003eb4:	000003ff 	.word	0x000003ff
 
@@ -8875,7 +8875,7 @@ UTIL_TIMER_Status_t RTC_IF_Init(void)
  8003fac:	bd80      	pop	{r7, pc}
  8003fae:	46c0      	nop			; (mov r8, r8)
  8003fb0:	200003c0 	.word	0x200003c0
- 8003fb4:	200014a4 	.word	0x200014a4
+ 8003fb4:	20001498 	.word	0x20001498
 
 08003fb8 <RTC_IF_StartTimer>:
 
@@ -8976,7 +8976,7 @@ UTIL_TIMER_Status_t RTC_IF_StopTimer(void)
  8004042:	46bd      	mov	sp, r7
  8004044:	bd80      	pop	{r7, pc}
  8004046:	46c0      	nop			; (mov r8, r8)
- 8004048:	200014a4 	.word	0x200014a4
+ 8004048:	20001498 	.word	0x20001498
  800404c:	fffffe7f 	.word	0xfffffe7f
 
 08004050 <RTC_IF_SetTimerContext>:
@@ -9347,7 +9347,7 @@ void RTC_IF_BkUp_Write_Seconds(uint32_t Seconds)
  800425a:	46bd      	mov	sp, r7
  800425c:	b002      	add	sp, #8
  800425e:	bd80      	pop	{r7, pc}
- 8004260:	200014a4 	.word	0x200014a4
+ 8004260:	20001498 	.word	0x20001498
 
 08004264 <RTC_IF_BkUp_Write_SubSeconds>:
 
@@ -9368,7 +9368,7 @@ void RTC_IF_BkUp_Write_SubSeconds(uint32_t SubSeconds)
  800427a:	46bd      	mov	sp, r7
  800427c:	b002      	add	sp, #8
  800427e:	bd80      	pop	{r7, pc}
- 8004280:	200014a4 	.word	0x200014a4
+ 8004280:	20001498 	.word	0x20001498
 
 08004284 <RTC_IF_BkUp_Read_Seconds>:
 
@@ -9387,7 +9387,7 @@ uint32_t RTC_IF_BkUp_Read_Seconds(void)
  8004296:	46bd      	mov	sp, r7
  8004298:	bd80      	pop	{r7, pc}
  800429a:	46c0      	nop			; (mov r8, r8)
- 800429c:	200014a4 	.word	0x200014a4
+ 800429c:	20001498 	.word	0x20001498
 
 080042a0 <RTC_IF_BkUp_Read_SubSeconds>:
 
@@ -9406,7 +9406,7 @@ uint32_t RTC_IF_BkUp_Read_SubSeconds(void)
  80042b2:	46bd      	mov	sp, r7
  80042b4:	bd80      	pop	{r7, pc}
  80042b6:	46c0      	nop			; (mov r8, r8)
- 80042b8:	200014a4 	.word	0x200014a4
+ 80042b8:	20001498 	.word	0x20001498
 
 080042bc <RTC_StartWakeUpAlarm>:
  * @note  alarm in RtcTimerContext.Rtc_Time + timeoutValue
@@ -9866,7 +9866,7 @@ static void RTC_StartWakeUpAlarm(uint32_t timeoutValue)
  8004578:	0801f0dc 	.word	0x0801f0dc
  800457c:	0801f0d0 	.word	0x0801f0d0
  8004580:	200003c4 	.word	0x200003c4
- 8004584:	200014a4 	.word	0x200014a4
+ 8004584:	20001498 	.word	0x20001498
 
 08004588 <RTC_GetCalendarValue>:
   * @param pointer to RTC_DateStruct
@@ -10052,7 +10052,7 @@ static uint32_t RTC_GetCalendarValue(RTC_DateTypeDef *RTC_DateStruct, RTC_TimeTy
  800469e:	46bd      	mov	sp, r7
  80046a0:	b006      	add	sp, #24
  80046a2:	bd80      	pop	{r7, pc}
- 80046a4:	200014a4 	.word	0x200014a4
+ 80046a4:	20001498 	.word	0x20001498
  80046a8:	40002800 	.word	0x40002800
  80046ac:	000005b5 	.word	0x000005b5
  80046b0:	00445550 	.word	0x00445550
@@ -10155,7 +10155,7 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
  8004712:	46bd      	mov	sp, r7
  8004714:	b004      	add	sp, #16
  8004716:	bd80      	pop	{r7, pc}
- 8004718:	20001408 	.word	0x20001408
+ 8004718:	20001400 	.word	0x20001400
  800471c:	40007000 	.word	0x40007000
 
 08004720 <PWR_ExitStopMode>:
@@ -11703,8 +11703,8 @@ void EXTI0_1_IRQHandler(void)
  8004dea:	46bd      	mov	sp, r7
  8004dec:	bd80      	pop	{r7, pc}
  8004dee:	46c0      	nop			; (mov r8, r8)
- 8004df0:	20001704 	.word	0x20001704
- 8004df4:	200016fc 	.word	0x200016fc
+ 8004df0:	200016f8 	.word	0x200016f8
+ 8004df4:	200016f0 	.word	0x200016f0
 
 08004df8 <EXTI2_3_IRQHandler>:
 
@@ -11746,8 +11746,8 @@ void EXTI4_15_IRQHandler(void)
  8004e1a:	46bd      	mov	sp, r7
  8004e1c:	bd80      	pop	{r7, pc}
  8004e1e:	46c0      	nop			; (mov r8, r8)
- 8004e20:	200016f4 	.word	0x200016f4
- 8004e24:	2000170c 	.word	0x2000170c
+ 8004e20:	200016e8 	.word	0x200016e8
+ 8004e24:	20001700 	.word	0x20001700
 
 08004e28 <DMA1_Channel4_5_6_7_IRQHandler>:
 
@@ -11770,7 +11770,7 @@ void DMA1_Channel4_5_6_7_IRQHandler(void)
  8004e36:	46c0      	nop			; (mov r8, r8)
  8004e38:	46bd      	mov	sp, r7
  8004e3a:	bd80      	pop	{r7, pc}
- 8004e3c:	2000166c 	.word	0x2000166c
+ 8004e3c:	20001660 	.word	0x20001660
 
 08004e40 <USART2_IRQHandler>:
 
@@ -11796,7 +11796,7 @@ void USART2_IRQHandler(void)
  8004e4e:	46bd      	mov	sp, r7
  8004e50:	bd80      	pop	{r7, pc}
  8004e52:	46c0      	nop			; (mov r8, r8)
- 8004e54:	2000166c 	.word	0x2000166c
+ 8004e54:	20001660 	.word	0x20001660
 
 08004e58 <LPTIM1_IRQHandler>:
 /**
@@ -11821,7 +11821,7 @@ void LPTIM1_IRQHandler(void)// New
  8004e66:	46bd      	mov	sp, r7
  8004e68:	bd80      	pop	{r7, pc}
  8004e6a:	46c0      	nop			; (mov r8, r8)
- 8004e6c:	20001474 	.word	0x20001474
+ 8004e6c:	20001468 	.word	0x20001468
 
 08004e70 <RTC_IRQHandler>:
 /*}*/
@@ -11847,7 +11847,7 @@ void RTC_IRQHandler(void)
  8004e7e:	46bd      	mov	sp, r7
  8004e80:	bd80      	pop	{r7, pc}
  8004e82:	46c0      	nop			; (mov r8, r8)
- 8004e84:	200014a4 	.word	0x200014a4
+ 8004e84:	20001498 	.word	0x20001498
 
 08004e88 <SystemApp_Init>:
   * @brief initialises the system (dbg pins, trace, mbmux, systiemr, LPM, ...)
@@ -12830,7 +12830,7 @@ void MX_USART2_Init(void)
  80053b2:	46bd      	mov	sp, r7
  80053b4:	bd80      	pop	{r7, pc}
  80053b6:	46c0      	nop			; (mov r8, r8)
- 80053b8:	2000166c 	.word	0x2000166c
+ 80053b8:	20001660 	.word	0x20001660
  80053bc:	40004400 	.word	0x40004400
 
 080053c0 <HAL_UART_MspInit>:
@@ -13109,7 +13109,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *uartHandle)
  800554a:	46c0      	nop			; (mov r8, r8)
  800554c:	40004400 	.word	0x40004400
  8005550:	40021000 	.word	0x40021000
- 8005554:	20001624 	.word	0x20001624
+ 8005554:	20001618 	.word	0x20001618
  8005558:	40020080 	.word	0x40020080
 
 0800555c <HAL_UART_MspDeInit>:
@@ -13262,7 +13262,7 @@ UTIL_ADV_TRACE_Status_t vcom_DeInit(void)
  8005602:	bd80      	pop	{r7, pc}
  8005604:	40021000 	.word	0x40021000
  8005608:	fffdffff 	.word	0xfffdffff
- 800560c:	2000166c 	.word	0x2000166c
+ 800560c:	20001660 	.word	0x20001660
 
 08005610 <vcom_Trace_DMA>:
 
@@ -13299,7 +13299,7 @@ UTIL_ADV_TRACE_Status_t vcom_Trace_DMA(uint8_t *p_data, uint16_t size)
  8005632:	b002      	add	sp, #8
  8005634:	bd80      	pop	{r7, pc}
  8005636:	46c0      	nop			; (mov r8, r8)
- 8005638:	2000166c 	.word	0x2000166c
+ 8005638:	20001660 	.word	0x20001660
 
 0800563c <vcom_ReceiveInit>:
 
@@ -13399,8 +13399,8 @@ UTIL_ADV_TRACE_Status_t vcom_ReceiveInit(void (*RxCb)(uint8_t *rxChar, uint16_t 
  80056b8:	b004      	add	sp, #16
  80056ba:	bd80      	pop	{r7, pc}
  80056bc:	2000040c 	.word	0x2000040c
- 80056c0:	2000166c 	.word	0x2000166c
- 80056c4:	200016f0 	.word	0x200016f0
+ 80056c0:	20001660 	.word	0x20001660
+ 80056c4:	200016e4 	.word	0x200016e4
 
 080056c8 <HAL_UART_TxCpltCallback>:
 
@@ -13475,7 +13475,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
  800571c:	bd80      	pop	{r7, pc}
  800571e:	46c0      	nop			; (mov r8, r8)
  8005720:	2000040c 	.word	0x2000040c
- 8005724:	200016f0 	.word	0x200016f0
+ 8005724:	200016e4 	.word	0x200016e4
 
 08005728 <Reset_Handler>:
 
@@ -13572,7 +13572,7 @@ LoopForever:
   ldr r2, =_sbss
  8005770:	2000023c 	.word	0x2000023c
   ldr r4, =_ebss
- 8005774:	200017ec 	.word	0x200017ec
+ 8005774:	200017e0 	.word	0x200017e0
 
 08005778 <ADC1_COMP_IRQHandler>:
  * @retval : None
@@ -13651,7 +13651,7 @@ caddr_t _sbrk(int incr)
  80057c8:	b004      	add	sp, #16
  80057ca:	bd80      	pop	{r7, pc}
  80057cc:	20000414 	.word	0x20000414
- 80057d0:	200017f0 	.word	0x200017f0
+ 80057d0:	200017e0 	.word	0x200017e0
 
 080057d4 <BSP_SPI1_Init>:
   * @brief  Initializes SPI HAL.
@@ -13710,7 +13710,7 @@ int32_t BSP_SPI1_Init(void)
  800580e:	46bd      	mov	sp, r7
  8005810:	b002      	add	sp, #8
  8005812:	bd80      	pop	{r7, pc}
- 8005814:	20001510 	.word	0x20001510
+ 8005814:	20001504 	.word	0x20001504
  8005818:	40013000 	.word	0x40013000
 
 0800581c <BSP_SPI1_SendRecv>:
@@ -13759,7 +13759,7 @@ int32_t BSP_SPI1_SendRecv(uint8_t *pTxData, uint8_t *pRxData, uint16_t len)
  8005856:	b007      	add	sp, #28
  8005858:	bd90      	pop	{r4, r7, pc}
  800585a:	46c0      	nop			; (mov r8, r8)
- 800585c:	20001510 	.word	0x20001510
+ 800585c:	20001504 	.word	0x20001504
 
 08005860 <MX_SPI1_Init>:
 }
@@ -14122,7 +14122,7 @@ int32_t BSP_I2C1_Init(void)
  8005a36:	46bd      	mov	sp, r7
  8005a38:	b002      	add	sp, #8
  8005a3a:	bd80      	pop	{r7, pc}
- 8005a3c:	200013b8 	.word	0x200013b8
+ 8005a3c:	200013b0 	.word	0x200013b0
  8005a40:	40005400 	.word	0x40005400
  8005a44:	20000418 	.word	0x20000418
 
@@ -15386,7 +15386,7 @@ void CMWX1ZZABZ0XX_RADIO_IoIrqInit(DioIrqHandler **irqHandlers)
  800620a:	b006      	add	sp, #24
  800620c:	bd80      	pop	{r7, pc}
  800620e:	46c0      	nop			; (mov r8, r8)
- 8006210:	200016f4 	.word	0x200016f4
+ 8006210:	200016e8 	.word	0x200016e8
  8006214:	0801f18c 	.word	0x0801f18c
  8006218:	0801f1ac 	.word	0x0801f1ac
  800621c:	0801f19c 	.word	0x0801f19c
@@ -16117,7 +16117,7 @@ __weak void HAL_IncTick(void)
  8006600:	bd80      	pop	{r7, pc}
  8006602:	46c0      	nop			; (mov r8, r8)
  8006604:	20000078 	.word	0x20000078
- 8006608:	20001714 	.word	0x20001714
+ 8006608:	20001708 	.word	0x20001708
 
 0800660c <HAL_GetUIDw0>:
 /**
@@ -41353,7 +41353,7 @@ static void OnRadioTxDone( void )
  800f156:	b002      	add	sp, #8
  800f158:	bdb0      	pop	{r4, r5, r7, pc}
  800f15a:	46c0      	nop			; (mov r8, r8)
- 800f15c:	20001718 	.word	0x20001718
+ 800f15c:	2000170c 	.word	0x2000170c
  800f160:	200005b8 	.word	0x200005b8
  800f164:	20000be8 	.word	0x20000be8
 
@@ -41440,7 +41440,7 @@ static void OnRadioRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t
  800f1e6:	46bd      	mov	sp, r7
  800f1e8:	b004      	add	sp, #16
  800f1ea:	bdb0      	pop	{r4, r5, r7, pc}
- 800f1ec:	2000171c 	.word	0x2000171c
+ 800f1ec:	20001710 	.word	0x20001710
  800f1f0:	20000be8 	.word	0x20000be8
  800f1f4:	200005b8 	.word	0x200005b8
 
@@ -41846,7 +41846,7 @@ static void ProcessRadioTxDone( void )
  800f478:	20000950 	.word	0x20000950
  800f47c:	00000414 	.word	0x00000414
  800f480:	200009b0 	.word	0x200009b0
- 800f484:	20001718 	.word	0x20001718
+ 800f484:	2000170c 	.word	0x2000170c
  800f488:	00000415 	.word	0x00000415
  800f48c:	0000043d 	.word	0x0000043d
 
@@ -42476,7 +42476,7 @@ static void ProcessRadioRxDone( void )
  800f86e:	f005 fd9b 	bl	80153a8 <LoRaMacConfirmQueueSetStatus>
             break;
  800f872:	e345      	b.n	800ff00 <ProcessRadioRxDone+0xa18>
- 800f874:	2000171c 	.word	0x2000171c
+ 800f874:	20001710 	.word	0x20001710
  800f878:	200005b8 	.word	0x200005b8
  800f87c:	00000484 	.word	0x00000484
  800f880:	0000042a 	.word	0x0000042a
@@ -47376,7 +47376,7 @@ static void ProcessMacCommands( uint8_t *payload, uint8_t macIndex, uint8_t comm
  801174e:	46c0      	nop			; (mov r8, r8)
  8011750:	12d53d80 	.word	0x12d53d80
  8011754:	200005b8 	.word	0x200005b8
- 8011758:	2000171c 	.word	0x2000171c
+ 8011758:	20001710 	.word	0x20001710
 
 0801175c <Send>:
 
@@ -69856,12 +69856,12 @@ uint32_t SX1276Init( RadioEvents_t *events )
  80197ae:	bd90      	pop	{r4, r7, pc}
  80197b0:	20000e80 	.word	0x20000e80
  80197b4:	0801b519 	.word	0x0801b519
- 80197b8:	2000172c 	.word	0x2000172c
- 80197bc:	200017c4 	.word	0x200017c4
- 80197c0:	20001744 	.word	0x20001744
+ 80197b8:	20001720 	.word	0x20001720
+ 80197bc:	200017b8 	.word	0x200017b8
+ 80197c0:	20001738 	.word	0x20001738
  80197c4:	200001b0 	.word	0x200001b0
  80197c8:	0801fde8 	.word	0x0801fde8
- 80197cc:	2000175c 	.word	0x2000175c
+ 80197cc:	20001750 	.word	0x20001750
 
 080197d0 <SX1276GetStatus>:
 
@@ -69877,7 +69877,7 @@ RadioState_t SX1276GetStatus( void )
  80197da:	46bd      	mov	sp, r7
  80197dc:	bd80      	pop	{r7, pc}
  80197de:	46c0      	nop			; (mov r8, r8)
- 80197e0:	2000175c 	.word	0x2000175c
+ 80197e0:	20001750 	.word	0x20001750
 
 080197e4 <SX1276SetChannel>:
 
@@ -69952,7 +69952,7 @@ void SX1276SetChannel( uint32_t freq )
  801985e:	b007      	add	sp, #28
  8019860:	bd90      	pop	{r4, r7, pc}
  8019862:	46c0      	nop			; (mov r8, r8)
- 8019864:	2000175c 	.word	0x2000175c
+ 8019864:	20001750 	.word	0x20001750
  8019868:	00003d09 	.word	0x00003d09
  801986c:	00001e84 	.word	0x00001e84
 
@@ -70759,7 +70759,7 @@ static void RxChainCalibration( void )
  8019db6:	2101      	movs	r1, #1
  8019db8:	5499      	strb	r1, [r3, r2]
  8019dba:	e00d      	b.n	8019dd8 <SX1276SetRxConfig+0x34c>
- 8019dbc:	2000175c 	.word	0x2000175c
+ 8019dbc:	20001750 	.word	0x20001750
  8019dc0:	3ff00000 	.word	0x3ff00000
  8019dc4:	40200000 	.word	0x40200000
  8019dc8:	408f4000 	.word	0x408f4000
@@ -71024,7 +71024,7 @@ static void RxChainCalibration( void )
  8019faa:	bc80      	pop	{r7}
  8019fac:	46b8      	mov	r8, r7
  8019fae:	bdf0      	pop	{r4, r5, r6, r7, pc}
- 8019fb0:	2000175c 	.word	0x2000175c
+ 8019fb0:	20001750 	.word	0x20001750
  8019fb4:	1f4add40 	.word	0x1f4add40
 
 08019fb8 <SX1276SetTxConfig>:
@@ -71459,7 +71459,7 @@ void SX1276SetTxConfig( RadioModems_t modem, int8_t power, uint32_t fdev,
  801a2ae:	2101      	movs	r1, #1
  801a2b0:	5499      	strb	r1, [r3, r2]
  801a2b2:	e009      	b.n	801a2c8 <SX1276SetTxConfig+0x310>
- 801a2b4:	2000175c 	.word	0x2000175c
+ 801a2b4:	20001750 	.word	0x20001750
  801a2b8:	404e8480 	.word	0x404e8480
  801a2bc:	417e8480 	.word	0x417e8480
                 SX1276.Settings.LoRa.LowDatarateOptimize = 0x00;
@@ -71668,7 +71668,7 @@ void SX1276SetTxConfig( RadioModems_t modem, int8_t power, uint32_t fdev,
  801a436:	bc80      	pop	{r7}
  801a438:	46b8      	mov	r8, r7
  801a43a:	bdf0      	pop	{r4, r5, r6, r7, pc}
- 801a43c:	2000175c 	.word	0x2000175c
+ 801a43c:	20001750 	.word	0x20001750
 
 0801a440 <SX1276GetTimeOnAir>:
 
@@ -72043,7 +72043,7 @@ void SX1276Send( uint8_t *buffer, uint8_t size )
  801a67e:	b004      	add	sp, #16
  801a680:	bd80      	pop	{r7, pc}
  801a682:	46c0      	nop			; (mov r8, r8)
- 801a684:	2000175c 	.word	0x2000175c
+ 801a684:	20001750 	.word	0x20001750
  801a688:	20000e84 	.word	0x20000e84
 
 0801a68c <SX1276SetRfTxPower>:
@@ -72410,7 +72410,7 @@ static void SX1276SetRfTxPower( int8_t power )
  801a8a6:	46bd      	mov	sp, r7
  801a8a8:	b005      	add	sp, #20
  801a8aa:	bdf0      	pop	{r4, r5, r6, r7, pc}
- 801a8ac:	2000175c 	.word	0x2000175c
+ 801a8ac:	20001750 	.word	0x20001750
 
 0801a8b0 <SX1276SetSleep>:
 
@@ -72449,10 +72449,10 @@ void SX1276SetSleep( void )
  801a8de:	46c0      	nop			; (mov r8, r8)
  801a8e0:	46bd      	mov	sp, r7
  801a8e2:	bd80      	pop	{r7, pc}
- 801a8e4:	200017c4 	.word	0x200017c4
- 801a8e8:	2000172c 	.word	0x2000172c
- 801a8ec:	20001744 	.word	0x20001744
- 801a8f0:	2000175c 	.word	0x2000175c
+ 801a8e4:	200017b8 	.word	0x200017b8
+ 801a8e8:	20001720 	.word	0x20001720
+ 801a8ec:	20001738 	.word	0x20001738
+ 801a8f0:	20001750 	.word	0x20001750
 
 0801a8f4 <SX1276SetStby>:
 
@@ -72485,10 +72485,10 @@ void SX1276SetStby( void )
  801a91e:	46bd      	mov	sp, r7
  801a920:	bd80      	pop	{r7, pc}
  801a922:	46c0      	nop			; (mov r8, r8)
- 801a924:	200017c4 	.word	0x200017c4
- 801a928:	2000172c 	.word	0x2000172c
- 801a92c:	20001744 	.word	0x20001744
- 801a930:	2000175c 	.word	0x2000175c
+ 801a924:	200017b8 	.word	0x200017b8
+ 801a928:	20001720 	.word	0x20001720
+ 801a92c:	20001738 	.word	0x20001738
+ 801a930:	20001750 	.word	0x20001750
 
 0801a934 <SX1276SetRx>:
 
@@ -72979,8 +72979,8 @@ void SX1276SetRx( uint32_t timeout )
  801ac2a:	b004      	add	sp, #16
  801ac2c:	bd80      	pop	{r7, pc}
  801ac2e:	46c0      	nop			; (mov r8, r8)
- 801ac30:	2000172c 	.word	0x2000172c
- 801ac34:	2000175c 	.word	0x2000175c
+ 801ac30:	20001720 	.word	0x20001720
+ 801ac34:	20001750 	.word	0x20001750
  801ac38:	0801fec8 	.word	0x0801fec8
  801ac3c:	00001e82 	.word	0x00001e82
  801ac40:	000028b4 	.word	0x000028b4
@@ -72989,8 +72989,8 @@ void SX1276SetRx( uint32_t timeout )
  801ac4c:	00007a12 	.word	0x00007a12
  801ac50:	0000a2c6 	.word	0x0000a2c6
  801ac54:	20000e84 	.word	0x20000e84
- 801ac58:	200017c4 	.word	0x200017c4
- 801ac5c:	20001744 	.word	0x20001744
+ 801ac58:	200017b8 	.word	0x200017b8
+ 801ac5c:	20001738 	.word	0x20001738
 
 0801ac60 <SX1276SetTx>:
 
@@ -73145,9 +73145,9 @@ static void SX1276SetTx( uint32_t timeout )
  801ad46:	46bd      	mov	sp, r7
  801ad48:	b002      	add	sp, #8
  801ad4a:	bd80      	pop	{r7, pc}
- 801ad4c:	200017c4 	.word	0x200017c4
- 801ad50:	2000172c 	.word	0x2000172c
- 801ad54:	2000175c 	.word	0x2000175c
+ 801ad4c:	200017b8 	.word	0x200017b8
+ 801ad50:	20001720 	.word	0x20001720
+ 801ad54:	20001750 	.word	0x20001750
 
 0801ad58 <SX1276StartCad>:
 
@@ -73202,7 +73202,7 @@ void SX1276StartCad( void )
  801ad9e:	46bd      	mov	sp, r7
  801ada0:	bd80      	pop	{r7, pc}
  801ada2:	46c0      	nop			; (mov r8, r8)
- 801ada4:	2000175c 	.word	0x2000175c
+ 801ada4:	20001750 	.word	0x20001750
 
 0801ada8 <SX1276SetTxContinuousWave>:
 
@@ -73310,8 +73310,8 @@ void SX1276SetTxContinuousWave( uint32_t freq, int8_t power, uint16_t time )
  801ae5e:	b004      	add	sp, #16
  801ae60:	bd80      	pop	{r7, pc}
  801ae62:	46c0      	nop			; (mov r8, r8)
- 801ae64:	2000172c 	.word	0x2000172c
- 801ae68:	2000175c 	.word	0x2000175c
+ 801ae64:	20001720 	.word	0x20001720
+ 801ae68:	20001750 	.word	0x20001750
 
 0801ae6c <SX1276ReadRssi>:
 
@@ -73411,7 +73411,7 @@ int16_t SX1276ReadRssi( RadioModems_t modem )
  801aef6:	b004      	add	sp, #16
  801aef8:	bd80      	pop	{r7, pc}
  801aefa:	46c0      	nop			; (mov r8, r8)
- 801aefc:	2000175c 	.word	0x2000175c
+ 801aefc:	20001750 	.word	0x20001750
  801af00:	1f4add40 	.word	0x1f4add40
 
 0801af04 <SX1276Reset>:
@@ -73669,7 +73669,7 @@ void SX1276SetModem( RadioModems_t modem )
  801b096:	b002      	add	sp, #8
  801b098:	bd80      	pop	{r7, pc}
  801b09a:	46c0      	nop			; (mov r8, r8)
- 801b09c:	2000175c 	.word	0x2000175c
+ 801b09c:	20001750 	.word	0x20001750
 
 0801b0a0 <SX1276Write>:
 
@@ -73971,7 +73971,7 @@ void SX1276SetMaxPayloadLength( RadioModems_t modem, uint8_t max )
  801b25a:	46bd      	mov	sp, r7
  801b25c:	b002      	add	sp, #8
  801b25e:	bd80      	pop	{r7, pc}
- 801b260:	2000175c 	.word	0x2000175c
+ 801b260:	20001750 	.word	0x20001750
 
 0801b264 <SX1276SetPublicNetwork>:
 
@@ -74020,7 +74020,7 @@ void SX1276SetPublicNetwork( bool enable )
  801b29e:	b002      	add	sp, #8
  801b2a0:	bd80      	pop	{r7, pc}
  801b2a2:	46c0      	nop			; (mov r8, r8)
- 801b2a4:	2000175c 	.word	0x2000175c
+ 801b2a4:	20001750 	.word	0x20001750
 
 0801b2a8 <SX1276GetWakeupTime>:
 
@@ -74664,8 +74664,8 @@ static void SX1276OnTimeoutIrq( void* context )
  801b65a:	46bd      	mov	sp, r7
  801b65c:	b005      	add	sp, #20
  801b65e:	bd90      	pop	{r4, r7, pc}
- 801b660:	2000175c 	.word	0x2000175c
- 801b664:	20001744 	.word	0x20001744
+ 801b660:	20001750 	.word	0x20001750
+ 801b664:	20001738 	.word	0x20001738
  801b668:	20000e80 	.word	0x20000e80
  801b66c:	0801fde8 	.word	0x0801fde8
 
@@ -75120,11 +75120,11 @@ static void SX1276OnDio0Irq( void )
  801b986:	2262      	movs	r2, #98	; 0x62
  801b988:	5299      	strh	r1, [r3, r2]
  801b98a:	e01d      	b.n	801b9c8 <SX1276OnDio0Irq+0x358>
- 801b98c:	2000175c 	.word	0x2000175c
- 801b990:	200017c4 	.word	0x200017c4
- 801b994:	20001744 	.word	0x20001744
+ 801b98c:	20001750 	.word	0x20001750
+ 801b990:	200017b8 	.word	0x200017b8
+ 801b994:	20001738 	.word	0x20001738
  801b998:	20000e80 	.word	0x20000e80
- 801b99c:	20001796 	.word	0x20001796
+ 801b99c:	2000178a 	.word	0x2000178a
  801b9a0:	20000e84 	.word	0x20000e84
  801b9a4:	1f4add40 	.word	0x1f4add40
                             SX1276.Settings.LoRaPacketHandler.RssiValue = RSSI_OFFSET_LF + rssi + ( rssi >> 4 );
@@ -75261,11 +75261,11 @@ static void SX1276OnDio0Irq( void )
  801ba8e:	46bd      	mov	sp, r7
  801ba90:	b003      	add	sp, #12
  801ba92:	bd90      	pop	{r4, r7, pc}
- 801ba94:	2000175c 	.word	0x2000175c
+ 801ba94:	20001750 	.word	0x20001750
  801ba98:	20000e84 	.word	0x20000e84
- 801ba9c:	200017c4 	.word	0x200017c4
+ 801ba9c:	200017b8 	.word	0x200017b8
  801baa0:	20000e80 	.word	0x20000e80
- 801baa4:	2000172c 	.word	0x2000172c
+ 801baa4:	20001720 	.word	0x20001720
 
 0801baa8 <SX1276OnDio1Irq>:
 
@@ -75526,11 +75526,11 @@ static void SX1276OnDio1Irq( void )
  801bc5a:	46c0      	nop			; (mov r8, r8)
  801bc5c:	46bd      	mov	sp, r7
  801bc5e:	bd80      	pop	{r7, pc}
- 801bc60:	2000175c 	.word	0x2000175c
- 801bc64:	20001744 	.word	0x20001744
- 801bc68:	20001796 	.word	0x20001796
+ 801bc60:	20001750 	.word	0x20001750
+ 801bc64:	20001738 	.word	0x20001738
+ 801bc68:	2000178a 	.word	0x2000178a
  801bc6c:	20000e84 	.word	0x20000e84
- 801bc70:	200017c4 	.word	0x200017c4
+ 801bc70:	200017b8 	.word	0x200017b8
  801bc74:	20000e80 	.word	0x20000e80
 
 0801bc78 <SX1276OnDio2Irq>:
@@ -75762,8 +75762,8 @@ static void SX1276OnDio2Irq( void )
  801bdf2:	46bd      	mov	sp, r7
  801bdf4:	b005      	add	sp, #20
  801bdf6:	bd90      	pop	{r4, r7, pc}
- 801bdf8:	2000175c 	.word	0x2000175c
- 801bdfc:	20001744 	.word	0x20001744
+ 801bdf8:	20001750 	.word	0x20001750
+ 801bdfc:	20001738 	.word	0x20001738
  801be00:	20000e80 	.word	0x20000e80
 
 0801be04 <SX1276OnDio3Irq>:
@@ -75849,7 +75849,7 @@ static void SX1276OnDio3Irq( void )
  801be7a:	46c0      	nop			; (mov r8, r8)
  801be7c:	46bd      	mov	sp, r7
  801be7e:	bd80      	pop	{r7, pc}
- 801be80:	2000175c 	.word	0x2000175c
+ 801be80:	20001750 	.word	0x20001750
  801be84:	20000e80 	.word	0x20000e80
 
 0801be88 <SX1276OnDio4Irq>:
@@ -75896,7 +75896,7 @@ static void SX1276OnDio4Irq( void )
  801beb6:	46bd      	mov	sp, r7
  801beb8:	bd80      	pop	{r7, pc}
  801beba:	46c0      	nop			; (mov r8, r8)
- 801bebc:	2000175c 	.word	0x2000175c
+ 801bebc:	20001750 	.word	0x20001750
 
 0801bec0 <UTIL_ADV_TRACE_Init>:
 
@@ -82798,7 +82798,7 @@ bool bmp280_read_float(BMP280_HandleTypedef *dev, float *temperature, float *pre
  801e8de:	6023      	str	r3, [r4, #0]
  801e8e0:	bd70      	pop	{r4, r5, r6, pc}
  801e8e2:	46c0      	nop			; (mov r8, r8)
- 801e8e4:	200017dc 	.word	0x200017dc
+ 801e8e4:	200017d0 	.word	0x200017d0
 
 0801e8e8 <__malloc_lock>:
  801e8e8:	b510      	push	{r4, lr}
@@ -82806,7 +82806,7 @@ bool bmp280_read_float(BMP280_HandleTypedef *dev, float *temperature, float *pre
  801e8ec:	f000 f814 	bl	801e918 <__retarget_lock_acquire_recursive>
  801e8f0:	bd10      	pop	{r4, pc}
  801e8f2:	46c0      	nop			; (mov r8, r8)
- 801e8f4:	200017e4 	.word	0x200017e4
+ 801e8f4:	200017d8 	.word	0x200017d8
 
 0801e8f8 <__malloc_unlock>:
  801e8f8:	b510      	push	{r4, lr}
@@ -82814,7 +82814,7 @@ bool bmp280_read_float(BMP280_HandleTypedef *dev, float *temperature, float *pre
  801e8fc:	f000 f80d 	bl	801e91a <__retarget_lock_release_recursive>
  801e900:	bd10      	pop	{r4, pc}
  801e902:	46c0      	nop			; (mov r8, r8)
- 801e904:	200017e4 	.word	0x200017e4
+ 801e904:	200017d8 	.word	0x200017d8
 
 0801e908 <_malloc_usable_size_r>:
  801e908:	1f0b      	subs	r3, r1, #4
