@@ -185,6 +185,7 @@ typedef enum
 {
   SUCCESS = 0,
   ERROR = !SUCCESS
+//  EEPROM_ADDR_ERROR = !SUCCESS
 } ErrorStatus;
 
 /**

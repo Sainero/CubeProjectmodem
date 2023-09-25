@@ -26,6 +26,7 @@
 #include "stdio.h"
 #include "bmp280.h"
 #include "stm32_timer.h"
+#include "epromm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,7 +117,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_LoRaWAN_Init();
   /* USER CODE BEGIN 2 */
-
+//  FLASHEx_EEPROM_WRITE(STM32L072_EEPROM_START_ADDR, dataeprom, sizeepr);
   /* bmp280_init_default_params(&bmp280.params);
       	bmp280.addr = BMP280_I2C_ADDRESS_0;
       	bmp280.i2c = &hi2c1;
@@ -129,6 +130,49 @@ int main(void)
       	   		size = sprintf((char *)Data, "BMP280: found %s\n", bme280p ? "BME280" : "BMP280");
       	 	HAL_UART_Transmit(&husart2, Data, size, 1000);
       	 	*/
+  //      uint16_t eepromBaseAddress = 0x08080000; // Пример адреса EEPROM
+  	  #define eepromBaseAddress 0x08080000UL
+        uint8_t dataToWrite[] = {0x01, 0x02, 0x03}; // Пример данных для записи
+        uint8_t dataToWrite1 = 10; // Пример данных для записи
+        uint8_t dataSize = sizeof(dataToWrite1); // Размер данных
+//        dataeprom = dataToWrite;
+//        FLASHEx_EEPROM_WRITE(STM32L072_EEPROM_START_ADDR, dataToWrite, dataSize);
+  //      HAL_Delay(1000);
+//        EEPROM_CLEAR();
+//        EEPROM_WRITE_DATA(STM32L072_EEPROM_START_ADDR, dataToWrite1, dataSize);
+  //    FLASHEx_EEPROM_WRITE(0, params->DownlinkCounter, sizeof(params->DownlinkCounter));
+  //      dataeprom = dataToWrite;
+        EEPROM_CLEAR();      // возможный вариант
+        EEPROM_WRITE_DATA(eepromBaseAddress, dataToWrite1, dataSize); // возможный вариант
+        uint8_t datareadepr = 0; // Прочитанные данные
+//        EEPROM_ReadData();
+        uint8_t datareadeprerror = 2; // Буфер ошибки
+        EEPROM_Read_Data(eepromBaseAddress, datareadepr, dataSize); //  возможный вариант
+//        datareadepr =  EEPROM_ReadData();
+//        datareadepr = EEPROM_Read_Data();
+//        memcmp(datareadepr,dataToWrite);
+         if (datareadepr == dataToWrite1)
+        {
+        	datareadeprerror = 100;
+        }
+        else {
+            // Прочитанные данные не соответствуют записанным данным
+            // Выполняйте необходимые действия здесь
+//               printf("Ошибка при записи или чтении данных из EEPROM\n");
+            datareadeprerror =  0;
+        }
+//        int isEqual = memcmp(dataToWrite1, datareadepr, dataSize);
+//        if (isEqual == 0) {
+//               // Прочитанные данные равны записанным данным
+//               // Выполняйте необходимые действия здесь
+////               printf("Данные успешно записаны и прочитаны из EEPROM\n");
+//              datareadeprerror ++;
+//           } else {
+//               // Прочитанные данные не соответствуют записанным данным
+//               // Выполняйте необходимые действия здесь
+////               printf("Ошибка при записи или чтении данных из EEPROM\n");
+//               datareadeprerror --;
+
 
   /* USER CODE END 2 */
 
@@ -144,7 +188,7 @@ int main(void)
     MX_LoRaWAN_Process();
 
     /* USER CODE BEGIN 3 */
-
+//    EEPROM_WRITE_DATA(eepromBaseAddress, dataToWrite1, dataSize);
     // HAL_PWR_EnterSLEEPMode(PWR_LOWPOWERREGULATOR_ON, PWR_SLEEPENTRY_WFI);
     // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
     //  HAL_PWR_EnterSTANDBYMode();

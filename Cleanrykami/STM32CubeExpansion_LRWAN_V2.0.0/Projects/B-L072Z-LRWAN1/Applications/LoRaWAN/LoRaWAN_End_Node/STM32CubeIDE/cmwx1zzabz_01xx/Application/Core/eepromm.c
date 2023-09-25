@@ -59,9 +59,10 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
  {
 	if ((addrepr < STM32L072_EEPROM_START_ADDR) || (addrepr >= STM32L072_EEPROM_END_ADDR))
 //			return EEPROM_ADDR_ERROR;
-
+//		return;
 	if ((sizeepr % 4 != 0) || ( sizeepr > STM32L072_EEPROM_END_ADDR - addrepr))
 //			return EEPROM_SIZE_ERROR;
+//		return;
 
 	HAL_FLASHEx_DATAEEPROM_Unlock();            // Разблокировка памяти для чтения и записи с EEPROM
 	__HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_WRPERR);  // Сброс флага write protect
@@ -69,9 +70,11 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
 		{
 			if (HAL_FLASHEx_DATAEEPROM_Erase(addrepr) != HAL_OK) {
 //				return EEPROM_ERASE_ERROR;
+//				return;
 			}
 			if (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, addrepr, ((uint32_t*)dataeprom)[i]) != HAL_OK) {
 //				return EEPROM_WRITE_ERROR;
+//				return;
 		    }
 
 			addrepr = addrepr + 4;
@@ -89,10 +92,16 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
 
 	 if ((addrepr < STM32L072_EEPROM_START_ADDR) || (addrepr >= STM32L072_EEPROM_END_ADDR))
 //		 return EEPROM_ADDR_ERROR;
+		  printf("Ошибка записи по адресу из EEPROM\n");
+//	 	 return;
 	 if ((sizeepr % 4 != 0) || ( sizeepr > STM32L072_EEPROM_END_ADDR - addrepr))
 //		 return EEPROM_SIZE_ERROR;
+		  printf("Ошибка размера данных из EEPROM\n");
+//	 	 return;
 	for(uint32_t i = 0; i < sizeepr / 4 ; i++) {
 		((uint8_t*)dataeprom)[i] = *(uint8_t*)(addrepr + i);
+		  printf("Данные успешно записаны и прочитаны из EEPROM\n");
+//		  return;
 		}
 	 // 	return EEPROM_SOK;
   }

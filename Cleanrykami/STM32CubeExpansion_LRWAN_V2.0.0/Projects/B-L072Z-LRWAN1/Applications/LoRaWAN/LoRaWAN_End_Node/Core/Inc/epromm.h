@@ -15,6 +15,10 @@
 #include "stm32l0xx_hal_flash_ex.h"
 #include "stm32l0xx_hal_flash.h"
 /* USER CODE BEGIN Private defines */
+#define EEPROM_ADDR_ERROR 0xFFFFFFFF // Произвольное значение ошибки
+#define EEPROM_SIZE_ERROR 0xAAAAAAAA // Произвольное значение ошибки
+
+
 #define EEPROM_BASE_ADDR 0x08080000UL
 #define DATA_EEPROM_ADDR1_END  (0x08080B00UL)
 #define DATA_EEPROM_BANK1_END  (0x08080BFFUL) /*!< Program end DATA EEPROM BANK1 address */
@@ -35,6 +39,12 @@ void *dataeprom;
 //uint32_t dataeprom;
 /* USER CODE BEGIN Prototypes */
 uint32_t sizeepr;
+//typedef enum
+//{
+//
+//  SUCCESS = 0,
+//  EEPROM_ADDR_ERROR = !SUCCESS
+//} ErrorcustomStatus;
 /* USER CODE END Prototypes */
 
 

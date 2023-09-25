@@ -16,7 +16,7 @@
 **
 **  Target      : STMicroelectronics STM32
 **
-**  Distribution: The file is distributed “as is,” without any warranty
+**  Distribution: The file is distributed вЂњas is,вЂќ without any warranty
 **                of any kind.
 **
 *****************************************************************************
@@ -63,6 +63,7 @@ MEMORY
 {
 FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 192K
 RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 20K
+EEPROM (rwx)      : ORIGIN = 0x08080000, LENGTH = 2K
 }
 
 /* Define output sections */
@@ -172,7 +173,15 @@ SECTIONS
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
   } >RAM
+	.data_eeprom :
+{
+  *(.eeprom_data)
+} > FLASH
 
+	.bss_eeprom :
+{
+  *(.eeprom_bss)
+} > FLASH
   
 
   /* Remove information from the standard libraries */
