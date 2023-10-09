@@ -92,9 +92,9 @@ extern "C" {
 #define STATIC_DEVICE_EUI                                  0
 
 /*!
- * end-device IEEE EUI (big endian)
+ * end-device IEEE EUI (big endian) // 0080E10101010102   0080E10101321231   37:30:38:32:7E:30:7F:12
  */
-#define LORAWAN_DEVICE_EUI                                 { 0x00, 0x80, 0xE1, 0x01, 0x01, 0x01, 0x01, 0x01 }
+#define LORAWAN_DEVICE_EUI                                 { 0x37, 0x30, 0x38, 0x32, 0x7E, 0x30, 0x7F, 0x14 }
 
 /*!
  * App/Join server IEEE EUI (big endian)

@@ -252,7 +252,7 @@ HTS221_Object_t hts221;
 HTS221_Capabilities_t Capabilities;
 ADC_HandleTypeDef hadc1;
 float pressure1, temperature1, humidity1;
-int16_t pressureint, temperatureint, numberdev, per;// номер устройста и период добавил
+int16_t pressureint, temperatureint, numberdev, per; modelnum, FirmwareVersion ;// номер устройста и период добавил
 int32_t humidityint, temperaturei, humidityi, pressurei;
 int16_t chargebattery = 0;
 //int32_t temp_decimal = temperaturei % 100; // Получаем 2-ю цифру после запятой
@@ -331,9 +331,11 @@ void LoRaWAN_Init(void)
   if (EventType == TX_ON_TIMER)
   {
     /* send every time timer elapses */
-
+ uint32_t APPTXDUTYCYCLE; // Для конфигурации периода передачи только нужно добавить в EEPROM
+ APPTXDUTYCYCLE = 10000; // Для конфигурации периода передачи
     UTIL_TIMER_Create(&TxTimer,  0xFFFFFFFFU, UTIL_TIMER_ONESHOT, OnTxTimerEvent, NULL);
-    UTIL_TIMER_SetPeriod(&TxTimer,  APP_TX_DUTYCYCLE);
+//    UTIL_TIMER_SetPeriod(&TxTimer,  APP_TX_DUTYCYCLE);
+    UTIL_TIMER_SetPeriod(&TxTimer,  APPTXDUTYCYCLE);
     //  HAL_PWR_EnterSLEEPMode(PWR_LOWPOWERREGULATOR_ON, PWR_SLEEPENTRY_WFI);
     //  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
     //HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI); // NEW
@@ -677,9 +679,11 @@ static void SendTxData(void)
 //    	     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Accident ====\r\n");
     	       		 APP_LOG(TS_OFF, VLEVEL_M, " < Отклонение от нормы > \r\n");
     	   }
+    	 modelnum = 1;
+    	 // EEPROMWRITE modelnum
     	 numberdev = 0x01;  // new 0b00010001
     	 per = 0xA; // new
-
+         FirmwareVersion = 1.1;
 
   // bool bme280p = bmp280.id == BME280_CHIP_ID;
  // size = (temperature1, pressure1, humidity1);
@@ -920,12 +924,13 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
       if (joinParams->Mode == ACTIVATION_TYPE_OTAA)
       {
 //        APP_LOG(TS_OFF, VLEVEL_M, "ABP ======================\r\n");
-        APP_LOG(TS_OFF, VLEVEL_M, " Активация по персонализации  \r\n");
+    	  APP_LOG(TS_OFF, VLEVEL_M, " Активация по воздуху  \r\n");
+
       }
       else
       {
 //        APP_LOG(TS_OFF, VLEVEL_M, "OTAA =====================\r\n");
-        APP_LOG(TS_OFF, VLEVEL_M, " Активация по воздуху  \r\n");
+    	  APP_LOG(TS_OFF, VLEVEL_M, " Активация по персонализации  \r\n");
       }
     }
     else

@@ -378,8 +378,10 @@ LmHandlerErrorStatus_t LmHandlerConfigure(LmHandlerParams_t *handlerParams)
     LoRaMacMibGetRequestConfirm(&mibReq);
     memcpy1(CommissioningParams.JoinEui, mibReq.Param.JoinEui, 8);
   }
-//  MW_LOG(TS_OFF, VLEVEL_M, "###### DevEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
-//         HEX8(CommissioningParams.DevEui));
+  MW_LOG(TS_OFF, VLEVEL_M, "###### DevEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
+         HEX8(CommissioningParams.DevEui));
+
+  MW_LOG(TS_OFF, VLEVEL_M, "###### DevAddr:   %08X\r\n", CommissioningParams.DevAddr);
 //  MW_LOG(TS_OFF, VLEVEL_M, "###### AppEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
 //         HEX8(CommissioningParams.JoinEui));
     //size =  sprintf ((char *)Daata,"###### AppEui:  %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\r\n",
