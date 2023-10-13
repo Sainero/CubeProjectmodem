@@ -31,14 +31,16 @@
 uint32_t EEPROM_ReadData(void);
 /* USER CODE END Private defines */
 //void MX_DMA_Init(void);
-void FLASHEx_EEPROM_WRITE(uint16_t BaseAddresseprom, uint8_t *Dataeprom, uint8_t leneerom);
-void EEPROM_WRITE_DATA(uint32_t addrepr, void *dataeprom, uint32_t sizeepr);
+//void FLASHEx_EEPROM_WRITE(uint16_t BaseAddresseprom, uint8_t *Dataeprom, uint8_t leneerom);
+//void EEPROM_WRITE_DATA(uint32_t addrepr, void *dataeprom, uint32_t sizeepr);
+void EEPROM_WRITE_DATA();
 void EEPROM_CLEAR();
-void EEPROM_Read_Data(uint32_t addrepr, void *dataeprom, uint32_t sizeepr);
-void *dataeprom;
+void EEPROM_Read_Data();
+//void EEPROM_Read_Data(uint32_t addrepr, void *DataEprom, uint32_t SizeEpr);
+//void *dataeprom;
 //uint32_t dataeprom;
 /* USER CODE BEGIN Prototypes */
-uint32_t sizeepr;
+//uint32_t sizeepr;
 //typedef enum
 //{
 //

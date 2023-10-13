@@ -240,21 +240,22 @@ static UTIL_TIMER_Object_t JoinLedTimer;
 //BMP280_HandleTypedef bmp280;
 BMP280_HandleTypedef bmp280;
 //UART_HandleTypeDef huart2;
-RTC_HandleTypeDef hrtc;
+//RTC_HandleTypeDef hrtc;
 //UART_HandleTypeDef husart2;
 UART_HandleTypeDef husart1;
-I2C_HandleTypeDef hi2c1;
-SPI_HandleTypeDef hspi1;
+//I2C_HandleTypeDef hi2c1;
+//SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2; ///// Для HTS если вдруг понадобится
-LPTIM_HandleTypeDef hlptim1;
+//LPTIM_HandleTypeDef hlptim1;
 union hts221_reg_t;
 HTS221_Object_t hts221;
 HTS221_Capabilities_t Capabilities;
-ADC_HandleTypeDef hadc1;
+//ADC_HandleTypeDef hadc1;
 float pressure1, temperature1, humidity1;
 int16_t pressureint, temperatureint, numberdev, per; modelnum, FirmwareVersion ;// номер устройста и период добавил
 int32_t humidityint, temperaturei, humidityi, pressurei;
 int16_t chargebattery = 0;
+
 //int32_t temp_decimal = temperaturei % 100; // Получаем 2-ю цифру после запятой
 /* USER CODE END PV */
 
@@ -582,7 +583,7 @@ static void SendTxData(void)
   MX_ADC_Init();
   MX_LPTIM1_Init();
 
-  HAL_LPTIM_Encoder_Start_IT(&hlptim1, 1000);
+//  HAL_LPTIM_Encoder_Start_IT(&hlptim1, 1000);
   // MX_USART1_Init();
   //MX_LPTIM1_Init();
   // calendarValue;
@@ -1008,57 +1009,57 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
   /* USER CODE BEGIN LPTIM1_Init 1 */
 
   /* USER CODE END LPTIM1_Init 1 */
-	  hlptim1.Instance = LPTIM1;
-	  hlptim1.Init.Clock.Source = LPTIM_CLOCKSOURCE_APBCLOCK_LPOSC;
-	  hlptim1.Init.Clock.Prescaler = LPTIM_PRESCALER_DIV1;
-	  hlptim1.Init.UltraLowPowerClock.Polarity = LPTIM_CLOCKPOLARITY_RISING;
-	  hlptim1.Init.UltraLowPowerClock.SampleTime = LPTIM_CLOCKSAMPLETIME_DIRECTTRANSITION;
-	  hlptim1.Init.Trigger.Source = LPTIM_TRIGSOURCE_SOFTWARE;
-	  hlptim1.Init.OutputPolarity = LPTIM_OUTPUTPOLARITY_HIGH;
-	  hlptim1.Init.UpdateMode = LPTIM_UPDATE_IMMEDIATE;
-	  hlptim1.Init.CounterSource = LPTIM_COUNTERSOURCE_EXTERNAL;
-  if (HAL_LPTIM_Init(&hlptim1) != HAL_OK)
-  {
-    Error_Handler();
-  }
+//	  hlptim1.Instance = LPTIM1;
+//	  hlptim1.Init.Clock.Source = LPTIM_CLOCKSOURCE_APBCLOCK_LPOSC;
+//	  hlptim1.Init.Clock.Prescaler = LPTIM_PRESCALER_DIV1;
+//	  hlptim1.Init.UltraLowPowerClock.Polarity = LPTIM_CLOCKPOLARITY_RISING;
+//	  hlptim1.Init.UltraLowPowerClock.SampleTime = LPTIM_CLOCKSAMPLETIME_DIRECTTRANSITION;
+//	  hlptim1.Init.Trigger.Source = LPTIM_TRIGSOURCE_SOFTWARE;
+//	  hlptim1.Init.OutputPolarity = LPTIM_OUTPUTPOLARITY_HIGH;
+//	  hlptim1.Init.UpdateMode = LPTIM_UPDATE_IMMEDIATE;
+//	  hlptim1.Init.CounterSource = LPTIM_COUNTERSOURCE_EXTERNAL;
+//  if (HAL_LPTIM_Init(&hlptim1) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
   /*
   /* USER CODE BEGIN LPTIM1_Init 2 */
 
   /* USER CODE END LPTIM1_Init 2 */
 
 }
-  void HAL_LPTIM_MspInit(LPTIM_HandleTypeDef* hlptim)
-  {
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-    if(hlptim->Instance==LPTIM1)
-    {
-    /* USER CODE BEGIN LPTIM1_MspInit 0 */
-
-    /* USER CODE END LPTIM1_MspInit 0 */
-      /* Peripheral clock enable */
-      __HAL_RCC_LPTIM1_CLK_ENABLE();
-
-      __HAL_RCC_GPIOB_CLK_ENABLE();
+//  void HAL_LPTIM_MspInit(LPTIM_HandleTypeDef* hlptim)
+//  {
+//    GPIO_InitTypeDef GPIO_InitStruct = {0};
+//    if(hlptim->Instance==LPTIM1)
+//    {
+//    /* USER CODE BEGIN LPTIM1_MspInit 0 */
+//
+//    /* USER CODE END LPTIM1_MspInit 0 */
+//      /* Peripheral clock enable */
+//      __HAL_RCC_LPTIM1_CLK_ENABLE();
+//
+//      __HAL_RCC_GPIOB_CLK_ENABLE();
       /**LPTIM1 GPIO Configuration
       PB5     ------> LPTIM1_IN1
       PB7     ------> LPTIM1_IN2
       */
-      GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_7;
-      GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-      GPIO_InitStruct.Pull = GPIO_NOPULL;
-      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-      GPIO_InitStruct.Alternate = GPIO_AF2_LPTIM1;
-      HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-      /* LPTIM1 interrupt Init */
-      HAL_NVIC_SetPriority(LPTIM1_IRQn, 0, 0);
-      HAL_NVIC_EnableIRQ(LPTIM1_IRQn);
+//      GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_7;
+//      GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+//      GPIO_InitStruct.Pull = GPIO_NOPULL;
+//      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+//      GPIO_InitStruct.Alternate = GPIO_AF2_LPTIM1;
+//      HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//      /* LPTIM1 interrupt Init */
+//      HAL_NVIC_SetPriority(LPTIM1_IRQn, 0, 0);
+//      HAL_NVIC_EnableIRQ(LPTIM1_IRQn);
     /* USER CODE BEGIN LPTIM1_MspInit 1 */
 
     /* USER CODE END LPTIM1_MspInit 1 */
-    }
-
-  }
+//    }
+//
+//  }
 
   /**
   * @brief LPTIM MSP De-Initialization
@@ -1066,30 +1067,30 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
   * @param hlptim: LPTIM handle pointer
   * @retval None
   */
-  void HAL_LPTIM_MspDeInit(LPTIM_HandleTypeDef* hlptim)
-  {
-    if(hlptim->Instance==LPTIM1)
-    {
-    /* USER CODE BEGIN LPTIM1_MspDeInit 0 */
-
-    /* USER CODE END LPTIM1_MspDeInit 0 */
-      /* Peripheral clock disable */
-      __HAL_RCC_LPTIM1_CLK_DISABLE();
-
-      /**LPTIM1 GPIO Configuration
-      PB5     ------> LPTIM1_IN1
-      PB7     ------> LPTIM1_IN2
-      */
-      HAL_GPIO_DeInit(GPIOB, GPIO_PIN_5|GPIO_PIN_7);
-
-      /* LPTIM1 interrupt DeInit */
-      HAL_NVIC_DisableIRQ(LPTIM1_IRQn);
-    /* USER CODE BEGIN LPTIM1_MspDeInit 1 */
-
-    /* USER CODE END LPTIM1_MspDeInit 1 */
-    }
-
-  }
+//  void HAL_LPTIM_MspDeInit(LPTIM_HandleTypeDef* hlptim)
+//  {
+//    if(hlptim->Instance==LPTIM1)
+//    {
+//    /* USER CODE BEGIN LPTIM1_MspDeInit 0 */
+//
+//    /* USER CODE END LPTIM1_MspDeInit 0 */
+//      /* Peripheral clock disable */
+//      __HAL_RCC_LPTIM1_CLK_DISABLE();
+//
+//      /**LPTIM1 GPIO Configuration
+//      PB5     ------> LPTIM1_IN1
+//      PB7     ------> LPTIM1_IN2
+//      */
+//      HAL_GPIO_DeInit(GPIOB, GPIO_PIN_5|GPIO_PIN_7);
+//
+//      /* LPTIM1 interrupt DeInit */
+//      HAL_NVIC_DisableIRQ(LPTIM1_IRQn);
+//    /* USER CODE BEGIN LPTIM1_MspDeInit 1 */
+//
+//    /* USER CODE END LPTIM1_MspDeInit 1 */
+//    }
+//
+//  }
 
 static void OnMacProcessNotify(void)
 {

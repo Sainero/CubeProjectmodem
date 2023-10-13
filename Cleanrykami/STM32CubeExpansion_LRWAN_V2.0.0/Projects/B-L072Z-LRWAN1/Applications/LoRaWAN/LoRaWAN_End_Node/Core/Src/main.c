@@ -26,7 +26,7 @@
 #include "stdio.h"
 #include "bmp280.h"
 #include "stm32_timer.h"
-#include "epromm.h"
+//#include "epromm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -142,12 +142,12 @@ int main(void)
 //        EEPROM_WRITE_DATA(STM32L072_EEPROM_START_ADDR, dataToWrite1, dataSize);
   //    FLASHEx_EEPROM_WRITE(0, params->DownlinkCounter, sizeof(params->DownlinkCounter));
   //      dataeprom = dataToWrite;
-        EEPROM_CLEAR();      // возможный вариант
-        EEPROM_WRITE_DATA(eepromBaseAddress, dataToWrite1, dataSize); // возможный вариант
+//        EEPROM_CLEAR();      // возможный вариант
+//        EEPROM_WRITE_DATA(eepromBaseAddress, dataToWrite1, dataSize); // возможный вариант
         uint8_t datareadepr = 0; // Прочитанные данные
 //        EEPROM_ReadData();
         uint8_t datareadeprerror = 2; // Буфер ошибки
-        EEPROM_Read_Data(eepromBaseAddress, datareadepr, dataSize); //  возможный вариант
+//        EEPROM_Read_Data(eepromBaseAddress, datareadepr, dataSize); //  возможный вариант
 //        datareadepr =  EEPROM_ReadData();
 //        datareadepr = EEPROM_Read_Data();
 //        memcmp(datareadepr,dataToWrite);

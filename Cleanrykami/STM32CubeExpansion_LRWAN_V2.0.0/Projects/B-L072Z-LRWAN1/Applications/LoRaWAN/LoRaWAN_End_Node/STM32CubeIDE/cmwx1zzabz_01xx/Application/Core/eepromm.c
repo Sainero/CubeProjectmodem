@@ -55,7 +55,7 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
 	}
 	HAL_FLASHEx_DATAEEPROM_Lock();
 }
- void EEPROM_WRITE_DATA(uint32_t addrepr, void *dataeprom, uint32_t sizeepr) // метод записи от АКТИВ
+ void EEPROM_WRITE_DATA(uint32_t addrepr, void *DataEprom, uint32_t sizeepr) // метод записи от АКТИВ
  {
 	if ((addrepr < STM32L072_EEPROM_START_ADDR) || (addrepr >= STM32L072_EEPROM_END_ADDR))
 //			return EEPROM_ADDR_ERROR;
@@ -72,7 +72,7 @@ uint8_t lorawanAppKey[16] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,0x99
 //				return EEPROM_ERASE_ERROR;
 //				return;
 			}
-			if (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, addrepr, ((uint32_t*)dataeprom)[i]) != HAL_OK) {
+			if (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, addrepr, ((uint32_t*)DataEprom)[i]) != HAL_OK) {
 //				return EEPROM_WRITE_ERROR;
 //				return;
 		    }
