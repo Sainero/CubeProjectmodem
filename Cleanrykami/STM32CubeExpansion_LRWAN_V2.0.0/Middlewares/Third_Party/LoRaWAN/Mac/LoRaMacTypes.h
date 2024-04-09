@@ -182,7 +182,7 @@ typedef enum eKeyIdentifier
      * Network root key
      */
     NWK_KEY,
-#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )  // for connect 1.1v
     /*!
      * Join session integrity key
      */
@@ -203,12 +203,12 @@ typedef enum eKeyIdentifier
      * Network session encryption key
      */
     NWK_S_ENC_KEY,
-#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */ // for connect 1.1v
     /*!
      * Network session key
      */
     NWK_S_KEY,    
-#endif /* USE_LRWAN_1_1_X_CRYPTO */
+#endif /* USE_LRWAN_1_1_X_CRYPTO */  // for connect 1.1v
     /*!
      * Application session key
      */

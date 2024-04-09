@@ -407,26 +407,26 @@ SecureElementStatus_t SecureElementInit(SecureElementNvmEvent seNvmCtxChanged)
   memcpy1((uint8_t *)(SeNvmCtx.KeyList), (const uint8_t *)InitialKeyList, sizeof(Key_t)*NUM_OF_KEYS);
 
   retval = GetKeyByID(APP_KEY, &keyItem);
-  KEY_LOG(TS_OFF, VLEVEL_M, "###### OTAA ######\r\n");
+  KEY_LOG(TS_OFF, VLEVEL_M, "# Ключи для активации по OTAA \r\n");
   if (retval == SECURE_ELEMENT_SUCCESS)
   {
-    KEY_LOG(TS_OFF, VLEVEL_M, "###### AppKey:  %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
+    KEY_LOG(TS_OFF, VLEVEL_M, "# AppKey:  %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
   }
   retval = GetKeyByID(NWK_KEY, &keyItem);
   if (retval == SECURE_ELEMENT_SUCCESS)
   {
-    KEY_LOG(TS_OFF, VLEVEL_M, "###### NwkKey:  %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
+    KEY_LOG(TS_OFF, VLEVEL_M, "# NwkKey:  %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
   }
-  KEY_LOG(TS_OFF, VLEVEL_M, "###### ABP  ######\r\n");
+//  KEY_LOG(TS_OFF, VLEVEL_M, "# Ключи для активации по ABP \r\n");
   retval = GetKeyByID(APP_S_KEY, &keyItem);
   if (retval == SECURE_ELEMENT_SUCCESS)
   {
-    KEY_LOG(TS_OFF, VLEVEL_M, "###### AppSKey: %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
+//    KEY_LOG(TS_OFF, VLEVEL_M, "# AppSKey: %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
   }
   retval = GetKeyByID(NWK_S_KEY, &keyItem);
   if (retval == SECURE_ELEMENT_SUCCESS)
   {
-    KEY_LOG(TS_OFF, VLEVEL_M, "###### NwkSKey: %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
+//    KEY_LOG(TS_OFF, VLEVEL_M, "# NwkSKey: %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\r\n", HEX16(keyItem->KeyValue));
   }
 #else /* LORAWAN_KMS == 1 */
   uint8_t itr = 0;

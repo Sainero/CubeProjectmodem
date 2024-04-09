@@ -286,7 +286,7 @@ void LoRaWAN_Init(void)
 //          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
 //          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
 //          (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB2_SHIFT));
-  APP_LOG(TS_OFF, VLEVEL_M, "###### Версия протокола:   V%X.%X.%X\r\n",
+  APP_LOG(TS_OFF, VLEVEL_M, "## Версия протокола:   V%X.%X.%X\r\n",
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
           (uint8_t)(__LORA_APP_VERSION >> __APP_VERSION_SUB2_SHIFT)); // версия приложения (App)
@@ -426,7 +426,7 @@ static void OnRxData(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
     static const char *slotStrings[] = { "1", "2", "C", "C Multicast", "B Ping-Slot", "B Multicast Ping-Slot" };
 
 //    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== MCPS-Indication ==========\r\n");
-    APP_LOG(TS_OFF, VLEVEL_M, "\r\n ========== Индикация приёма данных ==========\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "\r\n   Индикация приёма данных\r\n");
     APP_LOG(TS_OFF, VLEVEL_H, " D/L FRAME:%04d | SLOT:%s | PORT:%d | DR:%d | RSSI:%d | SNR:%d\r\n",
             params->DownlinkCounter, slotStrings[params->RxSlot], appData->Port, params->Datarate, params->Rssi, params->Snr);
     switch (appData->Port)
@@ -659,13 +659,15 @@ static void SendTxData(void)
     	//*/
     	{
 //    	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Temp, hum sensor Init ====\r\n");
-    	  APP_LOG(TS_OFF, VLEVEL_M, " Датчик измерения активен \n");
+    	  APP_LOG(TS_OFF, VLEVEL_M, "     Датчик измерения : активен\r\n");
+
     	} //*/
     	 else
     	 {
 
 //    		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Sensor initialization failed ====\r\n");
-    		 APP_LOG(TS_OFF, VLEVEL_M, "<  Ошибка инициализации датчика >  \r\n");
+//    		 APP_LOG(TS_OFF, VLEVEL_M, "  Ошибка инициализации датчика   \r\n");
+    		 APP_LOG(TS_OFF, VLEVEL_M, "     Датчик измерения : ошибка инициализации    \r\n");
     	 }
 
     	 if(temperaturei/100>=1 && temperaturei/100<=30)
@@ -673,12 +675,13 @@ static void SendTxData(void)
     	     	//*/
     	  {
 //    	     	  APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== All parameters normal ====\r\n");
-    	     	  APP_LOG(TS_OFF, VLEVEL_M, " Параметры окружающей среды в норме \r\n");
+    	     	  APP_LOG(TS_OFF, VLEVEL_M, "     Параметры окружающей среды: в норме \r\n");
     	  } //*/
     	     	 else
     	   {
 //    	     		 APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ==== Accident ====\r\n");
-    	       		 APP_LOG(TS_OFF, VLEVEL_M, " < Отклонение от нормы > \r\n");
+//    	       		 APP_LOG(TS_OFF, VLEVEL_M, "    Отклонение от нормы > \r\n");
+    	       		 APP_LOG(TS_OFF, VLEVEL_M, "     Параметры окружающей среды: отклонение от нормы \r\n");
     	   }
     	 modelnum = 1;
     	 // EEPROMWRITE modelnum
@@ -732,8 +735,11 @@ static void SendTxData(void)
 
     //AppData.Buffer[i++] = 0x00;
      AppData.Buffer[i++] = numberdev; // new номер устройства
-     AppData.Buffer[i++] = temperaturei;
-     AppData.Buffer[i++] = humidityi;
+//     AppData.Buffer[i++] = temperaturei;
+//     AppData.Buffer[i++] = temperaturei / 100;
+     AppData.Buffer[i++] = (temperaturei / 100) % 100;
+     AppData.Buffer[i++] = humidityi/1000;
+
      AppData.Buffer[i++] = per; // new период включения прибора
 //     temperatureint = temperature1;
 //     humidityint = humidity1;
@@ -748,8 +754,11 @@ static void SendTxData(void)
 //     APP_LOG(TS_OFF, VLEVEL_M, "Заряд батареи:%d\r\n", chargebattery);
      HAL_Delay(200);
 
-		 APP_LOG(TS_OFF, VLEVEL_M, " Номер устройства:%d | Температура:%d,%02d °C | Влажность:%d%  | Период передачи:%d сек | Заряд батареи:%d%\r\n",
-	  numberdev, temperaturei / 100, temp_decimal, humidityi /1000, per, chargebattery);
+//		 APP_LOG(TS_OFF, VLEVEL_M, "     Номер устройства:%d | Температура:%d,%02d °C | Влажность:%d%  | Период передачи:%d сек | Заряд батареи:%d%\r\n",
+//	  numberdev, temperaturei / 100, temp_decimal, humidityi /1000, per, chargebattery);
+		 APP_LOG(TS_OFF, VLEVEL_M, "     Номер устройства: %d | Температура воздуха: %d,%02d °C | Влажность воздуха: %d%\r\n",
+		  numberdev, temperaturei / 100, temp_decimal, humidityi /1000);
+		 APP_LOG(TS_OFF, VLEVEL_M, "     Период передачи: %d сек | Заряд батареи: %d%\r\n", per, chargebattery);
 //     APP_LOG(TS_OFF, VLEVEL_M, "%d | %d | %d\r\n",
 //            		 sizeof(temperature1), sizeof(AppLedStateOn), sizeof(chargebattery));
 //     OnTxData(numberdev, temperature1, humidity1, per, chargebattery);
@@ -803,14 +812,14 @@ static void SendTxData(void)
 
    if (LORAMAC_HANDLER_SUCCESS == LmHandlerSend(&AppData, LORAWAN_DEFAULT_CONFIRMED_MSG_STATE, &nextTxIn, false))
   {
-	  APP_LOG(TS_OFF, VLEVEL_L, " Запрос на подключение отправлен\r\n");
+	  APP_LOG(TS_OFF, VLEVEL_L, "     Запрос на подключение: отправлен\r\n");
 //    APP_LOG(TS_ON, VLEVEL_L, "SEND REQUEST\r\n");
   }
 
   else if (nextTxIn > 0)
   {
 //    APP_LOG(TS_ON, VLEVEL_L, "Next Tx in  : ~%d second(s)\r\n", (nextTxIn / 1000));
-    APP_LOG(TS_OFF, VLEVEL_L, " Следующий запрос на отправку через : ~%d секунд\r\n", (nextTxIn / 1000));
+    APP_LOG(TS_OFF, VLEVEL_L, "    Следующий запрос на отправку через : ~%d секунд \r\n", (nextTxIn / 1000));
   }
   /* USER CODE BEGIN SendTxData_2 */
   // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
@@ -879,7 +888,7 @@ static void OnTxData(LmHandlerTxParams_t *params)
     UTIL_TIMER_Start(&TxLedTimer);
     //HAL_LPTIM_Counter_Start_IT(&TxTimer,1000);
 //    APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### ========== MCPS-Confirmation =============\r\n");
-    APP_LOG(TS_OFF, VLEVEL_M, " MCPS Подтверждение \r");
+    APP_LOG(TS_OFF, VLEVEL_M, "     MCPS Подтверждение\r\n");
 //    APP_LOG(TS_OFF, VLEVEL_M, " Передача информации :%d", params->AppData.Buffer);
 //    APP_LOG(TS_OFF, VLEVEL_H, "###### U/L FRAME:%04d | PORT:%d | DR:%d | PWR:%d | Channel:%d", params->UplinkCounter,
 //            params->AppData.Port, params->Datarate, params->TxPower,params->Channel);
@@ -887,7 +896,7 @@ static void OnTxData(LmHandlerTxParams_t *params)
 //    LmHandlerSetTxPower(txPower2);
 //    APP_LOG(TS_OFF, VLEVEL_M, " Номер посылки:%01d | Порт:%d | Мощность:%d | Канал связи:%d\r\n",
 //    		params->UplinkCounter, params->AppData.Port, params->TxPower, params->Channel);
-    APP_LOG(TS_OFF, VLEVEL_M, " Номер посылки:%01d | Порт:%d | Канал связи:%d\r",
+    APP_LOG(TS_OFF, VLEVEL_M, "     Номер посылки: %01d | Порт: %d | Канал связи: %d\r\n",
        		params->UplinkCounter, params->AppData.Port, params->Channel);
     APP_LOG(TS_OFF, VLEVEL_H, " | MSG TYPE:");
 //    APP_LOG(TS_OFF, VLEVEL_M, " | c:");
@@ -920,24 +929,25 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
       LED_Off(LED_RED1) ;
 
 //      APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### = JOINED = ");
-      APP_LOG(TS_OFF, VLEVEL_M, " Устройство подключено \r\n  ");
+      APP_LOG(TS_OFF, VLEVEL_M, "\r\n🗸  Устройство подключено  \r\n  "); // ✓✔ ✅︎ ☑ 🗹︎ √
       //if (joinParams->Mode == ACTIVATION_TYPE_ABP) //
       if (joinParams->Mode == ACTIVATION_TYPE_OTAA)
       {
 //        APP_LOG(TS_OFF, VLEVEL_M, "ABP ======================\r\n");
-    	  APP_LOG(TS_OFF, VLEVEL_M, " Активация по воздуху  \r\n");
-
+//    	  APP_LOG(TS_OFF, VLEVEL_M, " Активация по воздуху  \r\n");
+    	  APP_LOG(TS_OFF, VLEVEL_M, "   Тип активации: OTAA  \r\n");
       }
       else
       {
 //        APP_LOG(TS_OFF, VLEVEL_M, "OTAA =====================\r\n");
-    	  APP_LOG(TS_OFF, VLEVEL_M, " Активация по персонализации  \r\n");
+//    	  APP_LOG(TS_OFF, VLEVEL_M, " Активация по персонализации  \r\n");
+    	  APP_LOG(TS_OFF, VLEVEL_M, "     Тип активации: ABP  \r\n");
       }
     }
     else
     {
 //      APP_LOG(TS_OFF, VLEVEL_M, "\r\n###### = JOIN FAILED\r\n");
-      APP_LOG(TS_OFF, VLEVEL_M, " < Подключение к базовой станции не удалось > \r\n");
+      APP_LOG(TS_OFF, VLEVEL_M, "     Подключение к базовой станции: ошибка > \r\n");
     }
   }
 

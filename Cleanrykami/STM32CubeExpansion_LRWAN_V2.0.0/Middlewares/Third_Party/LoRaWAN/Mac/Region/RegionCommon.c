@@ -575,5 +575,7 @@ void RegionCommonTxConfigPrint(uint32_t frequency, int8_t dr)
 	uint32_t freq_decimal = (frequency % 1000000) / 100000; // Получаем 1-ю цифру после запятой
 //	float freq_mhz2 = frequency / 1000000.0f; // Конвертируем частоту в мегагерцы
 //    MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %d Hz at DR %d\r\n", frequency, dr );
-    MW_LOG(TS_OFF, VLEVEL_M,  "\r\n Отправка на частоте %d.%d МГц по каналу скорости передачи DR%d\r\n", freq_mhz, freq_decimal, dr );
+//    MW_LOG(TS_OFF, VLEVEL_M,  "\r\n » Отправка на частоте %d.%d МГц по каналу скорости передачи DR%d\r\n", freq_mhz, freq_decimal, dr );
+    MW_LOG(TS_OFF, VLEVEL_M,  "\r\n »  Передача данных на частоте: %d.%d МГц", freq_mhz, freq_decimal);
+    MW_LOG(TS_OFF, VLEVEL_M,  "\r\n     Канал скорости передачи: DR%d\r\n",  dr );
 }
