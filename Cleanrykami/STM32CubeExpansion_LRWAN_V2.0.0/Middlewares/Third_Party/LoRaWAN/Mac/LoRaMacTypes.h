@@ -57,7 +57,7 @@ extern "C"
    /*!
  * Indicates if LoRaWAN 1.1.x crypto scheme is enabled
  */
-#define USE_LRWAN_1_1_X_CRYPTO          0
+#define USE_LRWAN_1_1_X_CRYPTO          1  // def 0
 
 /*!
  * Maximum number of multicast context
@@ -182,7 +182,7 @@ typedef enum eKeyIdentifier
      * Network root key
      */
     NWK_KEY,
-#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )  // for connect 1.1v
+//#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )  // for connect 1.1v
     /*!
      * Join session integrity key
      */
@@ -203,12 +203,12 @@ typedef enum eKeyIdentifier
      * Network session encryption key
      */
     NWK_S_ENC_KEY,
-#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */ // for connect 1.1v
+//#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */ // for connect 1.1v
     /*!
      * Network session key
      */
     NWK_S_KEY,    
-#endif /* USE_LRWAN_1_1_X_CRYPTO */  // for connect 1.1v
+//#endif /* USE_LRWAN_1_1_X_CRYPTO */  // for connect 1.1v
     /*!
      * Application session key
      */
@@ -675,6 +675,12 @@ typedef enum eLoRaMacFrameType
      * LoRaMAC proprietary frame
      */
     FRAME_TYPE_PROPRIETARY           = 0x07,
+	/*!
+		* RJcount1 is a counter incremented with every Rejoin request Type 1 frame transmitted.
+		*/
+		RJ_COUNT_0 = 0,
+	    RJ_COUNT_1 = 1,
+
 }LoRaMacFrameType_t;
 
 /*!

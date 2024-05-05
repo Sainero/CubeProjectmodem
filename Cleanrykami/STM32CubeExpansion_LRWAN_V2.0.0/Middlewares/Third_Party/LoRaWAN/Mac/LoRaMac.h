@@ -145,6 +145,11 @@ extern "C"
 #include "LoRaMacTypes.h"
 #include "lorawan_conf.h"
 
+ /*!
+  * Indicates if LoRaWAN 1.1.x crypto scheme is enabled
+  */
+#define USE_LRWAN_1_1_X_CRYPTO                      1
+
 /*!
  * Maximum number of times the MAC layer tries to get an acknowledge.
  */
@@ -1366,7 +1371,7 @@ typedef enum eMib
      * LoRaWAN Specification V1.1.0, chapter 6.1.1.3
      */
     MIB_NWK_KEY,
-#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+//#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
     /*!
      * Join session integrity key
      *
@@ -1397,12 +1402,12 @@ typedef enum eMib
      * LoRaWAN Specification V1.1.0, chapter 6.1.2.4
      */
     MIB_NWK_S_ENC_KEY,
-#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+//#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
     /*!
      * Network session key
      */
     MIB_NWK_S_KEY,
-#endif /* USE_LRWAN_1_1_X_CRYPTO */
+//#endif /* USE_LRWAN_1_1_X_CRYPTO */
     /*!
      * Application session key
      *
@@ -1781,7 +1786,7 @@ typedef union uMibParam
      * Related MIB type: \ref MIB_NWK_KEY
      */
     uint8_t* NwkKey;
-#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+//#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
     /*!
      * Join session integrity key
      *
@@ -1812,14 +1817,14 @@ typedef union uMibParam
      * Related MIB type: \ref MIB_NWK_S_ENC_KEY
      */
     uint8_t* NwkSEncKey;
-#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+//#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
     /*!
      * Network session key
      *
      * Related MIB type: \ref MIB_NWK_S_KEY
      */
     uint8_t* NwkSKey;
-#endif /* USE_LRWAN_1_1_X_CRYPTO */
+//#endif /* USE_LRWAN_1_1_X_CRYPTO */
     /*!
      * Application session key
      *
