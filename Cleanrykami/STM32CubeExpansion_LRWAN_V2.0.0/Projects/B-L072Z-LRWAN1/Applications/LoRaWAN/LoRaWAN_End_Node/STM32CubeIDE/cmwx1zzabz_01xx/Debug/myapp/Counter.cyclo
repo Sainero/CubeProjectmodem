@@ -1,0 +1,5 @@
+../myapp/Counter.c:11:5:cntReset	1
+../myapp/Counter.c:16:5:cntInc	1
+../myapp/Counter.c:21:5:cntGetValue	1
+../myapp/Counter.c:25:5:cntSetValue	1
+../myapp/Counter.c:30:5:cntdec	1

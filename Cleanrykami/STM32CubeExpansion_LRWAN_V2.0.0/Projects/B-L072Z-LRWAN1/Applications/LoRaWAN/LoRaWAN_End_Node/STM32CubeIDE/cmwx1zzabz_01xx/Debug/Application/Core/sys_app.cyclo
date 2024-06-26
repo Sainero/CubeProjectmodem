@@ -1,0 +1,14 @@
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:97:6:SystemApp_Init	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:148:6:UTIL_SEQ_Idle	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:159:9:GetBatteryLevel	3
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:197:10:GetTemperatureLevel	2
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:208:6:GetUniqueId	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:230:10:GetDevAddr	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:240:13:TimestampNow	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:253:13:Gpio_PreInit	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:293:6:UTIL_ADV_TRACE_PreSendHook	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:304:6:UTIL_ADV_TRACE_PostSendHook	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:315:13:tiny_snprintf_like	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:340:19:HAL_InitTick	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:357:10:HAL_GetTick	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/sys_app.c:373:6:HAL_Delay	1

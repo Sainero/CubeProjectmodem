@@ -57,7 +57,7 @@ extern "C"
    /*!
  * Indicates if LoRaWAN 1.1.x crypto scheme is enabled
  */
-#define USE_LRWAN_1_1_X_CRYPTO          1  // def 0
+#define USE_LRWAN_1_1_X_CRYPTO          0  // def 0
 
 /*!
  * Maximum number of multicast context

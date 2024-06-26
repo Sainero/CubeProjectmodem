@@ -1,0 +1,5 @@
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/adc_if.c:98:6:SYS_InitMeasurement	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/adc_if.c:109:6:SYS_DeInitMeasurement	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/adc_if.c:116:9:SYS_GetTemperatureLevel	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/adc_if.c:137:10:SYS_GetBatteryLevel	2
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/adc_if.c:167:17:ADC_ReadChannels	4

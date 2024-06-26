@@ -145,10 +145,10 @@ extern "C"
 #include "LoRaMacTypes.h"
 #include "lorawan_conf.h"
 
- /*!
-  * Indicates if LoRaWAN 1.1.x crypto scheme is enabled
-  */
-#define USE_LRWAN_1_1_X_CRYPTO                      1
+// /*!
+//  * Indicates if LoRaWAN 1.1.x crypto scheme is enabled
+//  */
+//#define USE_LRWAN_1_1_X_CRYPTO                      1
 
 /*!
  * Maximum number of times the MAC layer tries to get an acknowledge.

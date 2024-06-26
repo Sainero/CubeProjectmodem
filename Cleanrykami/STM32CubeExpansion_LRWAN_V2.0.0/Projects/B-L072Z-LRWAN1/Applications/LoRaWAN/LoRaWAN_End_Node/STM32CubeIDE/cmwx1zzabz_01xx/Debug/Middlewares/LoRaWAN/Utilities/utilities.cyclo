@@ -1,0 +1,7 @@
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Middlewares/Third_Party/LoRaWAN/Utilities/utilities.c:48:16:rand1	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Middlewares/Third_Party/LoRaWAN/Utilities/utilities.c:53:6:srand1	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Middlewares/Third_Party/LoRaWAN/Utilities/utilities.c:59:9:randr	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Middlewares/Third_Party/LoRaWAN/Utilities/utilities.c:64:6:memcpy1	2
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Middlewares/Third_Party/LoRaWAN/Utilities/utilities.c:72:6:memcpyr	2
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Middlewares/Third_Party/LoRaWAN/Utilities/utilities.c:81:6:memset1	2
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Middlewares/Third_Party/LoRaWAN/Utilities/utilities.c:89:8:Nibble2HexChar	3

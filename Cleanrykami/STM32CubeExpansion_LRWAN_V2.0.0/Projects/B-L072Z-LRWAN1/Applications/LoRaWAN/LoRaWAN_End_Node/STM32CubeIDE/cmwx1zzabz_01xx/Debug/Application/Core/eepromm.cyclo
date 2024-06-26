@@ -1,0 +1,5 @@
+../Application/Core/eepromm.c:41:7:FLASHEx_EEPROM_WRITE	2
+../Application/Core/eepromm.c:58:7:EEPROM_WRITE_DATA	6
+../Application/Core/eepromm.c:85:11:EEPROM_ReadData	1
+../Application/Core/eepromm.c:91:7:EEPROM_Read_Data	6
+../Application/Core/eepromm.c:109:7:EEPROM_CLEAR	2

@@ -1,0 +1,12 @@
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:269:6:LoRaWAN_Init	2
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:393:6:BSP_PB_Callback	2
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:418:13:OnRxData	12
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:494:13:SendTxData	6
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:829:13:OnTxTimerEvent	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:845:13:OnTxTimerLedEvent	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:856:13:OnRxTimerLedEvent	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:867:13:OnJoinTimerLedEvent	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:878:13:OnTxData	5
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:918:13:OnJoinRequest	4
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:1012:17:MX_LPTIM1_Init	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/LoRaWAN/App/lora_app.c:1105:13:OnMacProcessNotify	1

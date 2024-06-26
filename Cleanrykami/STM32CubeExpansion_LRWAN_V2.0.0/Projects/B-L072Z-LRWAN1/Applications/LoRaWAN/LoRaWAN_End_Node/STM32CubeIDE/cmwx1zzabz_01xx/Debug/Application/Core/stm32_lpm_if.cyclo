@@ -1,0 +1,6 @@
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/stm32_lpm_if.c:78:6:PWR_EnterOffMode	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/stm32_lpm_if.c:85:6:PWR_ExitOffMode	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/stm32_lpm_if.c:92:6:PWR_EnterStopMode	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/stm32_lpm_if.c:109:6:PWR_ExitStopMode	4
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/stm32_lpm_if.c:139:6:PWR_EnterSleepMode	1
+C:/Users/kosty/STM32CubeIDE/CubeProjectmodem/Cleanrykami/STM32CubeExpansion_LRWAN_V2.0.0/Projects/B-L072Z-LRWAN1/Applications/LoRaWAN/LoRaWAN_End_Node/Core/Src/stm32_lpm_if.c:144:6:PWR_ExitSleepMode	1
